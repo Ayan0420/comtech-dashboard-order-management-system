@@ -1,0 +1,16 @@
+<html lang="en">
+<% include('../partials/head.ejs') %> 
+<body>
+    <h3>Add TASKS</h3>
+    <form action="/todo/" method="POST">
+        <label for="task">Task Name:</label>
+        <input type="text" id="task" name="task", required />
+        <label for="status">Status</label>
+        <select name="status" id="status">
+            <option value="On Going" selected>On Going</option>
+            <option value="Done">Done</option>
+        </select>
+        <button type="submit">Add Task</button>
+    </form>
+</body>
+</html>
