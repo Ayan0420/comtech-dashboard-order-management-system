@@ -4,7 +4,7 @@ const JobOrder = require('../models/jobOrderModel');
 const jobOrder_index = (req, res) => {
     JobOrder.find().sort({createdAt: -1})
         .then(result => {
-            res.render('jobOrder/job-orders', {title: 'Job Orders', jobOrders: result})
+            res.render('jobOrder/job-orders', {title: 'Dashboard', jobOrders: result})
         })
         .catch(err => console.log("error from the controller" + err));
 }

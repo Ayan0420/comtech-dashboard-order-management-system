@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Comtech Dashboard</title>
+    <meta name="description" content="Main job order dashboard.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.2.2/dist/lux/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&amp;display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md justify-content-between">
+        <div class="container-fluid"><a class="navbar-brand" href="/" style="color: rgba(255,255,255,0.9);font-weight: bold;font-size: 1rem;">COMTECH DASHBOARD&nbsp;</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse text-start d-md-flex justify-content-md-end" id="navcol-1">
+                <ul class="navbar-nav text-end d-xl-flex ms-auto">
+                    <li class="nav-item me-auto"><a class="nav-link" data-bss-hover-animate="pulse" id="logout-link-1" href="#" style="border-radius: 4px;background: rgba(234,204,48,0);border: 2px none rgba(113,113,113,0.9);text-align: center;margin: 0px;margin-top: 0;padding: 0px;padding-right: .5rem;padding-left: .5rem;padding-top: .1rem;padding-bottom: .1rem;font-size: 0.8rem;color: var(--bs-white);">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav><!-- Start: MAIN-SECTION -->
+    <div class="container mb-3" id="lr-margin">
+        <div class="row" style="margin-top: 1rem;">
+            <div class="col-md-4 d-flex d-lg-flex d-xl-flex flex-column align-items-center align-items-sm-center align-items-lg-center justify-content-xl-start" id="sidebar-column">
+                <h2 class="text-center d-lg-flex justify-content-lg-center align-items-lg-start" id="welcome-text" style="width: 100%;margin-top: 2rem;padding-top: .5rem;">Welcome Clark!</h2><a class="btn btn-primary d-lg-flex justify-content-sm-center justify-content-lg-center align-items-lg-center" role="button" data-bss-disabled-mobile="true" data-bss-hover-animate="pulse" id="view-job-order-btn" href="index.html">View Job Orders</a>
+                <p style="text-align: center;margin-top: 1.5rem;"><strong>Comtech Laptop Repair Shop</strong><br>Brgy. 19, Corner Jadol-Tuto St., Gingoog City, Misamis Oriental, 9014</p><iframe allowfullscreen="" frameborder="0" loading="lazy" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAbINk7rv7Ey4sGOfM1lZc6IWAkNEzFj-A&amp;q=comtech+gingoog&amp;zoom=15" id="map" width="100%" height="400"></iframe>
+            </div>
+            <div class="col-md-8" id="main-body">
+                <h3 class="fw-bold text-center text-light add-job py-4 mt-5">Add job order</h3><!-- Start: Job Order Details Form -->
+                <form class="container">
+                    <p>Please enter all the required details of the customer and the job performed.</p><!-- Start: Form Row -->
+                    <div class="row form-row">
+                        <!-- Start: Job Order No. -->
+                        <div class="col col-lg-3 pb-2"><label class="form-label" for="job_id">Job Order No.</label><input class="form-control custom-input" type="number" id="job_id" name="job_order_id" required="" autocomplete="off"></div><!-- End: Job Order No. -->
+                        <!-- Start: Date -->
+                        <div class="col-sm-7 col-lg-3 pb-2"><label class="form-label" for="job_date">Date:</label><input class="form-control custom-input" id="job_date" name="job_date" type="date" autocomplete="off"></div><!-- End: Date -->
+                        <!-- Start: Customer Name -->
+                        <div class="col-sm-12 col-lg-6 pb-2"><label class="form-label" for="cus_name">Customer Name:</label><input class="form-control custom-input" type="text" id="cus_name-1" name="cus_name" required="" autocomplete="off"></div><!-- End: Customer Name -->
+                    </div><!-- End: Form Row -->
+                    <!-- Start: Form Row -->
+                    <div class="row form-row">
+                        <!-- Start: Address -->
+                        <div class="col-sm-12 col-lg-6 pb-2"><label class="form-label" for="cus_address">Address:</label><input class="form-control custom-input" type="text" id="cus_address" name="cus_address" required="" autocomplete="off"></div><!-- End: Address -->
+                        <!-- Start: Address -->
+                        <div class="col-sm-12 col-lg-6 pb-2"><label class="form-label" for="cus_phone">Contact Info:</label><input class="form-control custom-input" type="text" id="cus_phone" name="cus_phone" required="" autocomplete="off"></div><!-- End: Address -->
+                    </div><!-- End: Form Row -->
+                </form><!-- End: Job Order Details Form -->
+            </div>
+        </div>
+    </div><!-- End: MAIN-SECTION -->
+    <footer class="d-sm-flex justify-content-sm-center align-items-sm-end" id="footer">
+        <div class="container d-lg-flex mt-auto justify-content-lg-center">
+            <p class="text-center text-light d-flex justify-content-center"><strong>©&nbsp;</strong>Comtech Laptop Repair Shop, Gingoog City, 2023</p>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+</body>
+
+</html>

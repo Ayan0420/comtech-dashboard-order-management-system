@@ -15,7 +15,8 @@ mongoose.set('strictQuery', true); //deprecation
 mongoose.connect(dbURI)
     .then(result => {
         console.log('connected to db')
-        app.listen(3000, () => console.log('Server Started listening to port 3000...'))
+        //development mode
+        app.listen(3000, () => console.log('Server Started listening to http://localhost:3000 ...'))
     })
     .catch(err => console.log(err));
 

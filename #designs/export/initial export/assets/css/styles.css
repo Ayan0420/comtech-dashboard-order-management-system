@@ -1,0 +1,114 @@
+#summary-card-1 {
+  height: 100%;
+}
+
+#view-job-order-btn {
+  border-radius: 10px;
+  margin-top: 1rem;
+  background: var(--bs-blue);
+  width: 75%;
+}
+
+#add-job-order-btn {
+  border-radius: 10px;
+  margin-top: 1rem;
+  background: var(--bs-green);
+  width: 75%;
+}
+
+#sales-chart {
+  padding: 1rem 0;
+  border-radius: 10px;
+  box-shadow: 3px 3px 6px;
+  margin: 2rem 0;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+#sales-chart-caption {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+
+#btn-search {
+  padding: 3px 16px;
+}
+
+#search-input {
+  width: 75%;
+  border-radius: 10px;
+  border-width: 1px;
+  border-color: rgba(0,0,0,0.48);
+  padding: 1px 10px;
+}
+
+#map {
+  margin-top: 0;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+#job-order-table {
+  border-radius: 10px;
+  box-shadow: 3px 3px 6px;
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  border-color: rgba(191,11,0,0.83);
+  color: #2d2e2f;
+  --bs-body-color: #222426;
+}
+
+.navbar {
+  background: var(--bs-red);
+  padding: 7px 0px;
+}
+
+#footer {
+  background: var(--bs-red);
+  height: 51px;
+}
+
+.mt-5 {
+}
+
+h3.add-job {
+  background: var(--bs-green);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.form-row {
+}
+
+.form-label {
+  color: var(--bs-red);
+  font-weight: bold;
+  font-style: italic;
+}
+
+.custom-input {
+  border-width: 1px;
+  border-style: solid;
+  height: 35px;
+  padding-right: 3px;
+  padding-left: 18px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px rgba(85,89,92,0.26);
+}
+
+#sidebar-column {
+}
+
+.custom-tab {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  border-color: var(--bs-nav-link-disabled-color);
+  box-shadow: 0px 0px 8px var(--bs-nav-tabs-link-active-color);
+}
+
