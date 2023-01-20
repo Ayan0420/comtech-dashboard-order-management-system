@@ -1,8 +1,190 @@
 <html lang="en">
-<% include('../partials/head.ejs') %> 
+<%- include('../partials/head.ejs') %> 
 <body>
-    <h3>Hello World! this is from job order.</h3>
+    <nav class="navbar navbar-light navbar-expand-md bg-danger justify-content-between">
+        <div class="container-fluid"><a class="navbar-brand" href="/" style="color: rgba(255,255,255,0.9);font-weight: bold;font-size: 1rem;">COMTECH DASHBOARD&nbsp;</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse text-start d-md-flex justify-content-md-end" id="navcol-1">
+                <ul class="navbar-nav text-end d-xl-flex ms-auto">
+                    <li class="nav-item me-auto"><a class="nav-link active" data-bss-hover-animate="pulse" id="logout-link-1" href="#" style="border-radius: 4px;background: rgba(234,204,48,0);border: 2px none rgba(113,113,113,0.9);text-align: center;margin: 0px;margin-top: 0;padding: 0px;padding-right: .5rem;padding-left: .5rem;padding-top: .1rem;padding-bottom: .1rem;font-size: 0.8rem;color: var(--bs-white);">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Start: MAIN-SECTION -->
+    <div class="container mb-3" id="lr-margin">
+        <div class="row" style="margin-top: 1rem;">
+            
+            <div class="col-md-3 d-flex d-lg-flex d-xl-flex flex-column align-items-center align-items-sm-center align-items-lg-center justify-content-xl-start" id="sidebar-column">
+                <h3 class="text-center d-lg-flex justify-content-lg-center align-items-lg-start" id="welcome-text" style="width: 100%;margin-top: 2rem;padding-top: .5rem;">Welcome Clark!</h3><a class="btn btn-primary d-lg-flex justify-content-sm-center justify-content-lg-center align-items-lg-center" role="button" data-bss-hover-animate="pulse" id="add-job-order-btn" href="/job-orders/add-job-order">Add Job Order</a>
+                <p style="text-align: center;margin-top: 1.5rem;"><strong>Comtech Laptop Repair Shop</strong><br>Brgy. 19, Corner Jadol-Tuto St., Gingoog City, Misamis Oriental, 9014</p><iframe allowfullscreen="" frameborder="0" loading="lazy" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAbINk7rv7Ey4sGOfM1lZc6IWAkNEzFj-A&amp;q=comtech+gingoog&amp;zoom=15" id="map" width="100%" height="400"></iframe>
+            </div>  
 
-    
-</body>
+            <div class="col-md-9" id="main-body">
+                <div>
+                    
+                    <ul class="nav nav-tabs" role="tablist" style="font-size: 1.2rem;--bs-body-color: #55595c;">
+                        <!-- Start: SUMMARY-TAB -->
+                        <li class="nav-item" role="presentation"><a class="nav-link active text-bg-danger custom-tab" role="tab" data-bs-toggle="tab" id="tab-1-link" href="#tab-1">Summary</a></li><!-- End: SUMMARY-TAB -->
+                        <!-- Start: JOB-ORDER-TAB -->
+                        <li class="nav-item" role="presentation"><a class="nav-link text-bg-info custom-tab" role="tab" data-bs-toggle="tab" id="tab-2-link" href="#tab-2">Recent Job Orders</a></li><!-- End: JOB-ORDER-TAB -->
+                        <li class="nav-item" role="presentation"><a class="nav-link text-bg-dark custom-tab" role="tab" data-bs-toggle="tab" id="tab-3-link" href="#tab-3">Inventory</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <!-- Start: SUMMARY-TAB-CONTENT -->
+                        
+                        <div class="tab-pane active fade show" role="tabpanel" id="tab-1">
+                            
+                            <!-- Start: search -->
+                            <div class="mt-4">
+                                <input type="text" id="search-input" name="search-input" placeholder="Search Job Order e.g. J.O. Number, Customer Name, etc..."><button class="btn btn-danger btn-sm text-center ms-2 rounded-pill" id="btn-search" type="button">search</button>
+                            </div>
+                            <!-- End: search -->
+                            <div class="row d-lg-flex d-xl-flex justify-content-lg-center align-items-lg-center justify-content-xl-center" id="summary-row" style="margin-bottom: 1.5rem;margin-top: 1.5rem;">
+                                <div class="col d-xl-flex justify-content-xl-center d-flex align-items-stretch" id="summary-card-1">
+                                    <div class="card" style="box-shadow: 3px 3px 6px;border-radius: 10px;width: 100%;">
+                                        <div class="card-header d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 65px;">
+                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;">Total Job Orders</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 style="text-align: center;font-weight: bold;font-size: 40px;color: var(--bs-cyan);border-width: 0px;border-color: var(--bs-gray-800);">1223</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col d-xl-flex justify-content-xl-center d-flex align-items-stretch" id="summary-card-2">
+                                    <div class="card" style="box-shadow: 3px 3px 6px;border-radius: 10px;width: 100%;">
+                                        <div class="card-header d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 65px;">
+                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;">Current Orders</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 style="text-align: center;font-weight: bold;font-size: 40px;color: var(--bs-orange);border-width: 0px;border-color: var(--bs-gray-800);">7</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col d-xl-flex justify-content-xl-center align-items-xl-center d-flex align-items-stretch" id="summary-card-3">
+                                    <div class="card" style="box-shadow: 3px 3px 6px;border-radius: 10px;width: 100%;">
+                                        <div class="card-header d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 65px;">
+                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;"><strong>Parts Orders</strong></h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 style="text-align: center;font-weight: bold;color: var(--bs-orange);border-width: 0px;border-color: var(--bs-gray-800);font-size: 40px;">3</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row d-lg-flex d-xl-flex my-auto justify-content-lg-center align-items-lg-start justify-content-xl-center" id="summary-row-1" style="margin-bottom: 1.5rem;margin-top: 1.5rem;">
+                                <div class="col d-xl-flex justify-content-xl-center d-flex align-items-stretch" id="summary-card-4">
+                                    <div class="card" style="box-shadow: 3px 3px 6px;border-radius: 10px;width: 100%;">
+                                        <div class="card-header d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 65px;">
+                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;">Unclaimed Orders</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 style="text-align: center;font-weight: bold;font-size: 40px;color: var(--bs-red);border-width: 0px;border-color: var(--bs-gray-800);">5</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col d-xl-flex justify-content-xl-center d-flex align-items-stretch" id="summary-card-5">
+                                    <div class="card d-xl-flex justify-content-xl-center" style="box-shadow: 3px 3px 6px;border-radius: 10px;width: 100%;">
+                                        <div class="card-header d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 65px;">
+                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;">DMD as of December</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 style="text-align: center;font-weight: bold;font-size: 40px;color: var(--bs-red);border-width: 0px;border-color: var(--bs-gray-800);">4</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col d-xl-flex justify-content-xl-center d-flex align-items-stretch" id="summary-card-6">
+                                    <div class="card" style="box-shadow: 3px 3px 6px;border-radius: 10px;width: 100%;">
+                                        <div class="card-header d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 65px;">
+                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;">Sales (December)</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 style="text-align: center;font-weight: bold;font-size: 40px;color: var(--bs-green);border-width: 0px;border-color: var(--bs-gray-800);">200,000</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="sales-chart">
+                                <canvas id="chart-1"></canvas>
+                            </div>
+                            <p id="sales-chart-caption">Summary of Sales Monthly as of 2023</p>
+                        </div><!-- End: SUMMARY-TAB-CONTENT -->
+                        <!-- Start: JOB-ORDER-CONTENT -->
+                        <div class="tab-pane fade" role="tabpanel" id="tab-2">
+                            <p class="mt-4 text-center">The table strats from the most recent Job Order.</p><!-- Start: search --><input type="text" id="search-input" name="search-input" placeholder="Search Job Order e.g. J.O. Number, Customer Name, etc..."><!-- End: search --><button class="btn btn-danger btn-sm text-center ms-2 rounded-pill" id="btn-search" type="button">search</button><!-- Start: JOB-ORDER-TABLE -->
+                            <div class="table-responsive my-3" id="job-order-table">
+                                <table class="table table-striped table-hover table-sm table-bordered">
+                                    <thead>
+                                        <tr class="text-center">
+                                            <th class="col-md-2">Job Order #</th>
+                                            <th class="col-md-3">Customer Name</th>
+                                            <th class="col-md-4">Work Performed</th>
+                                            <th class="col-md-2">Status</th>
+                                            <th class="col-md-1">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Start: Job Order Entry Row -->
+                                        <% if (jobOrders.length > 0) { %>
+                                            <% jobOrders.forEach( jobOrder => { %>
+                                                <tr>
+                                                    <td><%=jobOrder.job_id%> </td>
+                                                    <td><%=jobOrder.cus_name%></td>
+                                                    <td><%=jobOrder.work_perf%></td>
+                                                    <td><%=jobOrder.s_status%></td>
+                                                    <td class="text-center"><a href="/job-orders/job-details/<%=jobOrder._id%>"><i class="fas fa-eye text-info custom-view-icon" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="swing" title="View Job Order Details"></i></a></td>
+                                                </tr>   
+                                            <% }) %>
+
+                                            <% } else { %>
+                                            <p class="container">No Job Order Available...</p>    
+                                        <% } %>
+                                        <!-- End: Job Order Entry Row -->
+                                        
+                                    </tbody>
+                                </table>
+                            </div><!-- End: JOB-ORDER-TABLE -->
+                        </div><!-- End: JOB-ORDER-CONTENT -->
+
+                        <!-- Start: INVENTORY-CONTENT -->
+                        <div class="tab-pane fade" role="tabpanel" id="tab-3">
+                            <p>Content for tab 3.</p>
+                        </div>
+                        <!-- End: INVENTORY-CONTENT -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End: MAIN-SECTION -->
+
+    <%- include('../partials/foot.ejs') %> 
+    <script>
+        const ctx = document.getElementById('chart-1');
+      
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            datasets: [{
+              label: 'Revenue in Peso',
+              data: [
+                12000, 70600, 30010, 50000, 22000, 30000,
+                12000, 70600, 30010, 50000, 22000, 30000
+            ],
+              borderWidth: 3,
+              backgroundColor: 'rgba(54, 162, 235, .6)',
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          },
+
+          
+        });
+      </script>
+ </body>
 </html>

@@ -1,0 +1,156 @@
+<html lang="en">
+<%- include('../partials/head.ejs') %> 
+<body>
+    <nav class="navbar navbar-light navbar-expand-md bg-danger justify-content-between">
+        <div class="container-fluid"><a class="navbar-brand" href="/" style="color: rgba(255,255,255,0.9);font-weight: bold;font-size: 1rem;">COMTECH DASHBOARD&nbsp;</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse text-start d-md-flex justify-content-md-end" id="navcol-1">
+                <ul class="navbar-nav text-end d-xl-flex ms-auto">
+                    <li class="nav-item me-auto"><a class="nav-link active" data-bss-hover-animate="pulse" id="logout-link-1" href="#" style="border-radius: 4px;background: rgba(234,204,48,0);border: 2px none rgba(113,113,113,0.9);text-align: center;margin: 0px;margin-top: 0;padding: 0px;padding-right: .5rem;padding-left: .5rem;padding-top: .1rem;padding-bottom: .1rem;font-size: 0.8rem;color: var(--bs-white);">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Start: MAIN-SECTION -->
+    <div class="container mb-3" id="lr-margin">
+        <div class="row" style="margin-top: 1rem;">
+            <div class="col-md-3 d-flex d-lg-flex d-xl-flex flex-column align-items-center align-items-sm-center align-items-lg-center justify-content-xl-start" id="sidebar-column">
+                <h3 class="text-center d-lg-flex justify-content-lg-center align-items-lg-start" id="welcome-text" style="width: 100%;margin-top: 2rem;padding-top: .5rem;">Welcome Clark!</h3><a class="btn btn-primary d-lg-flex justify-content-sm-center justify-content-lg-center align-items-lg-center" role="button" data-bss-disabled-mobile="true" data-bss-hover-animate="pulse" id="view-job-order-btn" href="/job-orders">Dashboard</a>
+                <p style="text-align: center;margin-top: 1.5rem;"><strong>Comtech Laptop Repair Shop</strong><br>Brgy. 19, Corner Jadol-Tuto St., Gingoog City, Misamis Oriental, 9014</p><iframe allowfullscreen="" frameborder="0" loading="lazy" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAbINk7rv7Ey4sGOfM1lZc6IWAkNEzFj-A&amp;q=comtech+gingoog&amp;zoom=15" id="map" width="100%" height="400"></iframe>
+            </div>
+            <div class="col-md-9" id="main-body">
+                <h3 class="fw-bold text-center text-light job-details py-4 mt-5" id="jo-details-heading">Job Order Details</h3><!-- Start: Job Order Details Form -->
+                <form class="container" action="google.com">
+                    <!-- Start: to enable "disable attr" -->
+                    <fieldset id="form-fields" disabled>
+                        <p>To update or delete this job order, click the "Edit Job Order" button below.</p><!-- Start: Form Row -->
+                        <div class="row form-row">
+                            <!-- Start: Job Order No. -->
+                            <div class="col col-lg-3 pb-2"><label class="form-label custom-label" for="job_id">Job Order No.</label><input value="<%= jobOrder.job_id %>" class="form-control custom-input" type="number" id="job_id" name="job_id" required="" autocomplete="off"></div><!-- End: Job Order No. -->
+                            <!-- Start: Date -->
+                            <div class="col-sm-7 col-lg-3 pb-2"><label class="form-label custom-label" for="job_date">Date:</label><input value="<%= jobOrder.job_date %>" class="form-control custom-input" id="job_date" name="job_date" type="date" autocomplete="off"></div><!-- End: Date -->
+                            <!-- Start: Customer Name -->
+                            <div class="col-sm-12 col-lg-6 pb-2"><label class="form-label custom-label" for="cus_name">Customer Name:</label><input value="<%= jobOrder.cus_name %> " class="form-control custom-input" type="text" id="cus_name" name="cus_name" required="" autocomplete="off"></div><!-- End: Customer Name -->
+                        </div><!-- End: Form Row -->
+                        <!-- Start: Form Row -->
+                        <div class="row form-row">
+                            <!-- Start: Address -->
+                            <div class="col-sm-12 col-lg-6 pb-2"><label class="form-label custom-label" for="cus_address">Address:</label><input value="<%= jobOrder.cus_address %>"  class="form-control custom-input" type="text" id="cus_address" name="cus_address" required="" autocomplete="off"></div><!-- End: Address -->
+                            <!-- Start: Phone -->
+                            <div class="col-sm-12 col-lg-6 pb-2"><label class="form-label custom-label" for="cus_phone">Contact Info:</label><input value="<%= jobOrder.cus_phone%>"  class="form-control custom-input" type="text" id="cus_phone" name="cus_phone" required="" autocomplete="off"></div><!-- End: Phone -->
+                        </div><!-- End: Form Row -->
+                        <!-- Start: Unit Specs -->
+                        <p class="text-center text-uppercase pt-sm-1 pt-md-3 mb-1">Unit specification</p><!-- End: Unit Specs -->
+                        <!-- Start: Form Row -->
+                        <div class="row form-row">
+                            <!-- Start: Unit Model -->
+                            <div class="col-sm-12 col-lg-6 pb-2"><label class="form-label custom-label" for="unit_model">Unit Model:</label><input value="<%= jobOrder.unit_model %>"  class="form-control custom-input" type="text" id="unit_model" name="unit_model" required="" autocomplete="off"></div><!-- End: Unit Model -->
+                            <!-- Start: Unit Accessories -->
+                            <div class="col-sm-12 col-lg-6 pb-2"><label class="form-label custom-label" for="unit_accessories">Unit Accessories:</label><input value="<%= jobOrder.unit_accessories %>"  class="form-control custom-input" type="text" id="unit_accessories" name="unit_accessories" autocomplete="off"></div><!-- End: Unit Accessories -->
+                        </div><!-- End: Form Row -->
+                        <!-- Start: Form Row -->
+                        <div class="row form-row">
+                            <!-- Start: Unit Model -->
+                            <div class="col-sm-12 pb-2"><label class="form-label custom-label" for="unit_model">Unit Specs:</label><input value="<%= jobOrder.unit_specs %>"  class="form-control custom-input" type="text" id="unit_specs" name="unit_specs" autocomplete="off"></div><!-- End: Unit Model -->
+                        </div><!-- End: Form Row -->
+                        <!-- Start: Unit Specs -->
+                        <p class="text-center text-uppercase pt-sm-1 pt-md-3 mb-1">Work performed</p><!-- End: Unit Specs -->
+                        <!-- Start: Form Row -->
+                        <div class="row form-row">
+                            <!-- Start: Job Type -->
+                            <div class="col-sm-12 col-lg-7 pb-2"><label class="form-label custom-label" for="work_perf">Job Type:</label><input value="<%= jobOrder.work_perf %>"  class="form-control custom-input" type="text" id="work_perf" name="work_perf" required="" autocomplete="off"></div><!-- End: Job Type -->
+                            <!-- Start: Payment Method -->
+                            <div class="col-sm-12 col-lg-5 pb-2"><label class="form-label custom-label" for="s_status">Status:</label><select class="form-select custom-input" id="s_status" name="s_status" >
+                                    <option selected hidden><%= jobOrder.s_status %></option>
+                                    <option value="ONGOING">ONGOING</option>
+                                    <option value="DONE/UNRELEASED">DONE/UNRELEASED</option>
+                                    <option value="PAID/UNRELEASED">PAID/UNRELEASED</option>
+                                    <option value="PAID/RELEASED">PAID/RELEASED</option>
+                                    <option value="BACK JOB">BACK JOB</option>
+                                    <option value="DMD/UNRELEASED">DMD/UNRELEASED</option>
+                                    <option value="DMD/RELEASED">DMD/RELEASED</option>
+                                </select></div><!-- End: Payment Method -->
+                        </div><!-- End: Form Row -->
+                        <!-- Start: Form Row -->
+                        <div class="row form-row">
+                            <!-- Start: Service Charge -->
+                            <div class="col-sm-12 col-lg-4 pb-2"><label class="form-label custom-label" for="s_charge">Service Charge:</label><input value="<%= jobOrder.s_charge %>"  class="form-control custom-input sumVari" type="number" id="s_charge" name="s_charge" required="" autocomplete="off"></div><!-- End: Service Charge -->
+                            <!-- Start: Down Payment -->
+                            <div class="col-sm-12 col-lg-4 pb-2"><label class="form-label custom-label" for="s_downpay">Down Payment:</label><input value="<%= jobOrder.s_downpay %>" class="form-control custom-input sumVari" type="number" id="s_downpay" name="s_downpay" required="" autocomplete="off" value="0"></div><!-- End: Down Payment -->
+                            <!-- Start: Down Payment -->
+                            <div class="col-sm-12 col-lg-4 pb-2"><label class="form-label custom-label" for="s_paymeth">Payment Method:</label><select class="form-select custom-input" id="s_paymeth" name="s_paymeth">
+                                    <option selected hidden><%= jobOrder.s_paymeth %> </option>
+                                    <option value="OVER THE COUNTER">OVER THE COUNTER</option>
+                                    <option value="G-CASH">G-CASH</option>
+                                    <option value="PAYMAYA">PAYMAYA</option>
+                                    <option value="BANK TRANSFER">BANK TRANSFER</option>
+                                    <option value="OTHERS">OTHERS</option>
+                                </select></div><!-- End: Down Payment -->
+                            <!-- Start: Down Payment -->
+                            <div class="col-sm-12 col-lg-4 pb-2"><label class="form-label custom-label" for="s_bal">Balance:</label><input value="<%= jobOrder.s_bal %>" class="form-control custom-input" type="number" id="s_bal" name="s_bal" required="" autocomplete="off" disabled=""></div><!-- End: Down Payment -->
+                            <!-- Start: Date -->
+                            <div class="col-sm-7 col-lg-4 pb-2 mt-2"><label class="form-label custom-label" for="p_rel_date">Date Released/Returned:</label><input value="<%= jobOrder.p_rel_date %>" class="form-control custom-input" id="p_rel_date" name="p_rel_date" type="date" autocomplete="off"></div><!-- End: Date -->
+                        </div><!-- End: Form Row -->
+                        <!-- Start: Unit Specs -->
+                        <p class="text-center text-uppercase pt-sm-1 pt-md-3 mb-1">PARTS REPLACEMENT</p><!-- End: Unit Specs -->
+                        <!-- Start: Form Row -->
+                        <div class="row form-row">
+                            <!-- Start: Parts Ordered -->
+                            <div class="col-sm-12 col-lg-8 pb-2"><label class="form-label custom-label" for="p_parts">Ordered Parts:</label><input placeholder="Not Applicable" value="<%= jobOrder.p_parts %>" class="form-control form-control custom-input" type="text" id="p_parts" name="p_parts" autocomplete="off"></div><!-- End: Parts Ordered -->
+                            <!-- Start: Part Order DAte -->
+                            <div class="col-sm-12 col-lg-4 pb-2"><label class="form-label custom-label" for="p_ord_date">Date Ordered:</label><input value="<%= jobOrder.p_ord_date %>" class="form-control form-control custom-input" id="p_ord_date" name="p_ord_date" autocomplete="off" type="date"></div><!-- End: Part Order DAte -->
+                        </div><!-- End: Form Row -->
+                        <!-- Start: Form Row -->
+                        <div class="row form-row">
+                            <!-- Start: Supplier -->
+                            <div class="col-sm-12 col-lg-6 pb-2"><label class="form-label custom-label" for="p_supp">Supplier &amp; Tracking No.:</label><input placeholder="Not Applicable"  value="<%= jobOrder.p_supp %>" class="form-control form-control custom-input" type="text" id="p_supp" name="p_partsp_supp" autocomplete="off"></div><!-- End: Supplier -->
+                            <!-- Start: Total Price -->
+                            <div class="col-sm-12 col-lg-3 pb-2"><label class="form-label custom-label" for="p_price">Total Price:</label><input  value="<%= jobOrder.p_price %>" class="form-control form-control custom-input sumVari" type="number" id="p_price" name="p_price" autocomplete="off" value="0"></div><!-- End: Total Price -->
+                            <!-- Start: Total Price -->
+                            <div class="col-sm-12 col-lg-3 pb-2"><label class="form-label custom-label" for="p_downpay">Down Payment:</label><input  value="<%= jobOrder.p_downpay %>" class="form-control form-control custom-input sumVari" type="number" id="p_downpay" name="p_downpay" autocomplete="off" value="0"></div><!-- End: Total Price -->
+                        </div><!-- End: Form Row -->
+                        <!-- Start: Form Row -->
+                        <div class="row form-row">
+                            <!-- Start: Delevery Status -->
+                            <div class="col-sm-12 col-lg-4 pb-2"><label class="form-label custom-label" for="p_ord_status">Delivery Status:</label><select class="form-select custom-input" id="p_ord_status" name="p_ord_status">
+                                    <option selected hidded><%= jobOrder.p_ord_status %> </option>
+                                    <option value="N/A">N/A</option>
+                                    <option value="ORDERED">ORDERED</option>
+                                    <option value="SHIPPED">SHIPPED</option>
+                                    <option value="RECEIVED">RECEIVED</option>
+                                    <option value="RETURNED">RETURNED</option>
+                                </select></div><!-- End: Delevery Status -->
+                            <!-- Start: Installation Status -->
+                            <div class="col-sm-12 col-lg-4 pb-2"><label class="form-label custom-label" for="p_installed">Installation Status:</label><select class="form-select custom-input" id="p_installed" name="p_installed">
+                                    <option selected hidden><%= jobOrder.p_installed %> </option>
+                                    <option value="Installed">Installed</option>
+                                    <option value="Not Installed" selected="">Not Installed</option>
+                                </select></div><!-- End: Installation Status -->
+                            <!-- Start: Installation Status -->
+                            <div class="col-sm-12 col-lg-4 pb-2"><label class="form-label custom-label" for="p_status">Payment Status:</label><select class="form-select custom-input" id="p_status" name="p_status">
+                                    <option selected hidden><%= jobOrder.p_status %> </option>
+                                    <option value="N/A">N/A</option>
+                                    <option value="PARTIALLY PAID">PARTIALLY PAID</option>
+                                    <option value="FULLY PAID/UNRELEASED">FULLY PAID/UNRELEASED</option>
+                                    <option value="FULLY PAID/RELEASED">FULLY PAID/RELEASED</option>
+                                    <option value="RETURNED/REFUNDED">RETURNED/REFUNDED</option>
+                                </select></div><!-- End: Installation Status -->
+                            <!-- Start: Total Price -->
+                            <div class="col-sm-12 col-lg-4 pb-2"><label class="form-label custom-label" for="p_bal">Balance:</label><input value="<%= jobOrder.p_bal %>" class="form-control form-control custom-input" type="number" id="p_bal" name="p_bal" required autocomplete="off"></div><!-- End: Total Price -->
+                        </div><!-- End: Form Row -->
+                    </fieldset><!-- End: to enable "disable attr" -->
+                    <!-- Start: Buttons -->
+                    <div class="row my-3">
+                        <div class="col"><button class="btn btn-warning" id="update-jo-button" type="button">Edit Job Order</button><button class="btn btn-success ms-2 visually-hidden" id="save-button" type="submit">Save Updates</button><button class="btn btn-danger ms-2 float-end visually-hidden" id="delete-button" type="submit">Delete Job Order</button><button class="btn btn-warning ms-2 visually-hidden" id="cancel-edit-button" type="button">Cancel Editing</button></div>
+                    </div><!-- End: Buttons -->
+                    <p class="h4"><strong>IMPORTANT!</strong>: When updating this job order, double check all entries before saving.</p>
+                </form><!-- End: Job Order Details Form -->
+            </div>
+        </div>
+    </div>
+    <!-- End: MAIN-SECTION -->
+
+    <%- include('../partials/foot.ejs') %> 
+    
+</body>
+</html>

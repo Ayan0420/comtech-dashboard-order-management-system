@@ -9,6 +9,7 @@ const jobOrderDBSchema = new Schema({
     job_id: {
         type: String,
         required: true
+        //make this unique
     },
     job_date: {
         type: String,
@@ -71,17 +72,14 @@ const jobOrderDBSchema = new Schema({
     p_parts: {
         type: String,
         required: false,
-        default: "Not Applicable"
     },
     p_ord_date: {
         type: String,
         required: false,
-        default: "Not Applicable"
     },
     p_supp: {
         type: String,
         required: false,
-        default: "Not Applicable"
     },
     p_price: {
         type: Number,
@@ -91,12 +89,10 @@ const jobOrderDBSchema = new Schema({
     p_ord_status: {
         type: String,
         required: false,
-        default: "Not Applicable"
     },
     p_installed: {
         type: String,
         required: false,
-        default: "Not Applicable"
     },
     //parts payment
     p_downpay: {
@@ -112,12 +108,10 @@ const jobOrderDBSchema = new Schema({
     p_status: {
         type: String,
         required: false,
-        default: "Not Applicable"
     },
     p_rel_date: {
         type: String,
         required: false,
-        default: "Not Applicable"
     },
 
 }, {timestamps: true});

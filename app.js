@@ -24,7 +24,7 @@ mongoose.connect(dbURI)
 app.set('view engine', 'ejs');
 
 //middleware and static files
-app.use(express.static('/pubic'));
+app.use(express.static('public'));
 app.use(morgan('dev'))
 app.use(express.urlencoded({extended: true}))
 

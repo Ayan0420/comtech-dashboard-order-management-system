@@ -6,14 +6,16 @@
   border-radius: 10px;
   margin-top: 1rem;
   background: var(--bs-blue);
-  width: 75%;
+  width: 50%;
+  border-style: none;
 }
 
 #add-job-order-btn {
   border-radius: 10px;
   margin-top: 1rem;
   background: var(--bs-green);
-  width: 75%;
+  width: 50%;
+  border-style: none;
 }
 
 #sales-chart {
@@ -53,21 +55,12 @@
   box-shadow: 3px 3px 6px;
 }
 
-body {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 16px;
-  border-color: rgba(191,11,0,0.83);
-  color: #2d2e2f;
-  --bs-body-color: #222426;
-}
-
 .navbar {
   background: var(--bs-red);
   padding: 7px 0px;
 }
 
 #footer {
-  background: var(--bs-red);
   height: 51px;
 }
 
@@ -92,7 +85,7 @@ h3.add-job {
 .custom-input {
   border-width: 1px;
   border-style: solid;
-  height: 35px;
+  height: 37px;
   padding-right: 3px;
   padding-left: 18px;
   border-radius: 10px;
@@ -110,5 +103,26 @@ h3.add-job {
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
   border-color: var(--bs-nav-link-disabled-color);
   box-shadow: 0px 0px 8px var(--bs-nav-tabs-link-active-color);
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.custom-nav {
+}
+
+.fas.fa-eye.custom-view-icon:hover {
+  cursor: pointer;
+}
+
+.custom-label {
+  margin-bottom: 0px;
+}
+
+.job-details {
+  background: var(--bs-green);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
