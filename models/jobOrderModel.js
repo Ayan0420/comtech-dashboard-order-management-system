@@ -1,4 +1,4 @@
-        const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
@@ -118,7 +118,7 @@ const jobOrderDBSchema = new Schema({
 
 //create task model
 
-const JobOrderDB = mongoose.model('JobOrderDB', jobOrderDBSchema)
+const JobOrderDB = mongoose.model('JobOrderDB', jobOrderDBSchema);
 
 //export models
-module.exports = JobOrderDB
+module.exports = JobOrderDB;

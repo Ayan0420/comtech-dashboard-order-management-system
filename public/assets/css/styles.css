@@ -28,8 +28,8 @@
 }
 
 #sales-chart-caption {
-  padding-top: .5rem;
-  padding-bottom: .5rem;
+  padding-top: .1rem;
+  padding-bottom: .1rem;
 }
 
 #btn-search {
@@ -68,7 +68,7 @@
 }
 
 h3.add-job {
-  background: var(--bs-green);
+  background: var(--bs-yellow);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -121,7 +121,7 @@ body {
 }
 
 .job-details {
-  background: var(--bs-green);
+  background: var(--bs-red);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }

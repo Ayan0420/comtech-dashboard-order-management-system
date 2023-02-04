@@ -23,14 +23,14 @@
 
             <!-- Start: Add Job Order Form -->
             <div class="col-md-9" id="main-body">
-                <h3 class="fw-bold text-center text-light add-job py-4 mt-5">Add New Job Order</h3><!-- Start: Job Order Details Form -->
+                <h3 class="fw-bold text-center text-light add-job py-4 mt-5">Add a new job order</h3><!-- Start: Job Order Details Form -->
                 <form class="container" action="/job-orders" method="POST">
                     <p>Please enter all the required details of the customer and the job performed.</p><!-- Start: Form Row -->
                     <div class="row form-row">
                         <!-- Start: Job Order No. -->
                         <div class="col col-lg-3 pb-2"><label class="form-label custom-label" for="job_id">Job Order No.</label><input class="form-control custom-input" type="number" id="job_id" name="job_id" required="" autocomplete="off"></div><!-- End: Job Order No. -->
                         <!-- Start: Date -->
-                        <div class="col-sm-7 col-lg-3 pb-2"><label class="form-label custom-label" for="job_date">Date:</label><input class="form-control custom-input" id="job_date" name="job_date" type="date" autocomplete="off"></div><!-- End: Date -->
+                        <div class="col-sm-7 col-lg-3 pb-2"><label class="form-label custom-label" for="job_date">Date:</label><input class="form-control custom-input" id="job_date" name="job_date" type="date" required="" autocomplete="off"></div><!-- End: Date -->
                         <!-- Start: Customer Name -->
                         <div class="col-sm-12 col-lg-6 pb-2"><label class="form-label custom-label" for="cus_name">Customer Name:</label><input class="form-control custom-input" type="text" id="cus_name" name="cus_name" required="" autocomplete="off"></div><!-- End: Customer Name -->
                     </div><!-- End: Form Row -->
@@ -48,12 +48,12 @@
                         <!-- Start: Unit Model -->
                         <div class="col-sm-12 col-lg-6 pb-2"><label class="form-label custom-label" for="unit_model">Unit Model:</label><input class="form-control custom-input" type="text" id="unit_model" name="unit_model" required="" autocomplete="off"></div><!-- End: Unit Model -->
                         <!-- Start: Unit Accessories -->
-                        <div class="col-sm-12 col-lg-6 pb-2"><label class="form-label custom-label" for="unit_accessories">Unit Accessories:</label><input class="form-control custom-input" type="text" id="unit_accessories" name="unit_accessories" autocomplete="off"></div><!-- End: Unit Accessories -->
+                        <div class="col-sm-12 col-lg-6 pb-2"><label class="form-label custom-label" for="unit_accessories">Unit Accessories:</label><input class="form-control custom-input" type="text" id="unit_accessories" name="unit_accessories" autocomplete="off" placeholder="Type N/A if not applicable" ></div><!-- End: Unit Accessories -->
                     </div><!-- End: Form Row -->
                     <!-- Start: Form Row -->
                     <div class="row form-row">
                         <!-- Start: Unit Model -->
-                        <div class="col-sm-12 pb-2"><label class="form-label custom-label" for="unit_model">Unit Specs:</label><input class="form-control custom-input" type="text" id="unit_specs" name="unit_specs" autocomplete="off"></div><!-- End: Unit Model -->
+                        <div class="col-sm-12 pb-2"><label class="form-label custom-label" for="unit_model">Unit Specs:</label><input class="form-control custom-input" type="text" id="unit_specs" name="unit_specs" required="" autocomplete="off" placeholder="Type N/A if not applicable"></div><!-- End: Unit Model -->
                     </div><!-- End: Form Row -->
                     <!-- Start: Unit Specs -->
                     <p class="text-center text-uppercase pt-sm-1 pt-md-3 mb-1">Work performed</p><!-- End: Unit Specs -->

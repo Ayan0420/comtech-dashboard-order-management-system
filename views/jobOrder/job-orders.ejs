@@ -27,13 +27,17 @@
                         <li class="nav-item" role="presentation"><a class="nav-link active text-bg-danger custom-tab" role="tab" data-bs-toggle="tab" id="tab-1-link" href="#tab-1">Summary</a></li><!-- End: SUMMARY-TAB -->
                         <!-- Start: JOB-ORDER-TAB -->
                         <li class="nav-item" role="presentation"><a class="nav-link text-bg-info custom-tab" role="tab" data-bs-toggle="tab" id="tab-2-link" href="#tab-2">Recent Job Orders</a></li><!-- End: JOB-ORDER-TAB -->
-                        <li class="nav-item" role="presentation"><a class="nav-link text-bg-dark custom-tab" role="tab" data-bs-toggle="tab" id="tab-3-link" href="#tab-3">Inventory</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link text-bg-dark custom-tab" role="tab" data-bs-toggle="tab" id="tab-3-link" href="#tab-3">Operating Expenses</a></li>
                     </ul>
                     <div class="tab-content">
                         <!-- Start: SUMMARY-TAB-CONTENT -->
                         
                         <div class="tab-pane active fade show" role="tabpanel" id="tab-1">
-                            
+                           
+                            <% if(flashMessage.length > 0 ) { %>
+                                <div class="alert alert-warning py-1 px-2 mt-1" id="flash-message"> <%= flashMessage %> </div>
+                            <% } %>  
+
                             <!-- Start: search -->
                             <div class="mt-4">
                                 <input type="text" id="search-input" name="search-input" placeholder="Search Job Order e.g. J.O. Number, Customer Name, etc..."><button class="btn btn-danger btn-sm text-center ms-2 rounded-pill" id="btn-search" type="button">search</button>
@@ -106,7 +110,7 @@
                             <div id="sales-chart">
                                 <canvas id="chart-1"></canvas>
                             </div>
-                            <p id="sales-chart-caption">Summary of Sales Monthly as of 2023</p>
+                            <p id="sales-chart-caption">Summary of Gross Monthly Income as of 2023</p>
                         </div><!-- End: SUMMARY-TAB-CONTENT -->
                         <!-- Start: JOB-ORDER-CONTENT -->
                         <div class="tab-pane fade" role="tabpanel" id="tab-2">
@@ -145,11 +149,11 @@
                             </div><!-- End: JOB-ORDER-TABLE -->
                         </div><!-- End: JOB-ORDER-CONTENT -->
 
-                        <!-- Start: INVENTORY-CONTENT -->
+                        <!-- Start: OPERATING EXPENSES-CONTENT -->
                         <div class="tab-pane fade" role="tabpanel" id="tab-3">
                             <p>Content for tab 3.</p>
                         </div>
-                        <!-- End: INVENTORY-CONTENT -->
+                        <!-- End: OPERATING EXPENSES-CONTENT -->
                     </div>
                 </div>
             </div>
@@ -159,32 +163,36 @@
 
     <%- include('../partials/foot.ejs') %> 
     <script>
-        const ctx = document.getElementById('chart-1');
-      
-        new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-            datasets: [{
-              label: 'Revenue in Peso',
-              data: [
-                12000, 70600, 30010, 50000, 22000, 30000,
-                12000, 70600, 30010, 50000, 22000, 30000
-            ],
-              borderWidth: 3,
-              backgroundColor: 'rgba(54, 162, 235, .6)',
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          },
+        //Graph JS configuration
 
-          
-        });
-      </script>
+    const ctx = document.getElementById('chart-1');
+      
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+          datasets: [{
+            label: 'Revenue in Peso',
+            data: [
+              12000, 70600, 30010, 50000, 22000, 30000,
+              12000, 70600, 30010, 50000, 22000, 30000
+          ],
+            borderWidth: 3,
+            backgroundColor: 'rgba(54, 162, 235, .6)',
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        },
+    
+        
+      });
+    
+    //End Graph JS configuration
+    </script>
  </body>
 </html>

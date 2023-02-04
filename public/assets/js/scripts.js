@@ -46,3 +46,31 @@ $("#cancel-edit-button").click(
     location.reload();
 });
 
+$("#cancel-delete-button").click(
+  () => {
+    location.reload();
+  });
+
+
+
+//to fade out the flash message for 3 seconds
+$('#flash-message').show().delay(3000).fadeOut();
+
+
+
+// Delete functionality (not in jquery)
+const delete_job_order = document.querySelector("button.delete");
+
+console.log(delete_job_order);
+
+delete_job_order.addEventListener('click', (e) => {
+
+    const endPoint = `/job-orders/job-details/${delete_job_order.dataset.fordelete}`; //fordelete is from data-fordelete, make sure that it is in lowercase not camel case.
+
+    fetch(endPoint, {method: 'DELETE'})
+    .then(response => response.json())
+    .then(data => window.location.href = data.redirectToHome)
+    .catch(err => console.log("There's an error in client side deleting the J.O.: " + err));
+})
+
+//End Delete Functionality

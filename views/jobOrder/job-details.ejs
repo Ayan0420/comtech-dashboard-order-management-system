@@ -20,7 +20,12 @@
             </div>
             <div class="col-md-9" id="main-body">
                 <h3 class="fw-bold text-center text-light job-details py-4 mt-5" id="jo-details-heading">Job Order Details</h3><!-- Start: Job Order Details Form -->
-                <form class="container" action="google.com">
+
+                <% if(flashMessage.length > 0 ) { %>
+                    <div class="alert alert-success py-1 px-2 mt-1" id="flash-message"> <%= flashMessage %> </div>
+                <% } %>  
+
+                <form class="container" action="/job-orders/job-details/<%= jobOrder._id%>" method="POST">
                     <!-- Start: to enable "disable attr" -->
                     <fieldset id="form-fields" disabled>
                         <p>To update or delete this job order, click the "Edit Job Order" button below.</p><!-- Start: Form Row -->
@@ -87,7 +92,7 @@
                                     <option value="OTHERS">OTHERS</option>
                                 </select></div><!-- End: Down Payment -->
                             <!-- Start: Down Payment -->
-                            <div class="col-sm-12 col-lg-4 pb-2"><label class="form-label custom-label" for="s_bal">Balance:</label><input value="<%= jobOrder.s_bal %>" class="form-control custom-input" type="number" id="s_bal" name="s_bal" required="" autocomplete="off" disabled=""></div><!-- End: Down Payment -->
+                            <div class="col-sm-12 col-lg-4 pb-2"><label class="form-label custom-label" for="s_bal">Balance:</label><input value="<%= jobOrder.s_bal %>" class="form-control custom-input" type="number" id="s_bal" name="s_bal" required="" autocomplete="off"></div><!-- End: Down Payment -->
                             <!-- Start: Date -->
                             <div class="col-sm-7 col-lg-4 pb-2 mt-2"><label class="form-label custom-label" for="p_rel_date">Date Released/Returned:</label><input value="<%= jobOrder.p_rel_date %>" class="form-control custom-input" id="p_rel_date" name="p_rel_date" type="date" autocomplete="off"></div><!-- End: Date -->
                         </div><!-- End: Form Row -->
@@ -141,16 +146,36 @@
                     </fieldset><!-- End: to enable "disable attr" -->
                     <!-- Start: Buttons -->
                     <div class="row my-3">
-                        <div class="col"><button class="btn btn-warning" id="update-jo-button" type="button">Edit Job Order</button><button class="btn btn-success ms-2 visually-hidden" id="save-button" type="submit">Save Updates</button><button class="btn btn-danger ms-2 float-end visually-hidden" id="delete-button" type="submit">Delete Job Order</button><button class="btn btn-warning ms-2 visually-hidden" id="cancel-edit-button" type="button">Cancel Editing</button></div>
+                        <div class="col"><button class="btn btn-warning" id="update-jo-button" type="button">Edit Job Order</button><button class="btn btn-success ms-2 visually-hidden" id="save-button" type="submit">Save Updates</button><button class="btn btn-danger ms-2 float-end visually-hidden " id="delete-button" type="button" data-bs-toggle="modal" data-bs-target="#delete-warning-modal">Delete Job Order</button><button class="btn btn-warning ms-2 visually-hidden" id="cancel-edit-button" type="button">Cancel Editing</button></div>
                     </div><!-- End: Buttons -->
                     <p class="h5"><strong>IMPORTANT!</strong>: When updating this job order, double check all entries before saving.</p>
                 </form><!-- End: Job Order Details Form -->
             </div>
         </div>
     </div>
+
+    <!-- Start: Delete Job Order Promp Modal -->
+    <div class="modal" id="delete-warning-modal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Are you sure you want to delete <strong>Job Order: <%= jobOrder.job_id %></strong> ?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Please make sure that you are certain about deleting this job order. It will not be recovered once it was deleted.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id="cancel-delete-button" data-bs-dismiss="modal">Abort</button>
+              <button type="button" class="btn btn-danger delete" data-fordelete="<%= jobOrder._id %> ">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- End: Delete Job Order Promp Modal -->
     <!-- End: MAIN-SECTION -->
 
     <%- include('../partials/foot.ejs') %> 
-    
+
 </body>
 </html>
