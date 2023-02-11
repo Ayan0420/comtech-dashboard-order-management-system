@@ -1,28 +1,29 @@
 const JobOrder = require('../models/jobOrderModel');
 
 
-// DASHBOARD FUNCTIONS
-
-
-
-
-
-
-
-
-// END DASHBOARD FUNCTIONS
-
-//ROUTE CONTROLLERS
+    //JobOrder APP CONTROLLERS//
 
 //jobOrder index
 const jobOrder_index = (req, res) => {
     JobOrder.find().sort({createdAt: -1})
         .then(result => {
-            
-            res.render('jobOrder/job-orders', {title: 'Dashboard', jobOrders: result, flashMessage: req.flash('message')});
+            let downpayArray = [];
+            let totalJobOrder = result.length
+
+            result.forEach((value, index) => {
+                downpayArray.push(result[index].s_downpay); 
+            });
+            let totalDownPay = downpayArray.reduce((x, y) => {
+                return x + y;
+            });
+            console.log();
+            console.log(totalDownPay);   
+
+            res.render('jobOrder/job-orders', {title: 'Dashboard', jobOrders: result, flashMessage: req.flash('message'), totalDownPay, totalJobOrder});
         })
         .catch(err => console.log("error from the controller" + err));
-
+    
+    
 }
 
 //search jobs
@@ -33,7 +34,6 @@ const jobOrder_search = async (req, res) => {
         {job_date: {$regex: new RegExp('^' + payload + '.*', 'i')}},
         {cus_name: {$regex: new RegExp('^' + payload + '.*', 'i')}},
         {cus_address: {$regex: new RegExp('^' + payload + '.*', 'i')}},
-        {cus_phone: {$regex: new RegExp('^' + payload + '.*', 'i')}},
         {unit_model: {$regex: new RegExp('^' + payload + '.*', 'i')}},
         {work_perf: {$regex: new RegExp('^' + payload + '.*', 'i')}},
         {s_status: {$regex: new RegExp('^' + payload + '.*', 'i')}},
