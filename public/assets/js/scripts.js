@@ -79,6 +79,7 @@ delete_job_order.addEventListener('click', (e) => {
 //Start Search Functionnality
 
 function sendData(e) {
+  const searchResults = document.getElementById('autocomplete-items');
   fetch('/job-orders/searchJO', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -86,7 +87,19 @@ function sendData(e) {
   }).then(res => res.json()).then(data => {
     let payload = data.payload;
     console.log(payload);
+    searchResults.innerHTML = '';
+    if(e.value == '') {
+      searchResults.innerHTML = '';
+    }else if(payload.length == 0){
+      searchResults.innerHTML = '<div>No results found.</div>';
+      return;
+    } else {
+      payload.forEach((item, index) => {
+        searchResults.innerHTML += `<a class="text-decoration-none text-primary" href="/job-orders/job-details/${item._id}"> <div> Job Order #: ${item.job_id} | ${item.cus_name} | ${item.unit_model} | ${item.work_perf} | ${item.s_status} | Date: ${item.job_date}</div></a>`;
+      });
+      
+    }
+    
   });
 }
-
 //End Search Functionnality

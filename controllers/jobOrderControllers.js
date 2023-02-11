@@ -35,10 +35,11 @@ const jobOrder_search = async (req, res) => {
         {cus_address: {$regex: new RegExp('^' + payload + '.*', 'i')}},
         {cus_phone: {$regex: new RegExp('^' + payload + '.*', 'i')}},
         {unit_model: {$regex: new RegExp('^' + payload + '.*', 'i')}},
-        {work_perf: {$regex: new RegExp('^' + payload + '.*', 'i')}}
+        {work_perf: {$regex: new RegExp('^' + payload + '.*', 'i')}},
+        {s_status: {$regex: new RegExp('^' + payload + '.*', 'i')}},
     ]}).exec();
     //limit to 5 results
-    search = search.slice(0, 5);
+    search = search.slice(0, 6);
     
     res.send({payload: search});
 };

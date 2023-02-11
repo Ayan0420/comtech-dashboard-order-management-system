@@ -21,8 +21,20 @@
 
             <div class="col-md-9" id="main-body">
                 <div>
-                    
-                    <ul class="nav nav-tabs" role="tablist" style="font-size: 1.2rem;--bs-body-color: #55595c;">
+                    <!-- Start: search -->
+                    <div class="row">
+                        <div class="col-12 mb-3 autocomplete">
+                            <!-- Start: searchbox -->
+                            <input class="border border-danger border-2 " type="text" id="search-input" name="search-input" placeholder="Search Job Order e.g. J.O. Number, Customer Name, etc..." onkeyup="sendData(this)" autocomplete="off">
+
+                            <div class="autocomplete-items" id="autocomplete-items">
+
+                            </div>
+                            <!-- End: searchbox -->
+                         </div>
+                    </div>
+                    <!-- End: search -->
+                    <ul class="nav nav-tabs d-flex justify-content-center justify-content-md-start" role="tablist" style="font-size: 1.2rem;--bs-body-color: #55595c;">
                         <!-- Start: SUMMARY-TAB -->
                         <li class="nav-item" role="presentation"><a class="nav-link active text-bg-danger custom-tab" role="tab" data-bs-toggle="tab" id="tab-1-link" href="#tab-1">Summary</a></li><!-- End: SUMMARY-TAB -->
                         <!-- Start: JOB-ORDER-TAB -->
@@ -38,13 +50,7 @@
                                 <div class="alert alert-warning py-1 px-3 mt-1" id="flash-message"> <%= flashMessage %> </div>
                             <% } %>  
 
-                            <!-- Start: search -->
-                            <div class="mt-4">
-                                <!-- Start: searchbox -->
-                            <input type="text" id="search-input" name="search-input" placeholder="Search Job Order e.g. J.O. Number, Customer Name, etc..." onkeyup="sendData(this)">
-                            <!-- End: searchbox -->
-                            </div>
-                            <!-- End: search -->
+                            
                             <div class="row d-lg-flex d-xl-flex justify-content-lg-center align-items-lg-center justify-content-xl-center" id="summary-row" style="margin-bottom: 1.5rem;margin-top: 1.5rem;">
                                 <div class="col d-xl-flex justify-content-xl-center d-flex align-items-stretch" id="summary-card-1">
                                     <div class="card" style="box-shadow: 3px 3px 6px;border-radius: 10px;width: 100%;">
@@ -122,10 +128,8 @@
                         </div><!-- End: SUMMARY-TAB-CONTENT -->
                         <!-- Start: JOB-ORDER-CONTENT -->
                         <div class="tab-pane fade" role="tabpanel" id="tab-2">
-                            <p class="mt-4 text-center">The table starts from the most recent Job Order.</p>
-                            <!-- Start: search -->
-                            <input type="text" id="search-input" name="search-input" placeholder="Search Job Order e.g. J.O. Number, Customer Name, etc..." onkeyup="sendData(this)">
-                            <!-- End: search -->
+                            <p class="mt-4">The table starts from the most recent Job Order.</p>
+                          
                             <!-- <button class="btn btn-danger btn-sm text-center ms-2 rounded-pill" id="btn-search" type="button">search</button> -->
                             <!-- Start: JOB-ORDER-TABLE -->
                             <div class="table-responsive my-3" id="job-order-table">
