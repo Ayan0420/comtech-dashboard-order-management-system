@@ -10,7 +10,7 @@ const JobOrder = require('../models/jobOrderModel');
 
 
 
-// ENDDASHBOARD FUNCTIONS
+// END DASHBOARD FUNCTIONS
 
 //ROUTE CONTROLLERS
 
@@ -25,6 +25,24 @@ const jobOrder_index = (req, res) => {
 
 }
 
+//search jobs
+const jobOrder_search = async (req, res) => {
+    let payload = req.body.payload.trim(); //trim() will remove the white spaces
+    let search = await JobOrder.find({$or: [
+        {job_id: {$regex: new RegExp('^' + payload + '.*', 'i')}},
+        {job_date: {$regex: new RegExp('^' + payload + '.*', 'i')}},
+        {cus_name: {$regex: new RegExp('^' + payload + '.*', 'i')}},
+        {cus_address: {$regex: new RegExp('^' + payload + '.*', 'i')}},
+        {cus_phone: {$regex: new RegExp('^' + payload + '.*', 'i')}},
+        {unit_model: {$regex: new RegExp('^' + payload + '.*', 'i')}},
+        {work_perf: {$regex: new RegExp('^' + payload + '.*', 'i')}}
+    ]}).exec();
+    //limit to 5 results
+    search = search.slice(0, 5);
+    
+    res.send({payload: search});
+};
+
 //Single job and edit page
     
     //show job
@@ -38,7 +56,7 @@ const jobOrder_update_get = (req, res) => {
     .catch((err) => {
         res.status(404).send('<h1>404: The page you are looking for does not exist!</h1>');
     });
-}
+};
     //post edited job
 
 const jobOrder_update_post = (req, res) => {
@@ -94,6 +112,7 @@ const jobOrder_delete = (req, res) => {
 
 module.exports = {
     jobOrder_index,
+    jobOrder_search,
     jobOrder_add_get,
     jobOrder_add_post,
     jobOrder_update_get,

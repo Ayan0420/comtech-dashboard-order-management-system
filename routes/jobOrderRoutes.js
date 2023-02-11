@@ -9,6 +9,7 @@ router.post('/job-details/:job_id', jobOrderControllers.jobOrder_update_post);
 router.get('/add-job-order', jobOrderControllers.jobOrder_add_get);
 router.post('/', jobOrderControllers.jobOrder_add_post);
 router.delete('/job-details/:job_id', jobOrderControllers.jobOrder_delete);
+router.post('/searchJO', jobOrderControllers.jobOrder_search);
 
 
 module.exports = router;

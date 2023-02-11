@@ -38,10 +38,11 @@
 
 #search-input {
   width: 75%;
-  border-radius: 10px;
-  border-width: 1px;
-  border-color: rgba(0,0,0,0.48);
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: var(--bs-red);
   padding: 1px 10px;
+  background-color: rgb(218, 218, 218);
 }
 
 #map {

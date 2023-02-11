@@ -74,3 +74,19 @@ delete_job_order.addEventListener('click', (e) => {
 })
 
 //End Delete Functionality
+
+
+//Start Search Functionnality
+
+function sendData(e) {
+  fetch('/job-orders/searchJO', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ payload: e.value })
+  }).then(res => res.json()).then(data => {
+    let payload = data.payload;
+    console.log(payload);
+  });
+}
+
+//End Search Functionnality
