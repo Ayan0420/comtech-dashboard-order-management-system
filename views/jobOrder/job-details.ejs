@@ -22,7 +22,7 @@
                 <h3 class="fw-bold text-center text-light job-details py-4 mt-5" id="jo-details-heading">Job Order Details</h3><!-- Start: Job Order Details Form -->
 
                 <% if(flashMessage.length > 0 ) { %>
-                    <div class="alert alert-success py-1 px-2 mt-1" id="flash-message"> <%= flashMessage %> </div>
+                    <div class="alert alert-success py-1 px-3 mt-1" id="flash-message"> <%= flashMessage %> </div>
                 <% } %>  
 
                 <form class="container" action="/job-orders/job-details/<%= jobOrder._id%>" method="POST">
@@ -163,7 +163,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <p>Please make sure that you are certain about deleting this job order. It will not be recovered once it was deleted.</p>
+              <p>Please make sure that you are certain about deleting this job order. <span class="text-danger fw-bold">It will not be recovered once it was deleted.</span></p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" id="cancel-delete-button" data-bs-dismiss="modal">Abort</button>

@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config(); //for virtual env
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
@@ -14,7 +14,7 @@ const app = express();
 
 //db connection
 const dbURI = process.env.DB_URI;
-mongoose.set('strictQuery', true); //deprecation
+mongoose.set('strictQuery', true); //for deprecation warnings
 mongoose.connect(dbURI)
     .then(result => {
         console.log('connected to db');
@@ -27,18 +27,18 @@ mongoose.connect(dbURI)
 app.set('view engine', 'ejs');
 
 //middleware
-app.use(express.static('public'));
-app.use(morgan('dev'));
-app.use(express.json());
+app.use(express.static('public')); 
+app.use(morgan('dev')); //used as dev tool
+app.use(express.json());//used for flash message
 app.use(express.urlencoded({extended: true}));
-app.use(cookieParser());
+app.use(cookieParser()); //used for flash message
 app.use(session({
     secret: 'secret',
     cookie: {maxAge: 60000},
     resave: true,
     saveUninitialized: true,
-}));
-app.use(flash());
+})); //used for flash message
+app.use(flash()); //used for flash message
 
             //ROUTES//
 
@@ -51,8 +51,9 @@ app.get('/', (req, res) => {
 app.use('/job-orders', jobOrderRoutes);
 
 app.use((req, res) => {
-    res.status(404).send('Opps! 404 - Page Not Found'); //temporary handler
+    res.status(404).send('<h1><strong>Opps! 404 - Page Not Found <br><br> -CLRK </strong></h1>'); //temporary handler
 });
+
 
 
 
