@@ -1,5 +1,6 @@
 ## Comtech Dashboard
 
  work in progress...
- currently implementing search functionality
- progress: added real time database search query
+ currently implementing dashboard functionality| 
+ done: added real time database search query| 
+ progress: done with "total job order" partial with "sales"| 
