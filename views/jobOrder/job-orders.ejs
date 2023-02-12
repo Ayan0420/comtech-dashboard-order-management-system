@@ -59,17 +59,17 @@
                                             <h5 class="mb-0" style="text-align: center;font-weight: bold;">Total Job Orders</h5>
                                         </div>
                                         <div class="card-body">
-                                            <h5 style="text-align: center;font-weight: bold;font-size: 40px;color: var(--bs-cyan);border-width: 0px;border-color: var(--bs-gray-800);"><%= totalJobOrder %></h5>
+                                            <h5 style="text-align: center;font-weight: bold;font-size: 40px;color: var(--bs-cyan);border-width: 0px;border-color: var(--bs-gray-800);"><%= totalJobOrders %></h5>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col d-xl-flex justify-content-xl-center d-flex align-items-stretch" id="summary-card-2">
                                     <div class="card" style="box-shadow: 3px 3px 6px;border-radius: 10px;width: 100%;">
                                         <div class="card-header d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 65px;">
-                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;">Current Orders</h5>
+                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;">On Going Orders</h5>
                                         </div>
                                         <div class="card-body">
-                                            <h5 style="text-align: center;font-weight: bold;font-size: 40px;color: var(--bs-orange);border-width: 0px;border-color: var(--bs-gray-800);">7</h5>
+                                            <h5 style="text-align: center;font-weight: bold;font-size: 40px;color: var(--bs-orange);border-width: 0px;border-color: var(--bs-gray-800);"><%= currentOrdersCount %></h5>
                                         </div>
                                     </div>
                                 </div>
@@ -79,7 +79,7 @@
                                             <h5 class="mb-0" style="text-align: center;font-weight: bold;"><strong>Parts Orders</strong></h5>
                                         </div>
                                         <div class="card-body">
-                                            <h5 style="text-align: center;font-weight: bold;color: var(--bs-orange);border-width: 0px;border-color: var(--bs-gray-800);font-size: 40px;">3</h5>
+                                            <h5 style="text-align: center;font-weight: bold;color: var(--bs-orange);border-width: 0px;border-color: var(--bs-gray-800);font-size: 40px;"><%= currentPartsOrdersCount %></h5>
                                         </div>
                                     </div>
                                 </div>
@@ -91,7 +91,7 @@
                                             <h5 class="mb-0" style="text-align: center;font-weight: bold;">Unclaimed Orders</h5>
                                         </div>
                                         <div class="card-body">
-                                            <h5 style="text-align: center;font-weight: bold;font-size: 40px;color: var(--bs-red);border-width: 0px;border-color: var(--bs-gray-800);">5</h5>
+                                            <h5 style="text-align: center;font-weight: bold;font-size: 40px;color: var(--bs-red);border-width: 0px;border-color: var(--bs-gray-800);"><%= currentUnclaimedOrdersCount %></h5>
                                         </div>
                                     </div>
                                 </div>
@@ -101,17 +101,29 @@
                                             <h5 class="mb-0" style="text-align: center;font-weight: bold;">DMD as of December</h5>
                                         </div>
                                         <div class="card-body">
-                                            <h5 style="text-align: center;font-weight: bold;font-size: 40px;color: var(--bs-red);border-width: 0px;border-color: var(--bs-gray-800);">4</h5>
+                                            <h5 style="text-align: center;font-weight: bold;font-size: 40px;color: var(--bs-red);border-width: 0px;border-color: var(--bs-gray-800);"><%= currentDMDOrdersCount %></h5>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col d-xl-flex justify-content-xl-center d-flex align-items-stretch" id="summary-card-6">
                                     <div class="card" style="box-shadow: 3px 3px 6px;border-radius: 10px;width: 100%;">
                                         <div class="card-header d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 65px;">
-                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;">Sales (December)</h5>
+                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;">Revenue (December)</h5>
                                         </div>
-                                        <div class="card-body">
-                                            <h5 style="text-align: center;font-weight: bold;font-size: 40px;color: var(--bs-green);border-width: 0px;border-color: var(--bs-gray-800);">₱ <%= totalDownPay %></h5>
+                                        <div class="rowcard-body">
+                                            <div class="row">
+                                                <span class="col fw-bold  d-flex align-items-center justify-content-end">Services:</span>
+                                                <span class="col" style="text-align: left;font-weight: bold;font-size: 25px;color: var(--bs-green);border-width: 0px;border-color: var(--bs-gray-800);">₱<%= totalDownPay %></span> 
+                                            </div>
+                                            <div class="row">
+                                                <span class="col fw-bold text-end d-flex align-items-center justify-content-end">Sales:</span>
+                                                <span class="col" style="text-align: left;font-weight: bold;font-size: 25px;color: var(--bs-green);border-width: 0px;border-color: var(--bs-gray-800);">₱<%= totalSalesDownPay %></span>
+                                            </div>
+                                            <div class="row">
+                                                <span class="col fw-bold d-flex align-items-center justify-content-end">TOTAL:</span>
+                                                <span class="col" style="text-align: left;font-weight: bold;font-size: 25px;color: var(--bs-green);border-width: 0px;border-color: var(--bs-gray-800);">₱<%= totalRevenue %></span>
+                                            </div>                                
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -146,8 +158,9 @@
                                     </thead>
                                     <tbody>
                                         <!-- Start: Job Order Entry Row -->
+                                        <!-- notes: slice() method limits the number of results in the table -->
                                         <% if (jobOrders.length > 0) { %>
-                                            <% jobOrders.forEach( jobOrder => { %>
+                                            <% jobOrders.slice(0, 15).forEach( jobOrder => { %>
                                                 <tr>
                                                     <td><%=jobOrder.job_id%> </td>
                                                     <td><%=jobOrder.cus_name%></td>
@@ -169,7 +182,7 @@
 
                         <!-- Start: OPERATING EXPENSES-CONTENT -->
                         <div class="tab-pane fade" role="tabpanel" id="tab-3">
-                            <p>Content for tab 3.</p>
+                            <p>Feature under construction...</p>
                         </div>
                         <!-- End: OPERATING EXPENSES-CONTENT -->
                     </div>

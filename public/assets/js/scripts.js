@@ -89,7 +89,7 @@ function sendData(e) {
   .then(res => res.json())
   .then(data => {
     let payload = data.payload;
-  
+    console.log(payload) //debugging 
     searchResults.innerHTML = '';
     if(e.value == '') {
       searchResults.innerHTML = '';

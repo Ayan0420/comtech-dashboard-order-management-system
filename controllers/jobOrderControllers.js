@@ -1,30 +1,10 @@
 const JobOrder = require('../models/jobOrderModel');
-
+const dashboardFunctions = require('./dashboardFunctions')
 
     //JobOrder APP CONTROLLERS//
 
-//jobOrder index
-const jobOrder_index = (req, res) => {
-    JobOrder.find().sort({createdAt: -1})
-        .then(result => {
-            let downpayArray = [];
-            let totalJobOrder = result.length
-
-            result.forEach((value, index) => {
-                downpayArray.push(result[index].s_downpay); 
-            });
-            let totalDownPay = downpayArray.reduce((x, y) => {
-                return x + y;
-            });
-            console.log();
-            console.log(totalDownPay);   
-
-            res.render('jobOrder/job-orders', {title: 'Dashboard', jobOrders: result, flashMessage: req.flash('message'), totalDownPay, totalJobOrder});
-        })
-        .catch(err => console.log("error from the controller" + err));
-    
-    
-}
+//jobOrder index (dashboard)
+const jobOrder_index = dashboardFunctions.dashboard
 
 //search jobs
 const jobOrder_search = async (req, res) => {

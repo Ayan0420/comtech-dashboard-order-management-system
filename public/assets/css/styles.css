@@ -118,7 +118,7 @@ body {
 }
 
 .job-details {
-  background: var(--bs-red);
+  background: var(--bs-info);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
