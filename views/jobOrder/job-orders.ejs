@@ -98,7 +98,7 @@
                                 <div class="col d-xl-flex justify-content-xl-center d-flex align-items-stretch" id="summary-card-5">
                                     <div class="card d-xl-flex justify-content-xl-center" style="box-shadow: 3px 3px 6px;border-radius: 10px;width: 100%;">
                                         <div class="card-header d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 65px;">
-                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;">DMD as of December</h5>
+                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;">DMD (<%= monthNowName %>)</h5>
                                         </div>
                                         <div class="card-body">
                                             <h5 style="text-align: center;font-weight: bold;font-size: 40px;color: var(--bs-red);border-width: 0px;border-color: var(--bs-gray-800);"><%= currentDMDOrdersCount %></h5>
@@ -108,7 +108,7 @@
                                 <div class="col d-xl-flex justify-content-xl-center d-flex align-items-stretch" id="summary-card-6">
                                     <div class="card" style="box-shadow: 3px 3px 6px;border-radius: 10px;width: 100%;">
                                         <div class="card-header d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 65px;">
-                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;">Revenue (December)</h5>
+                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;">Revenue (<%= monthNowName %>)</h5>
                                         </div>
                                         <div class="rowcard-body">
                                             <div class="row">
@@ -131,6 +131,7 @@
 
 
                             <!-- Start: CHARTS -->
+                            <p><em>[Sales Chart Feature under construction...]</em></p>
                             <div id="sales-chart" data-chartJanuary="" data-chartFebruary="" data-chartMarch="" data-chartApril="" data-chartMay="" data-chartJune="" data-chartJuly="" data-chartAugust="" data-chartSeptember="" data-chartOctober="" data-chartNovember="" data-chartDecember="">
                                 <canvas id="chart-1"></canvas>
                             </div>
@@ -141,7 +142,7 @@
                         </div><!-- End: SUMMARY-TAB-CONTENT -->
                         <!-- Start: JOB-ORDER-CONTENT -->
                         <div class="tab-pane fade" role="tabpanel" id="tab-2">
-                            <p class="mt-4">The table starts from the most recent Job Order.</p>
+                            <p class="mt-4">The table shows the 15 most recent Job Order. </p>
                           
                             <!-- <button class="btn btn-danger btn-sm text-center ms-2 rounded-pill" id="btn-search" type="button">search</button> -->
                             <!-- Start: JOB-ORDER-TABLE -->

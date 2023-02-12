@@ -4,7 +4,7 @@ const dashboardFunctions = require('./dashboardFunctions')
     //JobOrder APP CONTROLLERS//
 
 //jobOrder index (dashboard)
-const jobOrder_index = dashboardFunctions.dashboard
+const jobOrder_index = dashboardFunctions.dashboard;
 
 //search jobs
 const jobOrder_search = async (req, res) => {
