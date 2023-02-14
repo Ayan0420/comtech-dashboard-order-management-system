@@ -88,8 +88,8 @@ app.get('/', (req, res) => {
 });
 
 //Main Application Job Order Management System
-// app.use('/job-orders',isAuth, jobOrderRoutes);
-app.use('/job-orders', jobOrderRoutes);
+app.use('/job-orders',isAuth, jobOrderRoutes);
+// app.use('/job-orders', jobOrderRoutes);
 
 app.use((req, res) => {
     res.status(404).send('<h1><strong>Opps! 404 - Page Not Found <br><br> -CLRK </strong></h1>'); //temporary handler
