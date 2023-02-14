@@ -1,6 +1,6 @@
 require('dotenv').config(); //for virtual env
 const express = require('express');
-const morgan = require('morgan');
+const morgan = require('morgan'); //for developer logs
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
@@ -33,6 +33,7 @@ app.use(express.json());//used for flash message
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser()); //used for flash message
 app.use(session({
+    name: 'cdls', //comtech dashboard login session
     secret: 'FI652bnTDOuqt9Vaiqfn',
     cookie: {maxAge: 60000},
     resave: true,
@@ -87,7 +88,8 @@ app.get('/', (req, res) => {
 });
 
 //Main Application Job Order Management System
-app.use('/job-orders',isAuth, jobOrderRoutes);
+// app.use('/job-orders',isAuth, jobOrderRoutes);
+app.use('/job-orders', jobOrderRoutes);
 
 app.use((req, res) => {
     res.status(404).send('<h1><strong>Opps! 404 - Page Not Found <br><br> -CLRK </strong></h1>'); //temporary handler
