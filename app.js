@@ -26,21 +26,60 @@ mongoose.connect(dbURI)
 //set view engine
 app.set('view engine', 'ejs');
 
-//middleware
+//middlewares
 app.use(express.static('public')); 
 app.use(morgan('dev')); //used as dev tool
 app.use(express.json());//used for flash message
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser()); //used for flash message
 app.use(session({
-    secret: 'secret',
+    secret: 'FI652bnTDOuqt9Vaiqfn',
     cookie: {maxAge: 60000},
     resave: true,
     saveUninitialized: true,
-})); //used for flash message
+})); //used for flash message and authenticaiton
 app.use(flash()); //used for flash message
 
+//Basic Auth Middleware
+function isAuth(req, res, next) {
+
+    if (req.session && req.session.user === process.env.ADMIN_USER && req.session.admin) {
+      next();
+    } else {
+      res.redirect('/login');
+    }
+}
+
+
             //ROUTES//
+
+//Login endpoint
+app.get('/login', (req, res) => {
+
+    res.render('jobOrder/job-login',{title: "Login", flashMessage: req.flash('message')});
+
+});
+
+app.post('/login', (req, res) => {
+    if (!req.body.username || !req.body.password){
+        req.flash('message', 'Fill in your credentials.')
+        res.redirect('/login');
+    } else if(req.body.username === process.env.ADMIN_USER && req.body.password === process.env.ADMIN_PASSWORD){
+        req.session.user = process.env.ADMIN_USER;
+        req.session.admin = true;
+        res.redirect('/job-orders');
+    } else {
+        req.flash('message', 'Username or password is incorrect.')
+        res.redirect('/login');
+    }
+});
+
+//Logout Endpoint
+app.get('/logout', (req, res) => {
+    req.session.destroy();
+    res.send('logged out successfully... <a href="/">Go back</a>')
+});
+
 
 //Landing Page
 app.get('/', (req, res) => {
@@ -48,7 +87,7 @@ app.get('/', (req, res) => {
 });
 
 //Main Application Job Order Management System
-app.use('/job-orders', jobOrderRoutes);
+app.use('/job-orders',isAuth, jobOrderRoutes);
 
 app.use((req, res) => {
     res.status(404).send('<h1><strong>Opps! 404 - Page Not Found <br><br> -CLRK </strong></h1>'); //temporary handler

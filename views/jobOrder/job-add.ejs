@@ -1,15 +1,7 @@
 <html lang="en">
 <%- include('../partials/head.ejs') %> 
 <body>
-    <nav class="navbar navbar-light navbar-expand-md bg-danger justify-content-between">
-        <div class="container-fluid"><a class="navbar-brand" href="/" style="color: rgba(255,255,255,0.9);font-weight: bold;font-size: 1rem;">COMTECH DASHBOARD&nbsp;</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse text-start d-md-flex justify-content-md-end" id="navcol-1">
-                <ul class="navbar-nav text-end d-xl-flex ms-auto">
-                    <li class="nav-item me-auto"><a class="nav-link active" data-bss-hover-animate="pulse" id="logout-link-1" href="#" style="border-radius: 4px;background: rgba(234,204,48,0);border: 2px none rgba(113,113,113,0.9);text-align: center;margin: 0px;margin-top: 0;padding: 0px;padding-right: .5rem;padding-left: .5rem;padding-top: .1rem;padding-bottom: .1rem;font-size: 0.8rem;color: var(--bs-white);">Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <%- include('../partials/nav.ejs')%>
     <!-- Start: MAIN-SECTION -->
     <div class="container mb-3" id="lr-margin">
         <div class="row" style="margin-top: 1rem;">

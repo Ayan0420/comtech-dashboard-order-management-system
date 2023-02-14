@@ -1,0 +1,27 @@
+<%- include('../partials/head.ejs') %>
+<body>
+
+    <!-- Start: Login -->
+    <div class="vh-100 d-flex flex-column align-items-center justify-content-center">
+        <% if(flashMessage.length > 0) { %>
+            <div class="alert alert-warning"><%= flashMessage %></div>
+        <% } %>
+        <form class="card d-flex flex-column align-items-center p-4" action="/login" method="POST">
+            
+            <h4 class="mb-4">Login Required!</h4>
+            <div class="mb-3">
+                <label for="username" class="form-label">User:</label>
+                <input type="text" class="form-control" id="username" name="username" aria-describedby="usernameHelp">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <button type="submit" class="btn btn-danger">Login</button>
+          </form>
+    </div>
+    
+    <!-- End: Login -->
+
+    
+</body>
