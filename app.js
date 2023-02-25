@@ -36,8 +36,8 @@ app.use(session({
     name: 'cdls', //comtech dashboard login session
     secret: 'FI652bnTDOuqt9Vaiqfn',
     cookie: {maxAge: 60000},
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
 })); //used for flash message and authenticaiton
 app.use(flash()); //used for flash message
 
