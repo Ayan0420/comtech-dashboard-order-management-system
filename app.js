@@ -19,7 +19,7 @@ mongoose.connect(dbURI)
     .then(result => {
         console.log('connected to db');
         //development mode
-        app.listen(3000, () => console.log('Server Started listening to http://localhost:3000 ... \n\nCONSOLE LOGS:'));
+        app.listen(process.env.PORT || 3000, () => console.log(`Server Started listening to http://localhost:${process.env.PORT} ... \n\nCONSOLE LOGS:`));
     })
     .catch(err => console.log(err));
 

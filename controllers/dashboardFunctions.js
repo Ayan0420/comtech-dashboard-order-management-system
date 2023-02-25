@@ -32,7 +32,7 @@ const dashboard = (req, res) => {
             
             //Sales card
              //Services
-            let downpayArray = [];
+            let downpayArray = [0];
         
             dataByCurrentMonth.forEach((value, index) => {
                 downpayArray.push(dataByCurrentMonth[index].s_downpay); 
@@ -43,7 +43,7 @@ const dashboard = (req, res) => {
             });
 
              //Sales
-             let salesDownpayArray = [];
+             let salesDownpayArray = [0];
         
              dataByCurrentMonth.forEach((value, index) => {
                 salesDownpayArray.push(dataByCurrentMonth[index].p_downpay); 
