@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>tracking</title>
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets2/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets2/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets2/icons/favicon-16x16.png">
+    <link rel="manifest" href="/assets2/icons/site.webmanifest">
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.2.2/dist/lux/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alatsi&amp;display=swap">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="/assets2/css/Search-Input-Responsive-with-Icon.css">
+    <link rel="stylesheet" href="/assets2/css/styles.css">
+</head>
+
+<body class="d-flex flex-column align-items-center vh-100" id="body-bg">
+    <!-- Start: comtech logo --><a href="/tracking-app"><img id="logo" class="img-fluid pt-4" src="/assets2/img/comtech_logo_with_address-removebg-preview.png" width="400px" alt="comtech logo"></a><!-- End: comtech logo -->
+    <!-- Start: job order content -->
+    <section id="section" class="py-0">
+        <div class="text-white bg-dark border rounded border-0 px-4 py-2 mt-4">
+            <!-- Start: header -->
+            <div class="row">
+                <div class="col">
+                    <!-- Start: job order details heading -->
+                    <h1 class="text-center text-danger">JOB ORDER DETAILS</h1><!-- End: job order details heading -->
+                </div>
+            </div><!-- End: header -->
+            <!-- Start: JOB ORDER NUMBER ROW -->
+            <div class="row">
+                <div class="col text-end">
+                    <!-- Start: JO NUMBER LABEL --><span class="text-white">Job Order Number:</span><!-- End: JO NUMBER LABEL -->
+                </div>
+                <div class="col d-flex align-items-end">
+                    <!-- Start: JO NUMBER --><span class="text-start text-warning"><%= searchResult.job_id %></span><!-- End: JO NUMBER -->
+                </div>
+            </div><!-- End: JOB ORDER NUMBER ROW -->
+            <!-- Start: JOB ORDER DATE ROW -->
+            <div class="row">
+                <div class="col text-end">
+                    <!-- Start: JO DATE LABEL --><span class="text-white">Job Order Date:</span><!-- End: JO DATE LABEL -->
+                </div>
+                <div class="col d-flex align-items-end">
+                    <!-- Start: JO DATE --><span class="text-start text-warning"><%= searchResult.job_date %></span><!-- End: JO DATE -->
+                </div>
+            </div><!-- End: JOB ORDER DATE ROW -->
+            <!-- Start: CUS NAME ROW -->
+            <div class="row">
+                <div class="col text-end">
+                    <!-- Start: CUS NAME LABEL --><span class="text-white">Customer Name:</span><!-- End: CUS NAME LABEL -->
+                </div>
+                <div class="col d-flex align-items-end">
+                    <!-- Start: CUS NAME --><span class="text-start text-warning"><%= searchResult.cus_name %></span><!-- End: CUS NAME -->
+                </div>
+            </div><!-- End: CUS NAME ROW -->
+            <!-- Start: UNIT MODEL ROW -->
+            <div class="row">
+                <div class="col text-end">
+                    <!-- Start: UNIT MODEL LABEL --><span class="text-white">Unit Model:</span><!-- End: UNIT MODEL LABEL -->
+                </div>
+                <div class="col d-flex align-items-end">
+                    <!-- Start: UNIT MODEL --><span class="text-start text-warning"><%= searchResult.unit_model %></span><!-- End: UNIT MODEL -->
+                </div>
+            </div><!-- End: UNIT MODEL ROW -->
+            <!-- Start: WORK PERF ROW -->
+            <div class="row">
+                <div class="col text-end">
+                    <!-- Start: WORK PERF LABEL --><span class="text-white">Work Performed:</span><!-- End: WORK PERF LABEL -->
+                </div>
+                <div class="col d-flex align-items-end">
+                    <!-- Start: WORK PERF --><span class="text-start text-warning"><%= searchResult.work_perf %></span><!-- End: WORK PERF -->
+                </div>
+            </div><!-- End: WORK PERF ROW -->
+            <!-- Start: STATUS ROW -->
+            <div class="row">
+                <div class="col text-end d-flex justify-content-end align-items-center">
+                    <!-- Start: STATUS LABEL --><span class="text-white">Job Status:</span><!-- End: STATUS LABEL -->
+                </div>
+                <div class="col d-flex align-items-end">
+                    <!-- Start: STATUS --><span class="fs-3 text-start text-success"><%= searchResult.s_status %></span><!-- End: STATUS -->
+                </div>
+            </div><!-- End: STATUS ROW -->
+            <!-- Start: STATUS ROW -->
+            <div class="row">
+                <div class="col text-end d-flex justify-content-end align-items-center">
+                    <!-- Start: STATUS LABEL --><span class="text-white">Parts Order Status:</span><!-- End: STATUS LABEL -->
+                </div>
+                <div class="col d-flex align-items-end">
+                    <!-- Start: STATUS --><span class="fs-3 text-start text-success d-flex"><%= searchResult.p_status %></span><!-- End: STATUS -->
+                </div>
+            </div><!-- End: STATUS ROW -->
+        </div>
+    </section><!-- End: job order content -->
+    <!-- Start: contact info -->
+    <div class="mt-3">
+        <p class="text-center mb-1">Have questions about your job order?</p>
+        <p class="text-center mb-1"><i class="fas fa-phone"></i>&nbsp;&nbsp;<span style="color: rgb(52, 58, 64); background-color: rgba(62, 64, 66, 0);">09273344575 | 088 861 1789</span></p>
+        <p class="text-center"><i class="fab fa-facebook"></i>&nbsp;<a href="https://www.facebook.com/comtech.gingoog" target="_blank"><span style="color: rgb(52, 58, 64);">COMTECH Gingoog</span></a></p>
+    </div><!-- End: contact info -->
+    <footer id="footer-banner" class="mt-2 pt-4" style="position: relative;display: block;"><span class="text-center text-primary d-flex justify-content-center" id="footer-text">Web technologies created by:&nbsp;<a href="https://ayan0420.github.io/webportfolio/" target="_blank" >CLARK</a></span></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets2/js/scripts.js"></script>
+</body>
+
+</html>

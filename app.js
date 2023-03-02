@@ -8,6 +8,7 @@ const flash = require('connect-flash');
 
 //external routes
 const jobOrderRoutes = require('./routes/jobOrderRoutes');
+const trackingAppRoutes = require('./routes/trackingAppRoutes');
 
 //create app
 const app = express();
@@ -88,8 +89,12 @@ app.get('/', (req, res) => {
 });
 
 //Main Application Job Order Management System
-app.use('/job-orders',isAuth, jobOrderRoutes);
-// app.use('/job-orders', jobOrderRoutes);
+// app.use('/job-orders',isAuth, jobOrderRoutes);
+app.use('/job-orders', jobOrderRoutes);
+
+//Tracking System
+app.use('/tracking-app', trackingAppRoutes);
+
 
 app.use((req, res) => {
     res.status(404).send('<h1><strong>Opps! 404 - Page Not Found <br><br> -CLRK </strong></h1>'); //temporary handler

@@ -1,0 +1,52 @@
+.form-control-borderless {
+  border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+#logo {
+}
+
+#section {
+  width: %;
+}
+
+@media (min-width: 768px) {
+  #section {
+    width: 25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #section {
+    width: 90%;
+  }
+}
+
+#tracking-input {
+  width: 60%;
+  height: 2rem;
+  margin-right: 0.3rem;
+}
+
+@media (min-width: 992px) {
+  #tracking-input {
+    width: 15rem;
+  }
+}
+
+#footer-banner {
+}
+
+#footer-text {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 0;
+  font-size: 12px;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
