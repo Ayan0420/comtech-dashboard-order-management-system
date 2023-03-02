@@ -89,8 +89,8 @@ app.get('/', (req, res) => {
 });
 
 //Main Application Job Order Management System
-// app.use('/job-orders',isAuth, jobOrderRoutes);
-app.use('/job-orders', jobOrderRoutes);
+app.use('/job-orders',isAuth, jobOrderRoutes);
+// app.use('/job-orders', jobOrderRoutes);
 
 //Tracking System
 app.use('/tracking-app', trackingAppRoutes);
