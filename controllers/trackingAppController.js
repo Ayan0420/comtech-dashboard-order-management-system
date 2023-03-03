@@ -3,16 +3,20 @@ const JobOrder = require('../models/jobOrderModel');
 
 const trackingApp_index = (req, res) => {
 
-    res.render('trackingApp/index.ejs');
+    res.render('trackingApp/index.ejs', {flashMessage: req.flash('message')});
 }
 
 const trackingApp_search = (req, res) => {
     let searchData = req.body.tracking;
     JobOrder.findOne({job_id: searchData})
     .then( result => {
-        console.log(result)
-        //use mongoose.Types.ObjectId() to convert the id to string instead of "new ObjectId("id...")"
-        res.redirect(`/tracking-app/${result._id}`);
+        console.log(result) //for debugging
+        if(result === null){
+            req.flash('message', 'No Job Order found! Please input a correct Job Order Number.')
+            res.redirect('/tracking-app/')
+        } else {
+            res.redirect(`/tracking-app/${result._id}`);
+        }
 
     })
     .catch(err => {

@@ -38,9 +38,15 @@
                             <p class="text-center mb-4">To track the current status of your job order, please type in the box below your JOB ORDER NUMBER that was found on your Job Order Receipt and click the TRACE button.</p>
                         </div>
                     </div><!-- End: description -->
+                    <!-- Start: Flash Message -->
+                    <% if (flashMessage.length > 0){ %>
+                        <div class="d-flex justify-content-center">
+                            <div class="alert alert-danger rounded-3 accordion p-1 px-3 d-flex justify-content-center"><%= flashMessage %></div>
+                        </div>
+                    <% } %>
+                    <!-- End: Flash Message -->
                     <!-- Start: input field -->
                     <div class="row">
-                       
                         <div class="col text-center d-flex justify-content-center align-items-center">
                              <form action="/tracking-app/" method="post">
                                 <input class="border rounded text-center" type="text" id="tracking" name="tracking" placeholder="Job Order No. (e.g. 1254)">
