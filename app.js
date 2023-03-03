@@ -48,7 +48,7 @@ function isAuth(req, res, next) {
     if (req.session && req.session.user === process.env.ADMIN_USER && req.session.admin) {
       next();
     } else {
-      res.redirect('/login');
+      res.redirect('/dashboard-login');
     }
 }
 
@@ -56,36 +56,33 @@ function isAuth(req, res, next) {
             //ROUTES//
 
 //Login endpoint
-app.get('/login', (req, res) => {
-
-    res.render('jobOrder/job-login',{title: "Login", flashMessage: req.flash('message')});
+app.get('/dashboard-login', (req, res) => {
+    if (req.session && req.session.user === process.env.ADMIN_USER && req.session.admin) {
+        res.redirect('/job-orders');
+      } else {
+        res.render('jobOrder/job-login',{title: "Login", flashMessage: req.flash('message')});
+      }
 
 });
 
-app.post('/login', (req, res) => {
+app.post('/dashboard-login', (req, res) => {
     if (!req.body.username || !req.body.password){
         req.flash('message', 'Fill in your credentials.')
-        res.redirect('/login');
+        res.redirect('/dashboard-login');
     } else if(req.body.username === process.env.ADMIN_USER && req.body.password === process.env.ADMIN_PASSWORD){
         req.session.user = process.env.ADMIN_USER;
         req.session.admin = true;
         res.redirect('/job-orders');
     } else {
         req.flash('message', 'Username or password is incorrect.')
-        res.redirect('/login');
+        res.redirect('/dashboard-login');
     }
 });
 
 //Logout Endpoint
 app.get('/logout', (req, res) => {
     req.session.destroy();
-    res.send('logged out successfully... <a href="/">Go back</a>')
-});
-
-
-//Landing Page
-app.get('/', (req, res) => {
-    res.render('landingPage/index');
+    res.send('<h3 style="color: crimson; padding-top: 3rem; text-align: center; font-family: Arial;">Logged out successfully... <a href="/">Go back</a><h3>')
 });
 
 //Main Application Job Order Management System
@@ -97,7 +94,7 @@ app.use('/tracking-app', trackingAppRoutes);
 
 
 app.use((req, res) => {
-    res.status(404).send('<h1><strong>Opps! 404 - Page Not Found <br><br> -CLRK </strong></h1>'); //temporary handler
+    res.status(404).render('landingPage/404', {title: "404"});
 });
 
 

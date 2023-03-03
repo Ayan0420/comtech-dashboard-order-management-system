@@ -1,3 +1,5 @@
+<html lang="en">
+
 <%- include('../partials/head.ejs') %>
 
 <body style="background-color: rgb(192, 67, 67);">
@@ -7,7 +9,7 @@
         <% if(flashMessage.length > 0) { %>
             <div class="alert alert-warning"><%= flashMessage %></div>
         <% } %>
-        <form class="card shadow d-flex flex-column align-items-center p-4" action="/login" method="POST">
+        <form class="card shadow d-flex flex-column align-items-center p-4" action="/dashboard-login" method="POST">
             
             <h4 class="mb-4">Login Required!</h4>
             <div class="mb-3">
@@ -26,3 +28,5 @@
 
     
 </body>
+    
+</html>
