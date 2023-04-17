@@ -322,7 +322,26 @@ const dashboard = (req, res) => {
             console.log('annualChartData', annualChartData)
             
             //response object
-            res.render('jobOrder/job-orders', {title: 'Dashboard', jobOrders: data, flashMessage: req.flash('message'), monthNowName,  totalDownPay, totalSalesDownPay, totalRevenue, totalJobOrders, currentOrdersCount, currentPartsOrdersCount, currentUnclaimedOrdersCount, currentDMDOrdersCount, monthlyChartData, annualChartData});
+            res.render('jobOrder/job-orders', {
+                title: 'Dashboard', 
+                flashMessage: req.flash('message'), 
+
+                jobOrders: data, 
+                monthNowName,
+                
+                totalDownPay,
+                totalSalesDownPay,
+                totalRevenue, 
+                totalJobOrders, 
+
+                currentOrdersCount, 
+                currentPartsOrdersCount, 
+                currentUnclaimedOrdersCount, 
+                currentDMDOrdersCount, 
+
+                monthlyChartData, 
+                annualChartData
+            });
         })
         .catch(err => console.log("error from the controller" + err));
 }
