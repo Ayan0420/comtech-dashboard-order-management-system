@@ -127,10 +127,12 @@
 
 
                             <!-- Start: CHARTS -->
-                            <div id="sales-chart">
+                            
+                            <div class="sales-chart">
                                 <!-- <p class="text-center"><em>[Sales Chart feature under construction...]</em></p> -->
-                                <h4 id="sales-chart-caption" class="text-center">Summary of Gross Monthly Revenue as of <%=monthlyChartData.currYear%></h4>
-                                <canvas id="chart-1"
+                                <h5 id="sales-chart-caption" class="text-center">Monthly Revenue Chart (Repairs and Other Services) as of <%=monthlyChartData.currYear%></h5>
+                               
+                                <canvas id="chart-1" class="p-3"
                                     data-jan="<%= monthlyChartData.janSales%>" 
                                     data-feb="<%= monthlyChartData.febSales%>" 
                                     data-mar="<%= monthlyChartData.marSales%>" 
@@ -145,7 +147,25 @@
                                     data-dec="<%= monthlyChartData.decSales%>">
                                 </canvas>
                             </div>
+                            <div class="sales-chart">
+                                <!-- <p class="text-center"><em>[Sales Chart feature under construction...]</em></p> -->
+                                <h5 id="sales-chart-caption" class="text-center">Annual Revenue Chart (Repairs and Other Services)</h5>
+                               
+                                <canvas id="chart-2" class="p-3"
+                                    data-sales2021="<%= annualChartData.sales2021%>" 
+                                    data-sales2022="<%= annualChartData.sales2022%>" 
+                                    data-sales2023="<%= annualChartData.sales2023%>" 
+                                    data-sales2024="<%= annualChartData.sales2024%>" 
+                                    data-sales2025="<%= annualChartData.sales2025%>" 
+                                    data-sales2026="<%= annualChartData.sales2026%>" 
+                                    data-sales2027="<%= annualChartData.sales2027%>" 
+                                    data-sales2028="<%= annualChartData.sales2028%>" 
+                                    data-sales2029="<%= annualChartData.sales2029%>" 
+                                    data-sales2030="<%= annualChartData.sales2030%>">
+                                </canvas>
+                            </div>
                             <!-- End: CHARTS -->
+
 
                         </div><!-- End: SUMMARY-TAB-CONTENT -->
                         <!-- Start: JOB-ORDER-CONTENT -->
@@ -205,22 +225,39 @@
     <%- include('../partials/foot.ejs') %> 
     <script defer>
         //Graph JS configuration
-        const ctx = document.getElementById('chart-1');
+        const chart1 = document.getElementById('chart-1');
+        const chart2 = document.getElementById('chart-2');
+        console.log('chart2.dataset', chart2.dataset)
+
         const moSales = {
-            jan: ctx.dataset.jan,
-            feb: ctx.dataset.feb,
-            mar: ctx.dataset.mar,
-            apr: ctx.dataset.apr,
-            may: ctx.dataset.may,
-            jun: ctx.dataset.jun,
-            jul: ctx.dataset.jul,
-            aug: ctx.dataset.aug,
-            sep: ctx.dataset.sep,
-            oct: ctx.dataset.oct,
-            nov: ctx.dataset.nov,
-            dec: ctx.dataset.dec
+            jan: chart1.dataset.jan,
+            feb: chart1.dataset.feb,
+            mar: chart1.dataset.mar,
+            apr: chart1.dataset.apr,
+            may: chart1.dataset.may,
+            jun: chart1.dataset.jun,
+            jul: chart1.dataset.jul,
+            aug: chart1.dataset.aug,
+            sep: chart1.dataset.sep,
+            oct: chart1.dataset.oct,
+            nov: chart1.dataset.nov,
+            dec: chart1.dataset.dec
         };
-      new Chart(ctx, {
+        const anSales = {
+            sales2021: chart2.dataset.sales2021,
+            sales2022: chart2.dataset.sales2022,
+            sales2023: chart2.dataset.sales2023,
+            sales2024: chart2.dataset.sales2024,
+            sales2025: chart2.dataset.sales2025,
+            sales2026: chart2.dataset.sales2026,
+            sales2027: chart2.dataset.sales2027,
+            sales2028: chart2.dataset.sales2028,
+            sales2029: chart2.dataset.sales2029,
+            sales2030: chart2.dataset.sales2030,
+        };
+        console.log('anSales', anSales)
+        
+    new Chart(chart1, {
         type: 'bar',
         data: {
           labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -239,21 +276,50 @@
                 moSales.oct, 
                 moSales.nov, 
                 moSales.dec
-          ],
-            borderWidth: 3,
-            backgroundColor: 'rgba(54, 162, 235, .6)',
-          }]
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true
+            ],
+                borderWidth: 3,
+                backgroundColor: 'rgba(54, 162, 235, .6)',
+            }]
+            },
+            options: {
+            scales: {
+                y: {
+                beginAtZero: true
+                }
             }
-          }
-        },
+            },
+    });
     
-        
-      });
+    new Chart(chart2, {
+        type: 'bar',
+        data: {
+          labels: ['2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'],
+          datasets: [{
+            label: 'Revenue in Peso',
+            data: [
+                anSales.sales2021, 
+                anSales.sales2022, 
+                anSales.sales2023, 
+                anSales.sales2024, 
+                anSales.sales2025, 
+                anSales.sales2026,
+                anSales.sales2027, 
+                anSales.sales2028, 
+                anSales.sales2029, 
+                anSales.sales2030,
+            ],
+                borderWidth: 3,
+                backgroundColor: 'rgba(54, 235, 78, 0.6)',
+            }]
+            },
+            options: {
+            scales: {
+                y: {
+                beginAtZero: true
+                }
+            }
+            },
+    });
     
     //End Graph JS configuration
     </script>

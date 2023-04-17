@@ -18,7 +18,7 @@
   border-style: none;
 }
 
-#sales-chart {
+.sales-chart {
   padding: 1rem 0;
   border-radius: 10px;
   box-shadow: 3px 3px 6px;
