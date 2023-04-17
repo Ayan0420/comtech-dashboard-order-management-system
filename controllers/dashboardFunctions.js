@@ -9,7 +9,8 @@ const dashboard = (req, res) => {
             const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
             let monthNowName = months[dateNow.getMonth()];
             
-            // yearNow = dateNow.getFullYear();
+            yearNow = dateNow.getFullYear();
+            console.log('yearNow', yearNow)
                 // console.log("Date Now Object: " + dateNow)
                 // console.log("Month Today: " + monthNow)
                 // console.log("Year Today: " + yearNow)
@@ -19,7 +20,7 @@ const dashboard = (req, res) => {
 
             //this for loop is used to append filtered data by current month to the dataByCurrentMonth array.
             for(let i = 0; i < data.length; i++){
-                let month = data[i].job_date.substring(5, 7); //removing 2023- and -11 to 2023-02-11 leaving only 02.
+                let month = data[i].job_date.substring(5, 7); //removing 2023- and -11 from 2023-02-11 leaving only 02.
                 
                 if (month != monthNow){
                     continue;
@@ -142,8 +143,82 @@ const dashboard = (req, res) => {
             // console.log("Current DMD Orders: " + currentDMDOrdersCount);
             //DMD Orders End
 
+            //Monthly Sales Chart Data
+            let getMonthlyChartData = () => {
+                // total sales per month
+                let janSales = [0], 
+                    febSales = [0], 
+                    marSales = [0], 
+                    aprSales = [0], 
+                    maySales = [0], 
+                    junSales = [0], 
+                    julSales = [0], 
+                    augSales = [0], 
+                    sepSales = [0], 
+                    octSales = [0], 
+                    novSales = [0], 
+                    decSales = [0];
+
+                
+                for(let i = 0; i < data.length; i++){
+                    let salesMonth = data[i].job_date.substring(5, 7); //removing 2023- and -11 from 2023-02-11 leaving only 02.
+                    let salesYear = data[i].job_date.substring(0, 4);
+
+                    //to fetch sales only from current year
+                    if(salesYear != yearNow){
+                        continue
+                    } 
+
+                    //to append data for each month
+                    if(salesMonth === '01'){
+                        janSales.push(data[i].s_downpay + data[i].p_downpay);
+                    } else if(salesMonth === '02'){
+                        febSales.push(data[i].s_downpay + data[i].p_downpay);
+                    } else if(salesMonth === '03'){
+                        marSales.push(data[i].s_downpay + data[i].p_downpay);
+                    } else if(salesMonth === '04'){
+                        aprSales.push(data[i].s_downpay + data[i].p_downpay);
+                    } else if(salesMonth === '05'){
+                        maySales.push(data[i].s_downpay + data[i].p_downpay);
+                    } else if(salesMonth === '06'){
+                        junSales.push(data[i].s_downpay + data[i].p_downpay);
+                    } else if(salesMonth === '07'){
+                        julSales.push(data[i].s_downpay + data[i].p_downpay);
+                    } else if(salesMonth === '08'){
+                        augSales.push(data[i].s_downpay + data[i].p_downpay);
+                    } else if(salesMonth === '09'){
+                        sepSales.push(data[i].s_downpay + data[i].p_downpay);
+                    } else if(salesMonth === '10'){
+                        octSales.push(data[i].s_downpay + data[i].p_downpay);
+                    } else if(salesMonth === '11'){
+                        novSales.push(data[i].s_downpay + data[i].p_downpay);
+                    } else if(salesMonth === '12'){
+                        decSales.push(data[i].s_downpay + data[i].p_downpay);
+                    }
+                }
+
+
+                return sales = {
+                    currYear: yearNow,
+                    janSales: janSales.reduce((x, y) => x + y),
+                    febSales: febSales.reduce((x, y) => x + y),
+                    marSales: marSales.reduce((x, y) => x + y),
+                    aprSales: aprSales.reduce((x, y) => x + y),
+                    maySales: maySales.reduce((x, y) => x + y),
+                    junSales: junSales.reduce((x, y) => x + y),
+                    julSales: julSales.reduce((x, y) => x + y),
+                    augSales: augSales.reduce((x, y) => x + y),
+                    sepSales: sepSales.reduce((x, y) => x + y),
+                    octSales: octSales.reduce((x, y) => x + y),
+                    novSales: novSales.reduce((x, y) => x + y),
+                    decSales: decSales.reduce((x, y) => x + y)
+                }
+            };
+            let monthlyChartData = getMonthlyChartData()
+            //Monthly Sales Chart Data End
+            
             //response object
-            res.render('jobOrder/job-orders', {title: 'Dashboard', jobOrders: data, flashMessage: req.flash('message'), monthNowName,  totalDownPay, totalSalesDownPay, totalRevenue, totalJobOrders, currentOrdersCount, currentPartsOrdersCount, currentUnclaimedOrdersCount, currentDMDOrdersCount});
+            res.render('jobOrder/job-orders', {title: 'Dashboard', jobOrders: data, flashMessage: req.flash('message'), monthNowName,  totalDownPay, totalSalesDownPay, totalRevenue, totalJobOrders, currentOrdersCount, currentPartsOrdersCount, currentUnclaimedOrdersCount, currentDMDOrdersCount, monthlyChartData});
         })
         .catch(err => console.log("error from the controller" + err));
 }

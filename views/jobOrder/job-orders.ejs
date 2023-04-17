@@ -127,14 +127,25 @@
 
 
                             <!-- Start: CHARTS -->
-                            
-                            <div id="sales-chart" data-chartJanuary="" data-chartFebruary="" data-chartMarch="" data-chartApril="" data-chartMay="" data-chartJune="" data-chartJuly="" data-chartAugust="" data-chartSeptember="" data-chartOctober="" data-chartNovember="" data-chartDecember="">
-                                <p class="text-center"><em>[Sales Chart feature under construction...]</em></p>
-                                <canvas id="chart-1"></canvas>
+                            <div id="sales-chart">
+                                <!-- <p class="text-center"><em>[Sales Chart feature under construction...]</em></p> -->
+                                <h4 id="sales-chart-caption" class="text-center">Summary of Gross Monthly Revenue as of <%=monthlyChartData.currYear%></h4>
+                                <canvas id="chart-1"
+                                    data-jan="<%= monthlyChartData.janSales%>" 
+                                    data-feb="<%= monthlyChartData.febSales%>" 
+                                    data-mar="<%= monthlyChartData.marSales%>" 
+                                    data-apr="<%= monthlyChartData.aprSales%>" 
+                                    data-may="<%= monthlyChartData.maySales%>" 
+                                    data-jun="<%= monthlyChartData.junSales%>" 
+                                    data-jul="<%= monthlyChartData.julSales%>" 
+                                    data-aug="<%= monthlyChartData.augSales%>" 
+                                    data-sep="<%= monthlyChartData.sepSales%>" 
+                                    data-oct="<%= monthlyChartData.octSales%>" 
+                                    data-nov="<%= monthlyChartData.novSales%>" 
+                                    data-dec="<%= monthlyChartData.decSales%>">
+                                </canvas>
                             </div>
-                            <p id="sales-chart-caption">Summary of Gross Monthly Income as of 2023 [dummy data only]</p>
                             <!-- End: CHARTS -->
-
 
                         </div><!-- End: SUMMARY-TAB-CONTENT -->
                         <!-- Start: JOB-ORDER-CONTENT -->
@@ -192,11 +203,23 @@
     <!-- End: MAIN-SECTION -->
 
     <%- include('../partials/foot.ejs') %> 
-    <script>
+    <script defer>
         //Graph JS configuration
-
-    const ctx = document.getElementById('chart-1');
-      
+        const ctx = document.getElementById('chart-1');
+        const moSales = {
+            jan: ctx.dataset.jan,
+            feb: ctx.dataset.feb,
+            mar: ctx.dataset.mar,
+            apr: ctx.dataset.apr,
+            may: ctx.dataset.may,
+            jun: ctx.dataset.jun,
+            jul: ctx.dataset.jul,
+            aug: ctx.dataset.aug,
+            sep: ctx.dataset.sep,
+            oct: ctx.dataset.oct,
+            nov: ctx.dataset.nov,
+            dec: ctx.dataset.dec
+        };
       new Chart(ctx, {
         type: 'bar',
         data: {
@@ -204,8 +227,18 @@
           datasets: [{
             label: 'Revenue in Peso',
             data: [
-              12000, 70600, 30010, 50000, 22000, 30000,
-              12000, 70600, 30010, 50000, 22000, 30000
+                moSales.jan, 
+                moSales.feb, 
+                moSales.mar, 
+                moSales.apr, 
+                moSales.may, 
+                moSales.jun,
+                moSales.jul, 
+                moSales.aug, 
+                moSales.sep, 
+                moSales.oct, 
+                moSales.nov, 
+                moSales.dec
           ],
             borderWidth: 3,
             backgroundColor: 'rgba(54, 162, 235, .6)',

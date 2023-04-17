@@ -3,7 +3,7 @@ const JobOrder = require('../models/jobOrderModel');
 
 const trackingApp_index = (req, res) => {
 
-    res.render('trackingApp/index.ejs', {flashMessage: req.flash('message')});
+    res.render('trackingApp/index.ejs', {flashMessage: req.flash('message'), searchData: "", searchCode: ""});
 }
 
 const trackingApp_search = (req, res) => {
@@ -15,12 +15,14 @@ const trackingApp_search = (req, res) => {
         if(result === null){
             req.flash('message', 'No Job Order found! Please input a correct Job Order Number.')
             res.redirect('/tracking-app/')
+            return
         }
         
         if(searchCode.toLowerCase() !== result._id.toString().slice(-6)){
-            let trackingNumber = searchData;
-            req.flash('message', 'Tracking code incorrect.')
-            res.redirect('/tracking-app/')
+            
+            req.flash('message', 'Tracking code incorrect. Please check the code if typed properly.')
+            res.render('trackingApp/index.ejs', {flashMessage: req.flash('message'), searchData, searchCode})
+            return
         }
         
         res.redirect(`/tracking-app/${result._id}`);

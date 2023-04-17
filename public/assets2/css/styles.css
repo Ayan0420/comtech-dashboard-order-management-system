@@ -4,3 +4,9 @@
   font-family: Alatsi, sans-serif;
 }
 
+.fixed-bottom{
+  position: fixed !important;
+  bottom: 0px !important;
+  background-color:darkolivegreen;
+ 
+}
