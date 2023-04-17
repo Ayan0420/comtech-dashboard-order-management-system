@@ -48,15 +48,19 @@ function isAuth(req, res, next) {
     if (req.session && req.session.user === process.env.ADMIN_USER && req.session.admin) {
       next();
     } else {
-      res.redirect('/dashboard-login');
+      res.redirect('/d-login');
     }
 }
 
 
             //ROUTES//
 
+app.get('/', (req, res) => {
+    res.redirect('/job-orders')
+})
+
 //Login endpoint
-app.get('/dashboard-login', (req, res) => {
+app.get('/d-login', (req, res) => {
     if (req.session && req.session.user === process.env.ADMIN_USER && req.session.admin) {
         res.redirect('/job-orders');
       } else {
@@ -65,29 +69,29 @@ app.get('/dashboard-login', (req, res) => {
 
 });
 
-app.post('/dashboard-login', (req, res) => {
+app.post('/d-login', (req, res) => {
     if (!req.body.username || !req.body.password){
         req.flash('message', 'Fill in your credentials.')
-        res.redirect('/dashboard-login');
+        res.redirect('/d-login');
     } else if(req.body.username === process.env.ADMIN_USER && req.body.password === process.env.ADMIN_PASSWORD){
         req.session.user = process.env.ADMIN_USER;
         req.session.admin = true;
         res.redirect('/job-orders');
     } else {
         req.flash('message', 'Username or password is incorrect.')
-        res.redirect('/dashboard-login');
+        res.redirect('/d-login');
     }
 });
 
 //Logout Endpoint
 app.get('/logout', (req, res) => {
     req.session.destroy();
-    res.send('<h3 style="color: crimson; padding-top: 3rem; text-align: center; font-family: Arial;">Logged out successfully... <a href="/">Go back</a><h3>')
+    res.send('<h1 style="color: crimson; padding-top: 3rem; text-align: center; font-family: Arial;">Logged out successfully... <a href="/d-login">Go back</a><h1>')
 });
 
 //Main Application Job Order Management System
-app.use('/job-orders',isAuth, jobOrderRoutes);
-// app.use('/job-orders', jobOrderRoutes);
+// app.use('/job-orders',isAuth, jobOrderRoutes);
+app.use('/job-orders', jobOrderRoutes);
 
 //Tracking System
 app.use('/tracking-app', trackingAppRoutes);

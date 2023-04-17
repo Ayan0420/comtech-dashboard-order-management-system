@@ -8,16 +8,23 @@ const trackingApp_index = (req, res) => {
 
 const trackingApp_search = (req, res) => {
     let searchData = req.body.tracking;
+    let searchCode = req.body.code;
     JobOrder.findOne({job_id: searchData})
     .then( result => {
         console.log(result) //for debugging
         if(result === null){
             req.flash('message', 'No Job Order found! Please input a correct Job Order Number.')
             res.redirect('/tracking-app/')
-        } else {
-            res.redirect(`/tracking-app/${result._id}`);
         }
-
+        
+        if(searchCode.toLowerCase() !== result._id.toString().slice(-6)){
+            let trackingNumber = searchData;
+            req.flash('message', 'Tracking code incorrect.')
+            res.redirect('/tracking-app/')
+        }
+        
+        res.redirect(`/tracking-app/${result._id}`);
+        
     })
     .catch(err => {
         console.log('Error from controller: ' + err);

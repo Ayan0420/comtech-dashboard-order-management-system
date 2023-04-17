@@ -3,15 +3,19 @@
 <%- include('../partials/head.ejs') %>
 
 <body style="background-color: rgb(192, 67, 67);">
-
+    
     <!-- Start: Login -->
     <div class="vh-100 d-flex flex-column align-items-center justify-content-center">
         <% if(flashMessage.length > 0) { %>
             <div class="alert alert-warning"><%= flashMessage %></div>
         <% } %>
-        <form class="card shadow d-flex flex-column align-items-center p-4" action="/dashboard-login" method="POST">
-            
-            <h4 class="mb-4">Login Required!</h4>
+            <form class="card shadow d-flex flex-column align-items-center p-3" action="/d-login" method="POST">
+                <div class="text-center">
+                    <a href="https://www.comtechgingoog.com/">
+                        <img src="/assets2/img/comtech_logo_with_address-removebg-preview.png" alt="comtech-logo" class="img-fluid" style="width: 15rem;">
+                    </a>
+                </div>  
+                <h4 class="mb-2 mt-2">Login Required!</h4>
             <div class="mb-3">
                 <label for="username" class="form-label">User:</label>
                 <input type="text" class="form-control" id="username" name="username" autocomplete="off" aria-describedby="usernameHelp">

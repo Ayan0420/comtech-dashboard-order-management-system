@@ -11,6 +11,7 @@ const jobOrderDBSchema = new Schema({
         required: true
         //make this unique
     },
+
     job_date: {
         type: String,
         required: true
