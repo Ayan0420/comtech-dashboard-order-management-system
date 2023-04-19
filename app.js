@@ -9,6 +9,7 @@ const flash = require('connect-flash');
 //external routes
 const jobOrderRoutes = require('./routes/jobOrderRoutes');
 const trackingAppRoutes = require('./routes/trackingAppRoutes');
+const messagingAPIRoutes = require('./routes/messagingAPIRoutes')
 
 //create app
 const app = express();
@@ -90,12 +91,14 @@ app.get('/logout', (req, res) => {
 });
 
 //Main Application Job Order Management System
-// app.use('/job-orders',isAuth, jobOrderRoutes);
-app.use('/job-orders', jobOrderRoutes);
+app.use('/job-orders',isAuth, jobOrderRoutes);
+// app.use('/job-orders', jobOrderRoutes);
 
 //Tracking System
 app.use('/tracking-app', trackingAppRoutes);
 
+//Simple messaging
+app.use('/messaging',  messagingAPIRoutes);
 
 app.use((req, res) => {
     res.status(404).render('landingPage/404', {title: "404"});
