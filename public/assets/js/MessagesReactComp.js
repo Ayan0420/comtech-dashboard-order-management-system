@@ -3,8 +3,8 @@
 const {useState, useEffect} = React;
 const {Modal, Button} = ReactBootstrap;
 
-const API = 'http://localhost:4000'
-// const API = 'https://app.comtechgingoog.com'
+// const API = 'http://localhost:4000'
+const API = 'https://app.comtechgingoog.com'
 
 /**
  * Message Card Component
