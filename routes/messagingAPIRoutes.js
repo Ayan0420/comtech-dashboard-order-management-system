@@ -3,7 +3,7 @@ const router = express.Router();
 const Messages = require('../models/messagesModel')
 const moment = require('moment')
 
-function isAuth(req, res, next) {
+function isAuthFunc(req, res, next) {
 
     if (req.session && req.session.user === process.env.ADMIN_USER && req.session.admin) {
       next();
@@ -15,9 +15,12 @@ function isAuth(req, res, next) {
     }
 }
 
+let isAuth = isAuthFunc;
+// let isAuth = (req, res, next) => next(); //for development
+
 // add this later "isAuth, "
 
-router.get('/', (req, res) =>{
+router.get('/', isAuth,  (req, res) =>{
     Messages.find({}).sort({createdAt: -1}).then(data => {
 
        res.send(data.map(item => { 
@@ -45,7 +48,7 @@ router.post('/', (req, res) =>{
     newMassage.save().then(result => res.status(200).render('landingPage/messageSent', {title: "Message Sent Successfully!"}));
 });
 
-router.post('/mark-all-as-read', (req, res) => {
+router.post('/mark-all-as-read', isAuth,  (req, res) => {
     if(req.body.isReadAll === true){
         Messages.updateMany({isRead: false}, {isRead: true}).then(data => {
             res.send({response: true});
@@ -53,19 +56,19 @@ router.post('/mark-all-as-read', (req, res) => {
     }
 });
 
-router.post('/mark-as-read', (req, res) => {
+router.post('/mark-as-read', isAuth,  (req, res) => {
     Messages.findByIdAndUpdate({_id: req.body.id}, {isRead: true}).then(data => {
         res.send({response: true});
     });
 });
 
-router.post('/mark-as-unread', (req, res) => {
+router.post('/mark-as-unread', isAuth,  (req, res) => {
     Messages.findByIdAndUpdate({_id: req.body.id}, {isRead: false}).then(data => {
         res.send({response: true});
     });
 });
 
-router.post('/mark-all-as-replied', (req, res) => {
+router.post('/mark-all-as-replied', isAuth,  (req, res) => {
     if(req.body.isRepliedAll === true){
         Messages.updateMany({isReplied: false}, {isReplied: true}).then(data => {
             res.send({response: true});
@@ -73,21 +76,21 @@ router.post('/mark-all-as-replied', (req, res) => {
     }
 });
 
-router.post('/mark-as-replied', (req, res) => {
+router.post('/mark-as-replied', isAuth,  (req, res) => {
     Messages.findByIdAndUpdate({_id: req.body.id}, {isReplied: true}).then(data => {
   
         res.send({response: true});
     });
 })
 
-router.post('/mark-as-notreplied', (req, res) => {
+router.post('/mark-as-notreplied', isAuth,  (req, res) => {
     Messages.findByIdAndUpdate({_id: req.body.id}, {isReplied: false}).then(data => {
 
         res.send({response: true});
     });
 })
 
-router.delete('/delete', (req, res) => {
+router.delete('/delete', isAuth,  (req, res) => {
     Messages.findByIdAndDelete(req.body.id).then(data => {
         res.send({response: true});
     });

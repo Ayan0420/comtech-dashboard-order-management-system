@@ -3,6 +3,9 @@
 const {useState, useEffect} = React;
 const {Modal, Button} = ReactBootstrap;
 
+// const API = 'http://localhost:4000'
+const API = 'https://app.comtechgingoog.com'
+
 /**
  * Message Card Component
  */
@@ -40,7 +43,7 @@ function Message(props){
             allowOutsideClick: false 
           })
         // console.log('id', id)
-        fetch('http://localhost:4000/messaging/mark-as-read', {
+        fetch(`${API}/messaging/mark-as-read`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -62,7 +65,7 @@ function Message(props){
     }
 
     function markAsRead(){
-        fetch('http://localhost:4000/messaging/mark-as-read', {
+        fetch(`${API}/messaging/mark-as-read`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -84,7 +87,7 @@ function Message(props){
     }
     
     function markAsUnread(){
-        fetch('http://localhost:4000/messaging/mark-as-unread', {
+        fetch(`${API}/messaging/mark-as-unread`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -119,7 +122,7 @@ function Message(props){
 
             if (result.isConfirmed) {
                 setHighlight(false);
-                fetch('http://localhost:4000/messaging/delete', {
+                fetch(`${API}/messaging/delete`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json'
@@ -148,7 +151,7 @@ function Message(props){
 
     function markAsReplied(){
 
-        fetch('http://localhost:4000/messaging/mark-as-replied', {
+        fetch(`${API}/messaging/mark-as-replied`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -170,7 +173,7 @@ function Message(props){
     }
 
     function markAsNotReplied(){
-        fetch('http://localhost:4000/messaging/mark-as-notreplied', {
+        fetch(`${API}/messaging/mark-as-notreplied`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -229,7 +232,7 @@ function AllMessages({messages, updateTheState, refreshState}){
     const handleShow = () => setShow(true);
 
     function markAllAsRead(isReadAll){
-        fetch('http://localhost:4000/messaging/mark-all-as-read', {
+        fetch(`${API}/messaging/mark-all-as-read`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -251,7 +254,7 @@ function AllMessages({messages, updateTheState, refreshState}){
     }
 
     function markAllAsReplied(isRepliedAll){
-        fetch('http://localhost:4000/messaging/mark-all-as-replied', {
+        fetch(`${API}/messaging/mark-all-as-replied`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -347,7 +350,7 @@ function Main(){
     const [permissionDenied, setPermissionDenied] = useState(false)
 
     useEffect(() => {
-        fetch('http://localhost:4000/messaging')
+        fetch(`${API}/messaging`)
         .then(res => res.json())
         .then(data => {
             if(data.response === false){
