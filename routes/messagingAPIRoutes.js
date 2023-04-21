@@ -96,4 +96,10 @@ router.delete('/delete', isAuth,  (req, res) => {
     });
 });
 
+router.delete('/delete-all', isAuth,  (req, res) => {
+    Messages.deleteMany({}).then(data => {
+        res.send({response: true});
+    });
+});
+
 module.exports = router;

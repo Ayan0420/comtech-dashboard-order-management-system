@@ -3,8 +3,8 @@
 const {useState, useEffect} = React;
 const {Modal, Button} = ReactBootstrap;
 
-// const API = 'http://localhost:4000'
-const API = 'https://app.comtechgingoog.com'
+const API = 'http://localhost:4000'
+// const API = 'https://app.comtechgingoog.com'
 
 /**
  * Message Card Component
@@ -275,6 +275,42 @@ function AllMessages({messages, updateTheState, refreshState}){
         })
     }
     
+    function deleteAllMessage(){
+
+        Swal.fire({
+            title: `Are you sure you want to delete ALL messages?`,
+            showDenyButton: true,
+            denyButtonText: 'Cancel',
+            denyButtonColor: "#4b4b4b",
+            confirmButtonText: 'Delete',
+            confirmButtonColor: "#ff4343"
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+
+            if (result.isConfirmed) {
+                fetch(`${API}/messaging/delete-all`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if(data.response === true){
+                        updateTheState()
+                    }
+
+                })
+                .catch(err => {
+                    console.log('Error Fetching Data from Messaging API: ', err)
+                })
+              Swal.fire('Inbox Cleared Successfully!', '', 'success')
+            } else if(result.isDenied || result.isDismissed){
+                // Swal.fire('Cancelled!', '')
+            }
+          })  
+    }
+
     return (
         <div>
             <div className='text-center my-3'>
@@ -305,8 +341,9 @@ function AllMessages({messages, updateTheState, refreshState}){
                         Replied: <strong>{messages.filter((message) => {return message.isReplied === true}).length}</strong>
                     </span>
                     <div className="ms-auto">
-                        <p onClick={() => markAllAsRead(true)} className='m-0 text-decoration-underline'>Mark All as Read</p>
-                        <p onClick={() => markAllAsReplied(true)} className='m-0 text-decoration-underline'>Mark All as Replied</p>
+                        <p onClick={() => markAllAsRead(true)} className='m-0 text-decoration-underline unread'>Mark All as Read</p>
+                        <p onClick={() => markAllAsReplied(true)} className='m-0 text-decoration-underline unread'>Mark All as Replied</p>
+                        <p onClick={deleteAllMessage} className='m-0 text-decoration-underline unread'>Delete All</p>
                     </div>
                 </div>
                 
@@ -416,7 +453,7 @@ function Main(){
             </div>
             <p className="mb-3 small text-center border-bottom py-2">These are the messages sent from the contact form of our website.</p>
 
-            { (messages.length === 0) ? <div className="text-center py-5">Message is empty.</div>
+            { (messages.length === 0) ? <div className="text-center py-5">Message Box is empty.</div>
             :
                 messages.slice(0,6).map(msg => {
                     // console.log('msg.id', msg.id)
