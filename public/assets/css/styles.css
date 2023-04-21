@@ -134,7 +134,7 @@ body {
 
 .autocomplete-items {
   position: absolute;
-  border: 1px solid #d4d4d4;
+  /* border: 1px solid #d4d4d4; */
   border-bottom: none;
   border-top: none;
   border-radius: 10px;
@@ -150,9 +150,10 @@ body {
   cursor: pointer;
   background-color: #ffb5b5f1; 
   border-bottom: 1px solid var(--bs-dark); 
-  border-left: 1px solid var(--bs-dark); 
-  border-right: 1px solid var(--bs-dark); 
-  
+  /* border-left: 1px solid var(--bs-dark); 
+  border-right: 1px solid var(--bs-dark);  */
+  /* border-radius: 10px; */
+  transition: all .3s;
 }
 
 /*when hovering an item:*/
@@ -160,6 +161,47 @@ body {
   background-color: #ff4343e0; 
   color:  #ffffff;
 }
-
-
 /* Auto Complete End */
+
+.message-card{
+  transition: all .3s;
+}
+
+.message-card:hover{
+  box-shadow: 0px 0px 8px #4430ff;
+  background-color: #ced1fff1;
+  cursor: pointer;
+}
+
+.messaging{
+  background-color: #e3f4fff1;
+}
+
+.cus-shadow{
+  box-shadow: 3px 3px 6px;  
+}
+
+.small{
+  font-size: small !important;
+}
+
+.text-green{
+  color: rgb(0, 184, 0);
+}
+
+.test{
+  color: #4b4b4b;
+}
+
+.bg-lightDark{
+  background-color: #d1d1d1;
+}
+
+.unread{
+  cursor: pointer;
+}
+
+.modal-content{
+  border: none;
+  border-radius: 0px !important;
+}

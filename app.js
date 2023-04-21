@@ -53,9 +53,7 @@ function isAuth(req, res, next) {
     }
 }
 
-
-            //ROUTES//
-
+//ROUTES//
 app.get('/', (req, res) => {
     res.redirect('/job-orders')
 })
@@ -87,12 +85,12 @@ app.post('/d-login', (req, res) => {
 //Logout Endpoint
 app.get('/logout', (req, res) => {
     req.session.destroy();
-    res.send('<h1 style="color: crimson; padding-top: 3rem; text-align: center; font-family: Arial;">Logged out successfully... <a href="/d-login">Go back</a><h1>')
+    res.send('<h3 style="color: crimson; padding-top: 3rem; text-align: center; font-family: Arial;">Logged out successfully! <br> <a href="/d-login">Login Here</a></h3>')
 });
 
 //Main Application Job Order Management System
-app.use('/job-orders',isAuth, jobOrderRoutes);
-// app.use('/job-orders', jobOrderRoutes);
+// app.use('/job-orders',isAuth, jobOrderRoutes);
+app.use('/job-orders', jobOrderRoutes);
 
 //Tracking System
 app.use('/tracking-app', trackingAppRoutes);

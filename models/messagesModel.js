@@ -18,7 +18,12 @@ const messages = new Schema({
         default: "No message"
     },
 
-    read: {
+    isRead: {
+        type: Boolean,
+        default: false
+    },
+
+    isReplied: {
         type: Boolean,
         default: false
     }
