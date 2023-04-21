@@ -3,7 +3,7 @@
 const {useState, useEffect} = React;
 const {Modal, Button} = ReactBootstrap;
 
-// const API = 'http://localhost:4000'
+// const API = 'http://localhost:4000' 
 const API = 'https://app.comtechgingoog.com'
 
 /**
@@ -230,6 +230,7 @@ function AllMessages({messages, updateTheState, refreshState}){
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    
 
     function markAllAsRead(isReadAll){
         fetch(`${API}/messaging/mark-all-as-read`, {
@@ -411,6 +412,7 @@ function Main(){
             setStateUpdate(0)
         }
     }
+    
 
     function refreshState(){
         let timerInterval
@@ -477,7 +479,29 @@ function Main(){
                 refreshState = {refreshState}
             />
            
+           <APIPooling 
+                updateTheState={updateTheState}
+           />
         </div>
+    )
+}
+
+
+/**
+ * Pooling Component
+ * - to fetch updated data from the server every 3 seconds
+ * and update the state of the application
+ */
+
+function APIPooling({updateTheState}){
+    useEffect(() => {
+        const interval = setInterval(() => {
+            updateTheState()
+        }, 2000)
+        return () => clearInterval(interval)
+    })
+    return (
+        <div></div>
     )
 }
 
