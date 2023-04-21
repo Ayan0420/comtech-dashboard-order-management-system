@@ -341,9 +341,9 @@ function AllMessages({messages, updateTheState, refreshState}){
                         Replied: <strong>{messages.filter((message) => {return message.isReplied === true}).length}</strong>
                     </span>
                     <div className="ms-auto">
-                        <p onClick={() => markAllAsRead(true)} className='m-0 text-decoration-underline unread'>Mark All as Read</p>
-                        <p onClick={() => markAllAsReplied(true)} className='m-0 text-decoration-underline unread'>Mark All as Replied</p>
-                        <p onClick={deleteAllMessage} className='m-0 text-decoration-underline unread'>Delete All</p>
+                        <p onClick={() => markAllAsRead(true)} className='m-0 text-decoration-underline unread text-end'>Mark All as Read</p>
+                        <p onClick={() => markAllAsReplied(true)} className='m-0 text-decoration-underline unread text-end'>Mark All as Replied</p>
+                        <p onClick={deleteAllMessage} className='m-0 text-decoration-underline unread text-end'>Delete All</p>
                     </div>
                 </div>
                 
