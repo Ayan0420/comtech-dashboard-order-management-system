@@ -3,8 +3,9 @@
 const {useState, useEffect} = React;
 const {Modal, Button} = ReactBootstrap;
 
-// const API = 'http://localhost:4000' 
-const API = 'https://app.comtechgingoog.com'
+// const API = 'https://app.comtechgingoog.com'; //for production
+// const API = 'https://f9rlb.localtonet.com'; //for tunnel server
+const API = 'http://localhost:4000'; //for development
 
 /**
  * Message Card Component
@@ -479,9 +480,9 @@ function Main(){
                 refreshState = {refreshState}
             />
            
-           <APIPooling 
+           {/* <APIPooling 
                 updateTheState={updateTheState}
-           />
+           /> */}
         </div>
     )
 }

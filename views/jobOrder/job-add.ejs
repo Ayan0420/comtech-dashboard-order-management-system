@@ -20,10 +20,12 @@
 
             <!-- Start: Add Job Order Form -->
             <div class="col-md-9" id="main-body">
-                <h3 class="fw-bold text-center text-light add-job py-4 mt-5">Add a new job order</h3><!-- Start: Job Order Details Form -->
+                <h3 class="fw-bold text-center text-light add-job fs-4 py-2 mt-2">ADD A NEW JOB ORDER</h3><!-- Start: Job Order Details Form -->
                 <form class="container" action="/job-orders" method="POST">
                     <p>Please enter all the required details of the customer and the job performed.</p><!-- Start: Form Row -->
+                    <p class="text-center text-uppercase mt-sm-1 mt-md-3 my-2 py-2">Customer Information</p>
                     <div class="row form-row">
+                        
                         <!-- Start: Job Order No. -->
                         <div class="col col-lg-3 pb-2"><label class="form-label custom-label" for="job_id">Job Order No.</label><input class="form-control custom-input" type="number" id="job_id" name="job_id" required="" autocomplete="off"></div><!-- End: Job Order No. -->
                         <!-- Start: Date -->
@@ -39,7 +41,7 @@
                         <div class="col-sm-12 col-lg-6 pb-2"><label class="form-label custom-label" for="cus_phone">Contact Info:</label><input class="form-control custom-input" type="text" id="cus_phone" name="cus_phone" required="" autocomplete="off"></div><!-- End: Phone -->
                     </div><!-- End: Form Row -->
                     <!-- Start: Unit Specs -->
-                    <p class="text-center text-uppercase pt-sm-1 pt-md-3 mb-1">Unit specification</p><!-- End: Unit Specs -->
+                    <p class="text-center text-uppercase mt-sm-1 mt-md-3 my-2 py-2">Unit specification</p><!-- End: Unit Specs -->
                     <!-- Start: Form Row -->
                     <div class="row form-row">
                         <!-- Start: Unit Model -->
@@ -53,7 +55,7 @@
                         <div class="col-sm-12 pb-2"><label class="form-label custom-label" for="unit_model">Unit Specs:</label><input class="form-control custom-input" type="text" id="unit_specs" name="unit_specs" required="" autocomplete="off" placeholder="Type N/A if not applicable"></div><!-- End: Unit Model -->
                     </div><!-- End: Form Row -->
                     <!-- Start: Unit Specs -->
-                    <p class="text-center text-uppercase pt-sm-1 pt-md-3 mb-1">Work performed</p><!-- End: Unit Specs -->
+                    <p class="text-center text-uppercase mt-sm-1 mt-md-3 my-2 py-2">Work performed</p><!-- End: Unit Specs -->
                     <!-- Start: Form Row -->
                     <div class="row form-row">
                         <!-- Start: Job Type -->
@@ -89,7 +91,7 @@
                         <div class="col-sm-7 col-lg-4 pb-2 mt-2"><label class="form-label custom-label" for="p_rel_date">Date Released/Returned:</label><input class="form-control custom-input" id="p_rel_date" name="p_rel_date" type="date" autocomplete="off"></div><!-- End: Date -->
                     </div><!-- End: Form Row -->
                     <!-- Start: Unit Specs -->
-                    <p class="text-center text-uppercase pt-sm-1 pt-md-3 mb-1">PARTS REPLACEMENT</p><!-- End: Unit Specs -->
+                    <p class="text-center text-uppercase mt-sm-1 mt-md-3 my-2 py-2">PARTS REPLACEMENT</p><!-- End: Unit Specs -->
                     <div class="accordion" role="tablist" id="accordion-1">
                         <div class="accordion-item">
                             <h2 class="accordion-header" role="tab"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-1" aria-expanded="false" aria-controls="accordion-1 .item-1">Click to Expand (If applicable)</button></h2>

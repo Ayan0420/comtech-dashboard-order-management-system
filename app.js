@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
+const cors = require('cors')
 
 //external routes
 const jobOrderRoutes = require('./routes/jobOrderRoutes');
@@ -42,6 +43,7 @@ app.use(session({
     saveUninitialized: false,
 })); //used for flash message and authenticaiton
 app.use(flash()); //used for flash message
+app.use(cors());
 
 //Basic Auth Middleware
 function isAuth(req, res, next) {
@@ -89,7 +91,8 @@ app.get('/logout', (req, res) => {
 });
 
 //Main Application Job Order Management System
-app.use('/job-orders',isAuth, jobOrderRoutes);
+
+app.use('/job-orders',isAuth, jobOrderRoutes); //for production
 // app.use('/job-orders', jobOrderRoutes); //for development
 
 //Tracking System

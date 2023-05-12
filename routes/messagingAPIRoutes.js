@@ -15,8 +15,8 @@ function isAuthFunc(req, res, next) {
     }
 }
 
-let isAuth = isAuthFunc;
-// let isAuth = (req, res, next) => next(); //for development
+// let isAuth = isAuthFunc; //for production
+let isAuth = (req, res, next) => next(); //for development
 
 // add this later "isAuth, "
 

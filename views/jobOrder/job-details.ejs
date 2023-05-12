@@ -16,7 +16,7 @@
                 <!-- <iframe allowfullscreen="" frameborder="0" loading="lazy" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAbINk7rv7Ey4sGOfM1lZc6IWAkNEzFj-A&amp;q=comtech+gingoog&amp;zoom=15" id="map" width="100%" height="400"></iframe> -->
             </div>
             <div class="col-md-9" id="main-body">
-                <h3 class="fw-bold text-center text-light job-details py-4 mt-5" id="jo-details-heading">Job Order Details</h3><!-- Start: Job Order Details Form -->
+                <h3 class="fw-bold text-center text-light job-details fs-4 py-2 mt-2" id="jo-details-heading">JOB ORDER DETAILS</h3><!-- Start: Job Order Details Form -->
 
                 <% if(flashMessage.length > 0 ) { %>
                     <div class="alert alert-success py-1 px-3 mt-1" id="flash-message"> <%= flashMessage %> </div>
@@ -28,6 +28,7 @@
                         <p>To update or delete this job order, click the "Edit Job Order" button below.</p>
                         
                         <!-- Start: Form Row -->
+                        <p class="text-center text-uppercase mt-sm-1 mt-md-3 my-2 py-2">Customer Information</p>
                         <div class="row">
                             <div class="col col-md-4 mb-2 ms-auto text-center"><span class="fst-italic fw-bold">Tracking Code:</span> <span class="fw-bold border border-dark border-1 rounded-1 px-1 py-0 bg-dark text-light"><%= jobOrder._id.toString().toUpperCase().slice(-6)%></span></div>
                         </div>
@@ -47,7 +48,7 @@
                             <div class="col-sm-12 col-lg-6 pb-2"><label class="form-label custom-label" for="cus_phone">Contact Info:</label><input value="<%= jobOrder.cus_phone%>"  class="form-control custom-input" type="text" id="cus_phone" name="cus_phone" required="" autocomplete="off"></div><!-- End: Phone -->
                         </div><!-- End: Form Row -->
                         <!-- Start: Unit Specs -->
-                        <p class="text-center text-uppercase pt-sm-1 pt-md-3 mb-1">Unit specification</p><!-- End: Unit Specs -->
+                        <p class="text-center text-uppercase mt-sm-1 mt-md-3 my-2 py-2">Unit specification</p><!-- End: Unit Specs -->
                         <!-- Start: Form Row -->
                         <div class="row form-row">
                             <!-- Start: Unit Model -->
@@ -61,7 +62,7 @@
                             <div class="col-sm-12 pb-2"><label class="form-label custom-label" for="unit_model">Unit Specs:</label><input value="<%= jobOrder.unit_specs %>"  class="form-control custom-input" type="text" id="unit_specs" name="unit_specs" autocomplete="off"></div><!-- End: Unit Model -->
                         </div><!-- End: Form Row -->
                         <!-- Start: Unit Specs -->
-                        <p class="text-center text-uppercase pt-sm-1 pt-md-3 mb-1">Work performed</p><!-- End: Unit Specs -->
+                        <p class="text-center text-uppercase mt-sm-1 mt-md-3 my-2 py-2">Work performed</p><!-- End: Unit Specs -->
                         <!-- Start: Form Row -->
                         <div class="row form-row">
                             <!-- Start: Job Type -->
@@ -99,7 +100,7 @@
                             <div class="col-sm-7 col-lg-4 pb-2 mt-2"><label class="form-label custom-label" for="p_rel_date">Date Released/Returned:</label><input value="<%= jobOrder.p_rel_date %>" class="form-control custom-input" id="p_rel_date" name="p_rel_date" type="date" autocomplete="off"></div><!-- End: Date -->
                         </div><!-- End: Form Row -->
                         <!-- Start: Unit Specs -->
-                        <p class="text-center text-uppercase pt-sm-1 pt-md-3 mb-1">PARTS REPLACEMENT</p><!-- End: Unit Specs -->
+                        <p class="text-center text-uppercase mt-sm-1 mt-md-3 my-2 py-2">PARTS REPLACEMENT</p><!-- End: Unit Specs -->
                         <!-- Start: Form Row -->
                         <div class="row form-row">
                             <!-- Start: Parts Ordered -->

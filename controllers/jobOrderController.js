@@ -8,7 +8,7 @@ const jobOrder_index = dashboardFunctions.dashboard;
 
 //search jobs
 const jobOrder_search = async (req, res) => {
-    let payload = req.body.payload.trim(); //trim() will remove the white spaces
+    let payload = req.body.payload.trim(); //trim() will remove white spaces
     let search = await JobOrder.find({$or: [
         {job_id: {$regex: new RegExp('^' + payload + '.*', 'i')}},
         {job_date: {$regex: new RegExp('^' + payload + '.*', 'i')}},
@@ -18,8 +18,9 @@ const jobOrder_search = async (req, res) => {
         {work_perf: {$regex: new RegExp('^' + payload + '.*', 'i')}},
         {s_status: {$regex: new RegExp('^' + payload + '.*', 'i')}},
     ]}).exec();
-    //limit to 5 results
-    search = search.slice(0, 6);
+    
+    //limit to 10 results
+    search = search.slice(0, 10);
     
     res.send({payload: search});
 };
