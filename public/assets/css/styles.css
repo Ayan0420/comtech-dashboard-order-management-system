@@ -1,3 +1,11 @@
+input {
+  background-color: #feffd6 !important;
+}
+
+input:disabled {
+  background-color: #ececec !important;
+}
+
 #summary-card-1 {
   height: 100%;
 }
@@ -215,3 +223,4 @@ body {
   border: none;
   border-radius: 0px !important;
 }
+

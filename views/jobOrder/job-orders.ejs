@@ -178,7 +178,7 @@
                         </div><!-- End: SUMMARY-TAB-CONTENT -->
                         <!-- Start: JOB-ORDER-CONTENT -->
                         <div class="tab-pane fade" role="tabpanel" id="tab-2">
-                            <p class="mt-4">The table shows the 15 most recent Job Order. </p>
+                            <p class="mt-4">The table shows the 10 most recent Job Order. </p>
                           
                             <!-- <button class="btn btn-danger btn-sm text-center ms-2 rounded-pill" id="btn-search" type="button">search</button> -->
                             <!-- Start: JOB-ORDER-TABLE -->
@@ -197,7 +197,7 @@
                                         <!-- Start: Job Order Entry Row -->
                                         <!-- notes: slice() method limits the number of results in the table -->
                                         <% if (jobOrders.length > 0) { %>
-                                            <% jobOrders.slice(0, 15).forEach( jobOrder => { %>
+                                            <% jobOrders.slice(0, 10).forEach( jobOrder => { %>
                                                 <tr>
                                                     <td><%=jobOrder.job_id%> </td>
                                                     <td><%=jobOrder.cus_name%></td>
@@ -206,7 +206,7 @@
                                                     <td class="text-center"><a href="/job-orders/job-details/<%=jobOrder._id%>"><i class="fas fa-eye text-info custom-view-icon" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="swing" title="View Job Order Details"></i></a></td>
                                                 </tr>   
                                             <% }) %>
-
+                                                
                                             <% } else { %>
                                             <p class="container">No Job Order Available...</p>    
                                         <% } %>
@@ -215,6 +215,9 @@
                                     </tbody>
                                 </table>
                             </div><!-- End: JOB-ORDER-TABLE -->
+                            <div class="text-center">
+                                <button class="btn btn-primary btn-sm">Load more</button>
+                            </div>
                         </div><!-- End: JOB-ORDER-CONTENT -->
 
                         <!-- Start: OPERATING EXPENSES-CONTENT -->
