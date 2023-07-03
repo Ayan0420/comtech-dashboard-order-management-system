@@ -16,7 +16,7 @@ const jobOrder_list = (req, res) => {
         }) 
     } else if(jobOrderList === "on-going"){
         JobOrder.find({s_status: "ONGOING"}).sort({createdAt: -1}).then(result => {
-            res.render('jobOrder/job-list', {jobOrders: result, title: "On-Going Jobs", jobCount: result.length});
+            res.render('jobOrder/job-list', {jobOrders: result, title: "On-Going Jobs", jobCount: result.length, flashMessage: req.flash('message') });
         });
     } else if(jobOrderList === "parts-orders"){
         JobOrder.find({}).then(result => {
@@ -30,7 +30,7 @@ const jobOrder_list = (req, res) => {
                     currentPartsOrders.push(result[i]);
                 }
             }
-            res.render('jobOrder/job-list', {jobOrders: currentPartsOrders, title: "Parts Orders", jobCount: currentPartsOrders.length});
+            res.render('jobOrder/job-list', {jobOrders: currentPartsOrders, title: "Parts Orders", jobCount: currentPartsOrders.length, flashMessage: req.flash('message') });
         });
     }  else if(jobOrderList === "unclaimed"){
         JobOrder.find({}).sort({createdAt: -1}).then(result => {
@@ -45,7 +45,7 @@ const jobOrder_list = (req, res) => {
                     continue;
                 }
             }
-            res.render('jobOrder/job-list', {jobOrders: currentUnclaimedOrders, title: "Unclaimed Jobs", jobCount: currentUnclaimedOrders.length});
+            res.render('jobOrder/job-list', {jobOrders: currentUnclaimedOrders, title: "Unclaimed Jobs", jobCount: currentUnclaimedOrders.length, flashMessage: req.flash('message') });
         });
     } else if(jobOrderList === "dmd"){
         JobOrder.find({}).sort({createdAt: -1}).then(result => {
@@ -83,8 +83,10 @@ const jobOrder_list = (req, res) => {
                     }
             }
 
-            res.render('jobOrder/job-list', {jobOrders: currentDMDOrders, title: `DMD (${monthNowName})`, jobCount: currentDMDOrders.length});
+            res.render('jobOrder/job-list', {jobOrders: currentDMDOrders, title: `DMD (${monthNowName})`, jobCount: currentDMDOrders.length, flashMessage: req.flash('message') });
         });
+    } else {
+        res.status(404).render('landingPage/404', {title: "404"});
     }
 };
  
@@ -92,13 +94,13 @@ const jobOrder_list = (req, res) => {
 const jobOrder_search = async (req, res) => {
     let payload = req.body.payload.trim(); //trim() will remove white spaces
     let search = await JobOrder.find({$or: [
-        {job_id: {$regex: new RegExp('^' + payload + '.*', 'i')}},
-        {job_date: {$regex: new RegExp('^' + payload + '.*', 'i')}},
-        {cus_name: {$regex: new RegExp('^' + payload + '.*', 'i')}},
-        {cus_address: {$regex: new RegExp('^' + payload + '.*', 'i')}},
-        {unit_model: {$regex: new RegExp('^' + payload + '.*', 'i')}},
-        {work_perf: {$regex: new RegExp('^' + payload + '.*', 'i')}},
-        {s_status: {$regex: new RegExp('^' + payload + '.*', 'i')}},
+        {job_id: {$regex: new RegExp(payload , 'i')}},
+        {job_date: {$regex: new RegExp(payload , 'i')}},
+        {cus_name: {$regex: new RegExp(payload, 'i')}},
+        {cus_address: {$regex: new RegExp(payload , 'i')}},
+        {unit_model: {$regex: new RegExp(payload , 'i')}},
+        {work_perf: {$regex: new RegExp(payload , 'i')}},
+        {s_status: {$regex: new RegExp(payload , 'i')}},
     ]}).exec();
     
     //limit to 10 results

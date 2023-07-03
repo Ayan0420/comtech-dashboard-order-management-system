@@ -31,7 +31,10 @@
                 </div>
                 <!-- End: search -->
                 <h3 class="fw-bold bg-primary text-center text-light fs-4 py-2 mt-2" id="jo-details-heading"><%= title.toUpperCase() %></h3><!-- Start: Job Order Details Form -->
-                <p class="fw-bold">Total: <%= jobCount %></p>
+                <p class="fw-bold mb-1">Total: <%= jobCount %></p>
+                <% if (title == "All Jobs") { %>
+                    <p>The table only shows the top 100 most recent jobs.</p>
+                <% } %>
                 <!-- Start: JOB-ORDER-TABLE -->
                 <div class="table-responsive my-3" id="job-order-table">
                     <table class="table table-striped table-hover table-sm table-bordered">
@@ -49,7 +52,7 @@
                             <!-- Start: Job Order Entry Row -->
                             <!-- notes: slice() method limits the number of results in the table -->
                             <% if (jobOrders.length > 0) { %>
-                                <% jobOrders.forEach( jobOrder => { %>
+                                <% jobOrders.slice(0, 100).forEach( jobOrder => { %>
                                     <tr class="hover-color" onclick="window.location='/job-orders/job-details/<%=jobOrder._id%>';" style="cursor: pointer;
                                         ">
                                         <td class="text-center"><%=jobOrder.job_id%> </td>
@@ -62,7 +65,7 @@
                                 <% }) %>
                                     
                                 <% } else { %>
-                                <p class="container">No Job Order Available...</p>    
+                                <p class="container text-center fw-bold fs-5 my-2 text-danger">No Job Orders</p>    
                             <% } %>
                             <!-- End: Job Order Entry Row -->
                             
@@ -92,7 +95,7 @@
 
     <!-- End: MAIN-SECTION -->
     <%- include('../partials/foot.ejs') %> 
-    
+
     <script>
         window.onload = (event) => {
             let myAlert = document.querySelectorAll('.toast')[0];

@@ -50,6 +50,7 @@ input:disabled {
   border-radius: 5px;
   padding: 1px 10px;
   background-color: rgb(219, 226, 255);
+  font-size: large !important;
 }
 
 /* #map {
@@ -166,18 +167,18 @@ body {
 .autocomplete-items div {
   padding: 10px;
   cursor: pointer;
-  background-color: #ffb5b5f1; 
-  border-bottom: 1px solid var(--bs-dark); 
-  /* border-left: 1px solid var(--bs-dark); 
-  border-right: 1px solid var(--bs-dark);  */
+  background-color: #fffadb; 
+  border-bottom: 3px solid var(--bs-dark); 
+  border-left: 3px solid var(--bs-dark); 
+  border-right: 3px solid var(--bs-dark); 
   /* border-radius: 10px; */
-  transition: all .3s;
 }
 
 /*when hovering an item:*/
 .autocomplete-items div:hover {
-  background-color: #ff4343e0; 
-  color:  #ffffff;
+  background-color: #e4f3ff; 
+  color:  #000000;
+  font-weight: bold;
 }
 /* Auto Complete End */
 
@@ -226,7 +227,6 @@ body {
 
 .hover-color:hover{
   background-color: #ffe4e4 !important;
-  font-weight: bold !important;
 }
 
 #main-body{
