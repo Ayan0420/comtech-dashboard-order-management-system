@@ -4,12 +4,11 @@ const dashboard = (req, res) => {
     JobOrder.find().sort({createdAt: -1})
         .then(data => {
             //Current Month Filter - this section filters the data showing only the data for the current month.
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
             let dateNow = new Date(); //instantiation a new Date object called dateNow
             let monthNow = dateNow.getMonth() + 1;
-            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
             let monthNowName = months[dateNow.getMonth()];
-            
-            yearNow = dateNow.getFullYear();
+            let yearNow = dateNow.getFullYear();
             // console.log('yearNow', yearNow)
                 // console.log("Date Now Object: " + dateNow)
                 // console.log("Month Today: " + monthNow)
@@ -140,9 +139,9 @@ const dashboard = (req, res) => {
                         } else {
                             continue;
                         }
-                    }
-                    // console.log(currentDMDOrders);
-                    return currentDMDOrders.length
+                }
+                // console.log(currentDMDOrders);
+                return currentDMDOrders.length
            }
 
             let currentDMDOrdersCount = countDMDOrders();

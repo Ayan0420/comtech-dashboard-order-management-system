@@ -10,7 +10,9 @@
                 <h3 class="text-center d-lg-flex fw-bold justify-content-lg-center mt-4 align-items-lg-start" id="welcome-text" style="width: 100%;padding-top: .5rem;">Good day Admin!</h3>
 
                 <!-- Start: clock -->
-                <%- include('../partials/clock-weather.ejs')%>
+                <div class="d-none d-md-block">
+                    <%- include('../partials/clock-weather.ejs')%>
+                </div>
                 <!-- End: clock -->
                 
                 <p class="mb-1 mt-3" style="text-align: center;"><strong>Comtech Laptop Repair Shop</strong><br>Brgy. 19, Corner Jadol-Tuto St., Gingoog City, Misamis Oriental, 9014</p>
@@ -51,16 +53,14 @@
                         
                         <div class="tab-pane active fade show" role="tabpanel" id="tab-1">
                            
-                            <% if(flashMessage.length > 0 ) { %>
-                                <div class="alert alert-warning py-1 px-3 mt-1" id="flash-message"> <%= flashMessage %> </div>
-                            <% } %>  
+                            
 
                             
                             <div class="row d-lg-flex d-xl-flex justify-content-lg-center align-items-lg-center justify-content-xl-center" id="summary-row" style="margin-bottom: 1.5rem;margin-top: 1.5rem;">
                                 <div class="col d-xl-flex justify-content-xl-center d-flex align-items-stretch" id="summary-card-1">
                                     <div class="card" style="box-shadow: 3px 3px 6px;border-radius: 10px;width: 100%;">
                                         <div class="card-header d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 65px;">
-                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;">Total Job Orders</h5>
+                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;"><a class="text-black" href="/job-orders/job-orders/all">Total Job Orders</a></h5>
                                         </div>
                                         <div class="card-body">
                                             <h5 style="text-align: center;font-weight: bold;font-size: 40px;color: var(--bs-cyan);border-width: 0px;border-color: var(--bs-gray-800);"><%= totalJobOrders %></h5>
@@ -70,7 +70,7 @@
                                 <div class="col d-xl-flex justify-content-xl-center d-flex align-items-stretch" id="summary-card-2">
                                     <div class="card" style="box-shadow: 3px 3px 6px;border-radius: 10px;width: 100%;">
                                         <div class="card-header d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 65px;">
-                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;">On Going Orders</h5>
+                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;"><a class="text-black" href="/job-orders/job-orders/on-going">On Going Orders</a></h5>
                                         </div>
                                         <div class="card-body">
                                             <h5 style="text-align: center;font-weight: bold;font-size: 40px;color: var(--bs-orange);border-width: 0px;border-color: var(--bs-gray-800);"><%= currentOrdersCount %></h5>
@@ -80,7 +80,7 @@
                                 <div class="col d-xl-flex justify-content-xl-center align-items-xl-center d-flex align-items-stretch" id="summary-card-3">
                                     <div class="card" style="box-shadow: 3px 3px 6px;border-radius: 10px;width: 100%;">
                                         <div class="card-header d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 65px;">
-                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;"><strong>Parts Orders</strong></h5>
+                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;"><strong><a class="text-black" href="/job-orders/job-orders/parts-orders">Parts Orders</a></strong></h5>
                                         </div>
                                         <div class="card-body">
                                             <h5 style="text-align: center;font-weight: bold;color: var(--bs-orange);border-width: 0px;border-color: var(--bs-gray-800);font-size: 40px;"><%= currentPartsOrdersCount %></h5>
@@ -92,7 +92,7 @@
                                 <div class="col d-xl-flex justify-content-xl-center d-flex align-items-stretch" id="summary-card-4">
                                     <div class="card" style="box-shadow: 3px 3px 6px;border-radius: 10px;width: 100%;">
                                         <div class="card-header d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 65px;">
-                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;">Unclaimed Orders</h5>
+                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;"><a class="text-black" href="/job-orders/job-orders/unclaimed">Unclaimed Orders</a></h5>
                                         </div>
                                         <div class="card-body">
                                             <h5 style="text-align: center;font-weight: bold;font-size: 40px;color: var(--bs-red);border-width: 0px;border-color: var(--bs-gray-800);"><%= currentUnclaimedOrdersCount %></h5>
@@ -102,7 +102,7 @@
                                 <div class="col d-xl-flex justify-content-xl-center d-flex align-items-stretch" id="summary-card-5">
                                     <div class="card d-xl-flex justify-content-xl-center" style="box-shadow: 3px 3px 6px;border-radius: 10px;width: 100%;">
                                         <div class="card-header d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 65px;">
-                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;">DMD (<%= monthNowName %>)</h5>
+                                            <h5 class="mb-0" style="text-align: center;font-weight: bold;"><a class="text-black" href="/job-orders/job-orders/dmd">DMD (<%= monthNowName %>)</a></h5>
                                         </div>
                                         <div class="card-body">
                                             <h5 style="text-align: center;font-weight: bold;font-size: 40px;color: var(--bs-red);border-width: 0px;border-color: var(--bs-gray-800);"><%= currentDMDOrdersCount %></h5>
@@ -110,7 +110,7 @@
                                     </div>
                                 </div>
                                 <div class="col d-xl-flex justify-content-xl-center d-flex align-items-stretch" id="summary-card-6">
-                                    <div class="card" style="box-shadow: 3px 3px 6px;border-radius: 10px;width: 100%;">
+                                    <div class="card mt-4 mt-md-0" style="box-shadow: 3px 3px 6px;border-radius: 10px;width: 100%;">
                                         <div class="card-header d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 65px;">
                                             <h5 class="mb-0" style="text-align: center;font-weight: bold;">Revenue (<%= monthNowName %>)</h5>
                                         </div>
@@ -216,7 +216,7 @@
                                 </table>
                             </div><!-- End: JOB-ORDER-TABLE -->
                             <div class="text-center">
-                                <button class="btn btn-primary btn-sm">Load more</button>
+                                <a href="/job-orders/job-orders/all" class="btn btn-primary btn-sm">Load more</a>
                             </div>
                         </div><!-- End: JOB-ORDER-CONTENT -->
 

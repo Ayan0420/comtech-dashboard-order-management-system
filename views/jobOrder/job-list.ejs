@@ -1,0 +1,104 @@
+<html lang="en">
+<%- include('../partials/head.ejs') %> 
+<body>
+    <%- include('../partials/nav.ejs')%>
+    
+    <!-- Start: MAIN-SECTION -->
+    <div class="container mb-3" id="lr-margin">
+        <div class="row " style="margin-top: 1rem;">
+            <div class="col-md-3 d-flex d-lg-flex d-xl-flex flex-column align-items-center align-items-sm-center align-items-lg-center justify-content-xl-start" id="sidebar-column">
+                <h3 class="text-center d-lg-flex fw-bold justify-content-lg-center mt-4 align-items-lg-start" id="welcome-text" style="width: 100%;padding-top: .5rem;">Good day Admin!</h3>
+                <!-- Start: clock -->
+                <%- include('../partials/clock-weather.ejs')%>
+                <!-- End: clock -->
+                <p class="mb-1 mt-0" style="text-align: center;"><strong>Comtech Laptop Repair Shop</strong><br>Brgy. 19, Corner Jadol-Tuto St., Gingoog City, Misamis Oriental, 9014</p>
+                <a class="btn btn-primary d-lg-flex justify-content-sm-center justify-content-lg-center align-items-lg-center" role="button" data-bss-disabled-mobile="true" data-bss-hover-animate="pulse" id="view-job-order-btn" href="/job-orders">Dashboard</a>
+                <a class="btn btn-primary d-lg-flex justify-content-sm-center justify-content-lg-center align-items-lg-center" role="button" data-bss-disabled-mobile="true" data-bss-hover-animate="pulse" id="add-job-order-btn" href="/job-orders/add-job-order">Add Job Order</a>
+                <!-- <iframe allowfullscreen="" frameborder="0" loading="lazy" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAbINk7rv7Ey4sGOfM1lZc6IWAkNEzFj-A&amp;q=comtech+gingoog&amp;zoom=15" id="map" width="100%" height="400"></iframe> -->
+            </div>
+            <div class="col-md-9 min-100" id="main-body">
+                <!-- Start: search -->
+                <div class="row">
+                    <div class="col-12 mb-3 autocomplete">
+                        <!-- Start: searchbox -->
+                        <input class="border border-info border-2 " type="text" id="search-input" name="search-input" placeholder="Search Job Order e.g. J.O. Number, Customer Name, etc..." onkeyup="sendData(this)" autocomplete="off">
+
+                        <div class="autocomplete-items" id="autocomplete-items">
+
+                        </div>
+                        <!-- End: searchbox -->
+                     </div>
+                </div>
+                <!-- End: search -->
+                <h3 class="fw-bold bg-primary text-center text-light fs-4 py-2 mt-2" id="jo-details-heading"><%= title.toUpperCase() %></h3><!-- Start: Job Order Details Form -->
+                <p class="fw-bold">Total: <%= jobCount %></p>
+                <!-- Start: JOB-ORDER-TABLE -->
+                <div class="table-responsive my-3" id="job-order-table">
+                    <table class="table table-striped table-hover table-sm table-bordered">
+                        <thead>
+                            <tr class="text-center">
+                                <th class="col-md-1 text-center">Job Order #</th>
+                                <th class="">Customer Name</th>
+                                <th class="">Unit Model</th>
+                                <th class="">Work Performed</th>
+                                <th class="">Status</th>
+                                <th class="">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Start: Job Order Entry Row -->
+                            <!-- notes: slice() method limits the number of results in the table -->
+                            <% if (jobOrders.length > 0) { %>
+                                <% jobOrders.forEach( jobOrder => { %>
+                                    <tr class="hover-color" onclick="window.location='/job-orders/job-details/<%=jobOrder._id%>';" style="cursor: pointer;
+                                        ">
+                                        <td class="text-center"><%=jobOrder.job_id%> </td>
+                                        <td><%=jobOrder.cus_name%></td>
+                                        <td><%=jobOrder.unit_model%></td>
+                                        <td><%=jobOrder.work_perf%></td>
+                                        <td><%=jobOrder.s_status%></td>
+                                        <td><%=jobOrder.job_date%></td>
+                                    </tr>   
+                                <% }) %>
+                                    
+                                <% } else { %>
+                                <p class="container">No Job Order Available...</p>    
+                            <% } %>
+                            <!-- End: Job Order Entry Row -->
+                            
+                        </tbody>
+                    </table>
+                </div><!-- End: JOB-ORDER-TABLE -->
+            </div>
+        </div>
+    </div>
+
+    <% if(flashMessage.length > 0 ) { %>
+        <!-- <div class="alert alert-warning py-1 px-3 mt-1" id="flash-message"> <%= flashMessage %> </div> -->
+
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+            <div class="toast text-white bg-warning align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex rounded-2">
+                    <div class="toast-body text-center fs-4">
+                    <%= flashMessage %>
+                    </div>
+                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+
+
+    <% } %>  
+
+    <!-- End: MAIN-SECTION -->
+    <%- include('../partials/foot.ejs') %> 
+    
+    <script>
+        window.onload = (event) => {
+            let myAlert = document.querySelectorAll('.toast')[0];
+            let bsAlert = new bootstrap.Toast(myAlert);
+            bsAlert.show();
+        }
+    </script>
+</body>
+</html>

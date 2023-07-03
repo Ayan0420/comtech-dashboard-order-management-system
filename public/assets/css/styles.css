@@ -224,3 +224,11 @@ body {
   border-radius: 0px !important;
 }
 
+.hover-color:hover{
+  background-color: #ffe4e4 !important;
+  font-weight: bold !important;
+}
+
+#main-body{
+  min-height: 100vh;
+}

@@ -6,6 +6,88 @@ const dashboardFunctions = require('./dashboardFunctions')
 //jobOrder index (dashboard)
 const jobOrder_index = dashboardFunctions.dashboard;
 
+//job order lists with filters
+const jobOrder_list = (req, res) => {
+    let jobOrderList = req.params.list;
+    
+    if(jobOrderList === "all"){
+        JobOrder.find({}).sort({createdAt: -1}).then(result => {
+            res.render('jobOrder/job-list', {jobOrders: result, title: "All Jobs", jobCount: result.length, flashMessage: req.flash('message') });
+        }) 
+    } else if(jobOrderList === "on-going"){
+        JobOrder.find({s_status: "ONGOING"}).sort({createdAt: -1}).then(result => {
+            res.render('jobOrder/job-list', {jobOrders: result, title: "On-Going Jobs", jobCount: result.length});
+        });
+    } else if(jobOrderList === "parts-orders"){
+        JobOrder.find({}).then(result => {
+            let currentPartsOrders = [];
+                
+            //loop through the all the contents of the db and filter p_status and append the data to currentPartsOrders array.
+            for(let i = 0; i < result.length; i++){
+                if (result[i].p_status === 'N/A' || result[i].p_status !== 'PARTIALLY PAID'){
+                    continue;
+                } else {
+                    currentPartsOrders.push(result[i]);
+                }
+            }
+            res.render('jobOrder/job-list', {jobOrders: currentPartsOrders, title: "Parts Orders", jobCount: currentPartsOrders.length});
+        });
+    }  else if(jobOrderList === "unclaimed"){
+        JobOrder.find({}).sort({createdAt: -1}).then(result => {
+
+            let currentUnclaimedOrders = [];
+
+            //loop through the all the contents of the db and filter s_status and append the data to currentUnclaimedOrders array.
+            for(let i = 0; i < result.length; i++){
+                if (result[i].s_status === 'PAID/UNRELEASED' || result[i].s_status === 'DONE/UNRELEASED' || result[i].s_status === 'DMD/UNRELEASED'){
+                    currentUnclaimedOrders.push(result[i]);  
+                } else {
+                    continue;
+                }
+            }
+            res.render('jobOrder/job-list', {jobOrders: currentUnclaimedOrders, title: "Unclaimed Jobs", jobCount: currentUnclaimedOrders.length});
+        });
+    } else if(jobOrderList === "dmd"){
+        JobOrder.find({}).sort({createdAt: -1}).then(result => {
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            let dateNow = new Date(); //instantiation a new Date object called dateNow
+            let monthNow = dateNow.getMonth() + 1;
+            let monthNowName = months[dateNow.getMonth()];
+            let yearNow = dateNow.getFullYear();
+
+            let dataByCurrentMonth = []; //use this filtered result array for functions dependent on current
+            let currentDMDOrders = [];
+
+            //this for loop is used to append filtered result by current month to the resultByCurrentMonth array.
+            for(let i = 0; i < result.length; i++){
+                let month = result[i].job_date.substring(5, 7); //removing 2023- and -11 from 2023-02-11 leaving only 02.
+                let salesYear = result[i].job_date.substring(0, 4);
+
+                //to fetch sales only from current year
+                if(salesYear != yearNow){
+                    continue
+                } 
+
+                if (month != monthNow){
+                    continue;
+                } else {
+                    dataByCurrentMonth.push(result[i]);
+                }
+            }
+
+            for(let i = 0; i < dataByCurrentMonth.length; i++){
+                if (dataByCurrentMonth[i].s_status === 'DMD/RELEASED' || dataByCurrentMonth[i].s_status === 'DMD/UNRELEASED'){
+                    currentDMDOrders.push(dataByCurrentMonth[i]);  
+                    } else {
+                        continue;
+                    }
+            }
+
+            res.render('jobOrder/job-list', {jobOrders: currentDMDOrders, title: `DMD (${monthNowName})`, jobCount: currentDMDOrders.length});
+        });
+    }
+};
+ 
 //search jobs
 const jobOrder_search = async (req, res) => {
     let payload = req.body.payload.trim(); //trim() will remove white spaces
@@ -85,7 +167,7 @@ const jobOrder_delete = (req, res) => {
     JobOrder.findByIdAndDelete(id)
     .then(result => {
         req.flash('message', 'Job Order deleted successfully!')
-        res.json({redirectToHome: "/job-orders"})
+        res.json({redirectToHome: "/job-orders/job-orders/all"})
     })
     .catch(err => console.log("There's an error in the server side deleting J.O." + err));
 }
@@ -94,6 +176,7 @@ const jobOrder_delete = (req, res) => {
 
 module.exports = {
     jobOrder_index,
+    jobOrder_list,
     jobOrder_search,
     jobOrder_add_get,
     jobOrder_add_post,
