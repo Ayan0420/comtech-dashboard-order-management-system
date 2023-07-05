@@ -1,5 +1,6 @@
 const JobOrder = require('../models/jobOrderModel');
 const dashboardFunctions = require('./dashboardFunctions')
+const {generateJobOrderSlip} = require('../report_generator/report_generator')
 
     //JobOrder APP CONTROLLERS//
 
@@ -49,6 +50,7 @@ const jobOrder_list = (req, res) => {
         });
     } else if(jobOrderList === "dmd"){
         JobOrder.find({}).sort({createdAt: -1}).then(result => {
+            
             const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
             let dateNow = new Date(); //instantiation a new Date object called dateNow
             let monthNow = dateNow.getMonth() + 1;
@@ -90,7 +92,7 @@ const jobOrder_list = (req, res) => {
     }
 };
  
-//search jobs
+    //search jobs
 const jobOrder_search = async (req, res) => {
     let payload = req.body.payload.trim(); //trim() will remove white spaces
     let search = await JobOrder.find({$or: [
@@ -109,12 +111,29 @@ const jobOrder_search = async (req, res) => {
     res.send({payload: search});
 };
 
+//print job order
+const jobOrder_print = (req, res) => {
+    const id = req.params.job_id; //params from .../job-print/:job_id
+
+    JobOrder.findById(id)
+    .then((data) => {
+        // console.log(result)
+
+        generateJobOrderSlip(data)
+
+        req.flash('message', 'Printing job order...')
+        res.redirect(`/job-orders/job-details/${id}`);
+    })
+    .catch((err) => {
+        res.status(404).send('<h1>Error printing!</h1>');
+    });
+}
+
 //Single job and edit page
-    
     //show job
 const jobOrder_update_get = (req, res) => {
     const id = req.params.job_id; //params from .../job-details/:job_id
-
+    
     JobOrder.findById(id)
     .then((result) => {
         res.render('jobOrder/job-details', { title: "Job Order No.: " + result.job_id, jobOrder: result, flashMessage: req.flash('message') });
@@ -128,8 +147,22 @@ const jobOrder_update_get = (req, res) => {
 const jobOrder_update_post = (req, res) => {
 
     const id = req.params.job_id; 
+    let reqBody = req.body
     
-    JobOrder.findByIdAndUpdate({_id: id}, req.body, (err, data) => {
+    if(reqBody.p_parts == ""){
+        reqBody.p_parts = "N/A"
+    }
+    if(reqBody.p_supp == ""){
+        reqBody.p_supp = "N/A"
+    }
+    if(reqBody.unit_specs == ""){
+        reqBody.unit_specs = "N/A"
+    }
+    if(reqBody.unit_accessories == ""){
+        reqBody.unit_accessories = "N/A"
+    }
+    console.log(reqBody)
+    JobOrder.findByIdAndUpdate({_id: id}, reqBody, (err, data) => {
         if (err) {
             console.log("There's an error updating Job: " + err);
         } else {
@@ -141,6 +174,8 @@ const jobOrder_update_post = (req, res) => {
 }
 
 
+
+
 //create and post jobOrder
 const jobOrder_add_get = (req, res) => {
 
@@ -148,8 +183,23 @@ const jobOrder_add_get = (req, res) => {
 }
 
 const jobOrder_add_post = (req, res) => {
-    console.log(req.body)
-    const jobOrder = new JobOrder(req.body);
+    let reqBody = req.body
+
+    if(reqBody.p_parts = ""){
+        reqBody.p_parts = "N/A"
+    }
+    if(reqBody.p_supp = ""){
+        reqBody.p_supp = "N/A"
+    }
+    if(reqBody.unit_specs == ""){
+        reqBody.unit_specs = "N/A"
+    }
+    if(reqBody.unit_accessories == ""){
+        reqBody.unit_accessories = "N/A"
+    }
+    
+    console.log(reqBody)
+    const jobOrder = new JobOrder(reqBody);
     jobOrder.save()
         .then(result => {
             req.flash('message', 'Job Order added successfully!')
@@ -180,6 +230,7 @@ module.exports = {
     jobOrder_index,
     jobOrder_list,
     jobOrder_search,
+    jobOrder_print,
     jobOrder_add_get,
     jobOrder_add_post,
     jobOrder_update_get,

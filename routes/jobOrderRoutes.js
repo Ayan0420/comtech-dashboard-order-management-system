@@ -5,6 +5,7 @@ const jobOrderController = require('../controllers/jobOrderController');
 
 router.get('/', jobOrderController.jobOrder_index);
 router.get('/job-orders/:list', jobOrderController.jobOrder_list);
+router.get('/job-print/:job_id', jobOrderController.jobOrder_print);
 router.get('/job-details/:job_id', jobOrderController.jobOrder_update_get);
 router.post('/job-details/:job_id', jobOrderController.jobOrder_update_post);
 router.get('/add-job-order', jobOrderController.jobOrder_add_get);

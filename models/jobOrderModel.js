@@ -73,6 +73,7 @@ const jobOrderDBSchema = new Schema({
     p_parts: {
         type: String,
         required: false,
+        default: "N/A"
     },
     p_ord_date: {
         type: String,
@@ -81,6 +82,7 @@ const jobOrderDBSchema = new Schema({
     p_supp: {
         type: String,
         required: false,
+        default: "N/A"
     },
     p_price: {
         type: Number,

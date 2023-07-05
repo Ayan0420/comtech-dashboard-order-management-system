@@ -21,7 +21,9 @@
     "express-session": "^1.17.3",
     "moment": "^2.29.4",
     "mongoose": "^6.8.2",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "pdf-lib": "^1.17.1",
+    "unix-print": "^1.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"

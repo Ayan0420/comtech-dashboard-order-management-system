@@ -13,7 +13,17 @@
                 <!-- End: clock -->
                 <p class="mb-1 mt-0" style="text-align: center;"><strong>Comtech Laptop Repair Shop</strong><br>Brgy. 19, Corner Jadol-Tuto St., Gingoog City, Misamis Oriental, 9014</p>
                 <a class="btn btn-primary d-lg-flex justify-content-sm-center justify-content-lg-center align-items-lg-center" role="button" data-bss-disabled-mobile="true" data-bss-hover-animate="pulse" id="view-job-order-btn" href="/job-orders">Dashboard</a>
-                <a class="btn btn-primary d-lg-flex justify-content-sm-center justify-content-lg-center align-items-lg-center" role="button" data-bss-disabled-mobile="true" data-bss-hover-animate="pulse" id="add-job-order-btn" href="/job-orders/add-job-order">Add Job Order</a>
+                <a class="btn btn-primary mb-3 d-lg-flex justify-content-sm-center justify-content-lg-center align-items-lg-center" role="button" data-bss-disabled-mobile="true" data-bss-hover-animate="pulse" id="add-job-order-btn" href="/job-orders/add-job-order">Add Job Order</a>
+
+                <div class="d-flex flex-column gap-1">
+                    <a class="btn btn-white border border-1 border-primary text-primary my-0 d-lg-flex justify-content-sm-center justify-content-lg-center align-items-lg-center" role="button" data-bss-disabled-mobile="true" data-bss-hover-animate="pulse" id="" href="/job-orders/job-orders/all">All Job Orders</a>
+                    <a class="btn btn-white border border-1 border-primary text-primary my-0 d-lg-flex justify-content-sm-center justify-content-lg-center align-items-lg-center" role="button" data-bss-disabled-mobile="true" data-bss-hover-animate="pulse" id="" href="/job-orders/job-orders/on-going">On-Going Jobs</a>
+                    <a class="btn btn-white border border-1 border-primary text-primary my-0 d-lg-flex justify-content-sm-center justify-content-lg-center align-items-lg-center" role="button" data-bss-disabled-mobile="true" data-bss-hover-animate="pulse" id="" href="/job-orders/job-orders/parts-orders">Parts Orders</a>
+                    <a class="btn btn-white border border-1 border-primary text-primary my-0 d-lg-flex justify-content-sm-center justify-content-lg-center align-items-lg-center" role="button" data-bss-disabled-mobile="true" data-bss-hover-animate="pulse" id="" href="/job-orders/job-orders/unclaimed">Unclaimed Orders</a>
+                    <a class="btn btn-white border border-1 border-primary text-primary my-0 d-lg-flex justify-content-sm-center justify-content-lg-center align-items-lg-center" role="button" data-bss-disabled-mobile="true" data-bss-hover-animate="pulse" id="" href="/job-orders/job-orders/dmd">DMD</a>
+
+                </div>
+
                 <!-- <iframe allowfullscreen="" frameborder="0" loading="lazy" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAbINk7rv7Ey4sGOfM1lZc6IWAkNEzFj-A&amp;q=comtech+gingoog&amp;zoom=15" id="map" width="100%" height="400"></iframe> -->
             </div>
             <div class="col-md-9" id="main-body">
@@ -22,8 +32,8 @@
                 <% if(flashMessage.length > 0 ) { %>
                     <!-- <div class="alert alert-success py-1 px-3 mt-1" id="flash-message"> <%= flashMessage %> </div> -->
 
-                    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-                        <div class="toast text-white bg-success align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="position-fixed bottom-0 end-0 p-1" style="z-index: 11">
+                        <div class="toast text-black bg-success align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
                             <div class="d-flex rounded-2">
                                 <div class="toast-body text-center fs-4">
                                 <%= flashMessage %>
@@ -36,8 +46,14 @@
 
                 <form class="container" action="/job-orders/job-details/<%= jobOrder._id%>" method="POST">
                     <!-- Start: to enable "disable attr" -->
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>To update or delete this job order, click the "Edit Job Order" button below.</span>
+                        <button type="button" class="btn btn-warning py-0 fw-bold" data-bs-toggle="modal" data-bs-target="#printModal">
+                            PRINT
+                        </button>
+
+                    </div>
                     <fieldset id="form-fields" disabled>
-                        <p>To update or delete this job order, click the "Edit Job Order" button below.</p>
                         
                         <!-- Start: Form Row -->
                         <p class="text-center text-uppercase mt-sm-1 mt-md-3 my-2 py-2">Customer Information</p>
@@ -123,7 +139,7 @@
                         <!-- Start: Form Row -->
                         <div class="row form-row">
                             <!-- Start: Supplier -->
-                            <div class="col-sm-12 col-lg-6 pb-2"><label class="form-label custom-label" for="p_supp">Supplier &amp; Tracking No.:</label><input placeholder="Not Applicable"  value="<%= jobOrder.p_supp %>" class="form-control form-control custom-input" type="text" id="p_supp" name="p_partsp_supp" autocomplete="off"></div><!-- End: Supplier -->
+                            <div class="col-sm-12 col-lg-6 pb-2"><label class="form-label custom-label" for="p_supp">Supplier &amp; Tracking No.:</label><input placeholder="Not Applicable"  value="<%= jobOrder.p_supp %>" class="form-control form-control custom-input" type="text" id="p_supp" name="p_supp" autocomplete="off"></div><!-- End: Supplier -->
                             <!-- Start: Total Price -->
                             <div class="col-sm-12 col-lg-3 pb-2"><label class="form-label custom-label" for="p_price">Total Price:</label><input  value="<%= jobOrder.p_price %>" class="form-control form-control custom-input sumVari" type="number" id="p_price" name="p_price" autocomplete="off" value="0"></div><!-- End: Total Price -->
                             <!-- Start: Total Price -->
@@ -163,6 +179,7 @@
                     <div class="row my-3">
                         <div class="col"><button class="btn btn-warning" id="update-jo-button" type="button">Edit Job Order</button><button class="btn btn-success ms-2 mb-1 mb-md-0 visually-hidden" id="save-button" type="submit">Save Updates</button><button class="btn btn-danger ms-2 float-end visually-hidden " id="delete-button" type="button" data-bs-toggle="modal" data-bs-target="#delete-warning-modal">Delete Job Order</button><button class="btn btn-warning ms-2 visually-hidden" id="cancel-edit-button" type="button">Cancel Editing</button></div>
                     </div><!-- End: Buttons -->
+                    
                     <p class="h5"><strong>IMPORTANT!</strong>: When updating this job order, double check all entries before saving.</p>
                 </form><!-- End: Job Order Details Form -->
             </div>
@@ -170,11 +187,11 @@
     </div>
 
     <!-- Start: Delete Job Order Promp Modal -->
-    <div class="modal" id="delete-warning-modal" tabindex="-1">
+    <div class="modal fade" id="delete-warning-modal" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Are you sure you want to delete <strong>Job Order: <%= jobOrder.job_id %></strong> ?</h5>
+              <h3 class="modal-title">Are you sure you want to DELETE <strong>Job Order: <%= jobOrder.job_id %></strong>?</h3>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -188,6 +205,26 @@
         </div>
       </div>
     <!-- End: Delete Job Order Promp Modal -->
+    
+    <!-- Start: Delete Job Order Promp Modal -->
+    <div class="modal fade" id="printModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title">Print Job Order <strong><%= jobOrder.job_id %></strong>?</h3>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+              <a href="/job-orders/job-print/<%=jobOrder._id%>" class="btn btn-warning px-5 fw-bold fs-4">Print Now</a>
+            </div>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id="cancel-delete-button" data-bs-dismiss="modal">Abort</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    <!-- End: Delete Job Order Promp Modal -->
+
     <!-- End: MAIN-SECTION -->
 
     <%- include('../partials/foot.ejs') %> 

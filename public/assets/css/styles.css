@@ -1,8 +1,8 @@
-input {
+input, select {
   background-color: #feffd6 !important;
 }
 
-input:disabled {
+input:disabled, select:disabled {
   background-color: #ececec !important;
 }
 
