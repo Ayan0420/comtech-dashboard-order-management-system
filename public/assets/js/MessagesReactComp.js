@@ -3,9 +3,9 @@
 const {useState, useEffect} = React;
 const {Modal, Button} = ReactBootstrap;
 
-// const API = 'https://app.comtechgingoog.com'; //for production
+const API = 'https://app.comtechgingoog.com'; //for production
 // const API = 'https://f9rlb.localtonet.com'; //for tunnel server
-const API = 'http://localhost:4000'; //for development
+// const API = 'http://localhost:4000'; //for development
 
 /**
  * Message Card Component

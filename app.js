@@ -92,8 +92,8 @@ app.get('/logout', (req, res) => {
 
 //Main Application Job Order Management System
 
-// app.use('/job-orders',isAuth, jobOrderRoutes); //for production
-app.use('/job-orders', jobOrderRoutes); //for development
+app.use('/job-orders',isAuth, jobOrderRoutes); //for production
+// app.use('/job-orders', jobOrderRoutes); //for development
 
 //Tracking System
 app.use('/tracking-app', trackingAppRoutes);
