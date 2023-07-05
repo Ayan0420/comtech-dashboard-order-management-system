@@ -33,8 +33,8 @@ async function generateJobOrderSlip(data){
     } = data
 
 
-
-    const printerOptions = ['-o media=letter']
+    const printer = 'L3110-Series';
+    const printerOptions = ['-o media=letter'];
 
     try {
 
@@ -77,7 +77,7 @@ async function generateJobOrderSlip(data){
         // getPrinters().then(reusult => console.log(reusult)).catch(err => console.log(err))
 
         //Print report
-        print('report_generator/output_partial.pdf', 'L3110-Series', printerOptions).then((result) => console.log("Job Order Slip created!\n" + {result})).catch(err => console.log(err))
+        print('report_generator/output_partial.pdf', printer, printerOptions).then((result) => console.log("Job Order Slip created!\n" + {result})).catch(err => console.log(err))
 
         
 

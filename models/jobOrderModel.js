@@ -12,6 +12,11 @@ const jobOrderDBSchema = new Schema({
         //make this unique
     },
 
+    tracking_code: {
+        type: String,
+        required: false
+    },
+
     job_date: {
         type: String,
         required: true

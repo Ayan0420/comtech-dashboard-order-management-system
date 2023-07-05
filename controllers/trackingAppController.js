@@ -18,7 +18,7 @@ const trackingApp_search = (req, res) => {
             return
         }
         
-        if(searchCode.toLowerCase() !== result._id.toString().slice(-6)){
+        if(searchCode.toUpperCase() !== result.tracking_code){
             
             req.flash('message', 'Tracking code incorrect. Please check the code if typed properly.')
             res.render('trackingApp/index.ejs', {flashMessage: req.flash('message'), searchData, searchCode})

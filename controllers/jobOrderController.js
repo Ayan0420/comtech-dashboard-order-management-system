@@ -174,8 +174,6 @@ const jobOrder_update_post = (req, res) => {
 }
 
 
-
-
 //create and post jobOrder
 const jobOrder_add_get = (req, res) => {
 
@@ -197,13 +195,22 @@ const jobOrder_add_post = (req, res) => {
     if(reqBody.unit_accessories == ""){
         reqBody.unit_accessories = "N/A"
     }
-    
+
     console.log(reqBody)
     const jobOrder = new JobOrder(reqBody);
     jobOrder.save()
         .then(result => {
-            req.flash('message', 'Job Order added successfully!')
-            res.redirect(`/job-orders/job-details/${jobOrder._id}`);
+            //To add the Tracking code based on it's _id. 
+            JobOrder.findByIdAndUpdate({_id: result._id}, {tracking_code: result._id.toString().toUpperCase().slice(-6)}, (err, data) => {
+                if (err) {
+                    console.log("There's an error updating Job: " + err);
+                } else {
+                    req.flash('message', 'Job Order added successfully!')
+                    res.redirect(`/job-orders/job-details/${jobOrder._id}`);
+                }
+            });
+            // console.log(result)
+
         })
         .catch(err => console.log(err));
 }

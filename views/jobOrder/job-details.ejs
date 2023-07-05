@@ -58,7 +58,13 @@
                         <!-- Start: Form Row -->
                         <p class="text-center text-uppercase mt-sm-1 mt-md-3 my-2 py-2">Customer Information</p>
                         <div class="row">
-                            <div class="col col-md-4 mb-2 ms-auto text-center"><span class="fst-italic fw-bold">Tracking Code:</span> <span class="fw-bold border border-dark border-1 rounded-1 px-1 py-0 bg-dark text-light"><%= jobOrder._id.toString().toUpperCase().slice(-6)%></span></div>
+                            <div class="col col-md-4 mb-2 ms-auto text-center"><span class="fst-italic fw-bold">Tracking Code:</span> <span class="fw-bold border border-dark border-1 rounded-1 px-1 py-0 bg-dark text-light">
+                                <% if (jobOrder.tracking_code == null) { %>
+                                 No Tracking Code
+                                <% } %>
+                                <%= jobOrder.tracking_code %>
+                            
+                            </span></div>
                         </div>
                         <div class="row form-row">
                             <!-- Start: Job Order No. -->
