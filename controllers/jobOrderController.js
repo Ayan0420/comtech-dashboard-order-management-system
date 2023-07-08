@@ -1,6 +1,9 @@
 const JobOrder = require('../models/jobOrderModel');
 const dashboardFunctions = require('./dashboardFunctions')
 const {generateJobOrderSlip} = require('../report_generator/report_generator')
+const path = require('path');
+const fs = require('fs');
+
 
     //JobOrder APP CONTROLLERS//
 
