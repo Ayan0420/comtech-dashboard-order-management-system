@@ -74,7 +74,7 @@ async function generateJobOrderSlip(data){
 
         const pdfBytes = await pdfDoc.save()
         console.log(pdfBytes);
-        await writeFile("report_generator/output_partial.pdf", pdfBytes);
+        await writeFile("report_generator/job-order-slip.pdf", pdfBytes);
 
         
         //Print report
