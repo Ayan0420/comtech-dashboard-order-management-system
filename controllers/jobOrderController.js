@@ -119,10 +119,13 @@ const jobOrder_print = (req, res) => {
     .then((data) => {
         // console.log(result)
 
-        generateJobOrderSlip(data)
+        generateJobOrderSlip(data).then(result => {
 
-        req.flash('message', 'Printing job order...')
-        res.redirect(`/job-orders/job-details/${id}`);
+            const pdfPath = path.join(__dirname, '../report_generator/job-order-slip.pdf')
+            res.setHeader('Content-Disposition', 'inline');
+            res.sendFile(pdfPath);
+                        
+        });
     })
     .catch((err) => {
         res.status(404).send('<h1>Error printing!</h1>');

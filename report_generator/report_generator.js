@@ -70,16 +70,18 @@ async function generateJobOrderSlip(data){
         form.getTextField('p_payment_status').setText(p_status == null ? "" : p_status.toString());
         form.getTextField('p_balance').setText(p_bal == null ? "" : p_bal.toString());
 
+        form.flatten()
+
         const pdfBytes = await pdfDoc.save()
         console.log(pdfBytes);
         await writeFile("report_generator/output_partial.pdf", pdfBytes);
 
-        // getPrinters().then(reusult => console.log(reusult)).catch(err => console.log(err))
-
-        //Print report
-        print('report_generator/output_partial.pdf', printer, printerOptions).then((result) => console.log("Job Order Slip created!\n" + {result})).catch(err => console.log(err))
-
         
+        //Print report
+        // getPrinters().then(reusult => console.log(reusult)).catch(err => console.log(err))
+        // print('report_generator/output_partial.pdf', printer, printerOptions).then((result) => console.log("Job Order Slip created!\n" + {result})).catch(err => console.log(err))
+
+        return true
 
     } catch(error){
         console.log("Error from report_generator: " );
