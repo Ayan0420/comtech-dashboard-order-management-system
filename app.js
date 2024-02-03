@@ -48,11 +48,15 @@ app.use(cors());
 //Basic Auth Middleware
 function isAuth(req, res, next) {
 
-    if (req.session && req.session.user === process.env.ADMIN_USER && req.session.admin) {
-      next();
-    } else {
-      res.redirect('/d-login');
-    }
+    // Dev
+    next()
+
+    // Prod
+    // if (req.session && req.session.user === process.env.ADMIN_USER && req.session.admin) {
+    //   next();
+    // } else {
+    //   res.redirect('/d-login');
+    // }
 }
 
 //ROUTES//

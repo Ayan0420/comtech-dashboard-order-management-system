@@ -35,6 +35,11 @@ const trackingApp_search = (req, res) => {
     
 }
 
+const trackingApp_scanQr = (req, res) => {
+
+    res.render('trackingApp/scan-qr');
+}
+
 const trackingApp_result = (req, res) => {
     const id = req.params.id;
     JobOrder.findById(id)
@@ -52,5 +57,6 @@ module.exports = {
     trackingApp_index,
     trackingApp_search,
     trackingApp_result,
+    trackingApp_scanQr
 }
 

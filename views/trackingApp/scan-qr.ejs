@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>Tracking - QR Code Reader</title>
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets2/icons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets2/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets2/icons/favicon-16x16.png">
+        <link rel="manifest" href="/assets2/icons/site.webmanifest">
+        <!-- Styles -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.2.2/dist/lux/bootstrap.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&amp;display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alatsi&amp;display=swap">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+        <link rel="stylesheet" href="/assets2/css/Search-Input-Responsive-with-Icon.css">
+        <link rel="stylesheet" href="/assets2/css/styles.css">
+
+        <script src="/assets2/js/html5-qrcode.min.js"></script>
+    </head>
+
+    <body>
+        
+        <div class="container text-center" style="max-width: 700px;">
+            <h1 class="mt-5">Scan QR Code</h1>
+            <p>Comtech Laptop Repair Shop</p>
+            <div id="reader"></div>
+            
+        </div>
+        <div class="text-center">
+           <div id="toast" class="m-5 px-3 py-1 rounded-1 bg-success text-light shadow" style="display: none;">
+             Scan success. Redirecting...
+           </div>   
+        </div>
+
+        <script type="text/javascript">
+
+            const toast = document.querySelector("#toast");
+            
+            const html5QrCodeScanner = new Html5QrcodeScanner(
+                "reader",
+                {
+                  fps: 10,
+                  qrbox: 250,
+                }
+              );
+
+            html5QrCodeScanner.render(onScanSuccess);
+
+            function onScanSuccess(qrCodeMessage) {
+                const searchString = "https://comtechdashboard.onrender.com/";
+                if(qrCodeMessage.includes(searchString)){
+                    toast.style.display = "inline-block";
+                    window.location.replace(qrCodeMessage);    
+                } else {
+                    alert("Invalid QR Code! Make sure to use the QR code from your job order receipt.")
+                }
+            }
+
+        </script>
+    </body>
+
+</html>
