@@ -19,25 +19,20 @@
     <link rel="stylesheet" href="/assets2/css/styles.css">
 </head>
 
-<body id="body-bg" class="">
+<body class="">
     <div>
         <!-- Start: comtech logo --><a class="d-flex justify-content-center" href="https://www.comtechgingoog.com/"><img id="logo" class="img-fluid py-2" src="/assets2/img/comtech_logo_with_address-removebg-preview.png" width="400px" alt="comtech logo"></a><!-- End: comtech logo -->
         <!-- Start: Hero Banner Color -->
-        <section class="d-flex justify-content-center">
-            <div class="container h-100">
-                <div class="text-white bg-dark border rounded border-0 p-4 py-5">
+        <section class="d-flex justify-content-center mt-3">
+            <div class="container h-100" style="max-width: 600px;">
+                <div class="text-white bg-dark border rounded border-0 p-4 py-3">
                     <!-- Start: heading -->
                     <div class="row g-0 h-100">
                         <div class="col-md-10 col-xl-8 text-center d-flex d-sm-flex d-md-flex justify-content-center align-items-center mx-auto">
-                            <h1 class="text-uppercase fw-semibold text-white mb-3">WELCOME TO <span style="color: rgb(217, 83, 79);">COMTECH LAPTOP REPAIR SHOP</span><span style="color: rgba(217, 83, 79, 0);"> </span>JOB ORDER TRACKING SYSTEM</h1>
+                            <h1 class="text-uppercase fw-semibold text-danger mb-3">JOB ORDER TRACKING SYSTEM</h1>
                         </div>
                     </div><!-- End: heading -->
-                    <!-- Start: description -->
-                    <div class="row">
-                        <div class="col">
-                            <p class="text-center mb-4">To track the current status of your job order, please <span class="text-warning fs-4">type in the boxes below your JOB ORDER NUMBER</span> and the <span class="text-warning fs-4">Tracking Code</span> that is found on your Job Order Receipt and click the "TRACE" button.</p>
-                        </div>
-                    </div><!-- End: description -->
+                   
                     <!-- Start: Flash Message -->
                     <% if (flashMessage.length > 0){ %>
                         <div class="d-flex justify-content-center">
@@ -49,21 +44,37 @@
                     <div class="row">
                         <div class="col text-center d-flex justify-content-center align-items-center">
                              <form action="/tracking-app/" method="post">
-                                <input class="border rounded text-center mb-1 fs-4" type="text" id="tracking" name="tracking" autocomplete="off" placeholder="Job Order No. (e.g. 1254)" value="<%=searchData%>">
-                                <br >
-                                <input class="border rounded text-center mb-3 fs-4" type="text" id="code" name="code" autocomplete="off" placeholder="Tracking Code" value="<%=searchCode%>">
+
+                                <div class="row">
+                                    <div class="col mb-2 mb-md-0">
+                                         <input class="border rounded text-center fs-4" type="text" id="tracking" name="tracking" autocomplete="off" placeholder="Job Order No. (e.g. 1254)" value="<%=searchData%>">
+                                    </div>
+                                    <div class="col">
+                                        <input class="border rounded text-center fs-4" type="text" id="code" name="code" autocomplete="off" placeholder="Tracking Code" value="<%=searchCode%>">
+                                    </div>
+                                </div>
+
+
                                 <br class="my-1">
-                                <button class="btn btn-danger fs-4 rounded py-2 mt-1 mt-sm-0" type="submit">TRACE</button>
+                                <button class="btn btn-danger fs-4 rounded py-2 mt-sm-0" type="submit">TRACE</button>
                             </form>
 
                         </div>
-                        <h5 class="my-3 text-center text-light">or</h5>
+
+                        <h5 class="my-2 text-center text-light">or</h5>
+
                         <div class=" d-flex justify-content-center">
 
                             <a class="btn btn-info rounded-3 py-2 fs-4" href="/tracking-app/scan-qr">Scan QR Code</a>
                         </div>
                        
                     </div><!-- End: input field -->
+                     <!-- Start: description -->
+                    <div class="row mt-3">
+                        <div class="col" style="font-size: .8rem;">
+                            <p class="text-center text-warning">NOTE: To track the current status of your job order, please type in the boxes below your JOB ORDER NUMBER and the Tracking Code that is found on your Job Order Receipt and click the "TRACE" button. Alternatively, you can use the QR scanner.</p>
+                        </div>
+                    </div><!-- End: description -->
                 </div>
             </div>
         </section><!-- End: Hero Banner Color -->

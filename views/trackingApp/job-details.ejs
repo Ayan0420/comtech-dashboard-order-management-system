@@ -19,8 +19,8 @@
     <link rel="stylesheet" href="/assets2/css/styles.css">
 </head>
 
-<body class="d-flex flex-column align-items-center vh-100" id="body-bg">
-    <!-- Start: comtech logo --><a href="/tracking-app"><img id="logo" class="img-fluid pt-4" src="/assets2/img/comtech_logo_with_address-removebg-preview.png" width="400px" alt="comtech logo"></a><!-- End: comtech logo -->
+<body class="d-flex flex-column align-items-center vh-100">
+    <!-- Start: comtech logo --><a href="/tracking-app"><img id="logo" class="img-fluid pt-2" src="/assets2/img/comtech_logo_with_address-removebg-preview.png" width="400px" alt="comtech logo"></a><!-- End: comtech logo -->
     <!-- Start: job order content -->
     <section id="section" class="py-0">
         <div class="text-white bg-dark border rounded border-0 px-4 py-2 mt-4">
@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col">
                     <!-- Start: job order details heading -->
-                    <h1 class="text-center text-danger">JOB ORDER DETAILS</h1><!-- End: job order details heading -->
+                    <h3 class="text-center text-danger my-2">JOB ORDER DETAILS</h3><!-- End: job order details heading -->
                 </div>
             </div><!-- End: header -->
             <!-- Start: JOB ORDER NUMBER ROW -->
@@ -82,7 +82,7 @@
                     <!-- Start: STATUS LABEL --><span class="text-white">Job Status:</span><!-- End: STATUS LABEL -->
                 </div>
                 <div class="col d-flex align-items-center justify-content-center">
-                    <!-- Start: STATUS --><span class="fs-3 text-start text-success"><%= searchResult.s_status %></span><!-- End: STATUS -->
+                    <!-- Start: STATUS --><span class="fs-4 text-start text-success"><%= searchResult.s_status %></span><!-- End: STATUS -->
                 </div>
             </div><!-- End: STATUS ROW -->
             <!-- Start: STATUS ROW -->
@@ -91,7 +91,7 @@
                     <!-- Start: STATUS LABEL --><span class="text-white">Parts Order Status:</span><!-- End: STATUS LABEL -->
                 </div>
                 <div class="col d-flex align-items-center justify-content-center">
-                    <!-- Start: STATUS --><span class="fs-3 text-start text-success d-flex"><%= searchResult.p_status %></span><!-- End: STATUS -->
+                    <!-- Start: STATUS --><span class="text-start text-success d-flex"><%= searchResult.p_status %></span><!-- End: STATUS -->
                 </div>
             </div><!-- End: STATUS ROW -->
         </div>

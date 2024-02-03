@@ -49,9 +49,9 @@ app.use(cors());
 function isAuth(req, res, next) {
 
     // Dev
-    // next()
+    return next()
 
-    Prod
+    // Prod
     if (req.session && req.session.user === process.env.ADMIN_USER && req.session.admin) {
       next();
     } else {
