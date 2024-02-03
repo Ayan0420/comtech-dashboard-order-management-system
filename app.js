@@ -49,7 +49,7 @@ app.use(cors());
 function isAuth(req, res, next) {
 
     // Dev
-    return next()
+    // return next()
 
     // Prod
     if (req.session && req.session.user === process.env.ADMIN_USER && req.session.admin) {
