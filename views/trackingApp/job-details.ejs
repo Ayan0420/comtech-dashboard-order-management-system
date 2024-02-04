@@ -34,64 +34,64 @@
             <!-- Start: JOB ORDER NUMBER ROW -->
             <div class="row">
                 <div class="text-center">
-                    <!-- Start: JO NUMBER LABEL --><span class="text-white">Job Order Number:</span><!-- End: JO NUMBER LABEL -->
+                    <!-- Start: JO NUMBER LABEL --><span class="text-warning">Job Order Number:</span><!-- End: JO NUMBER LABEL -->
                 </div>
                 <div class="col d-flex align-items-center justify-content-center">
-                    <!-- Start: JO NUMBER --><span class="text-start text-warning"><%= searchResult.job_id %></span><!-- End: JO NUMBER -->
+                    <!-- Start: JO NUMBER --><span class="text-center text-light"><%= searchResult.job_id %></span><!-- End: JO NUMBER -->
                 </div>
             </div><!-- End: JOB ORDER NUMBER ROW -->
             <!-- Start: JOB ORDER DATE ROW -->
             <div class="row">
                 <div class="text-center">
-                    <!-- Start: JO DATE LABEL --><span class="text-white">Job Order Date:</span><!-- End: JO DATE LABEL -->
+                    <!-- Start: JO DATE LABEL --><span class="text-warning">Job Order Date:</span><!-- End: JO DATE LABEL -->
                 </div>
                 <div class="col d-flex align-items-center justify-content-center">
-                    <!-- Start: JO DATE --><span class="text-start text-warning"><%= searchResult.job_date %></span><!-- End: JO DATE -->
+                    <!-- Start: JO DATE --><span class="text-center text-light"><%= searchResult.job_date %></span><!-- End: JO DATE -->
                 </div>
             </div><!-- End: JOB ORDER DATE ROW -->
             <!-- Start: CUS NAME ROW -->
             <div class="row">
                 <div class="text-center">
-                    <!-- Start: CUS NAME LABEL --><span class="text-white">Customer Name:</span><!-- End: CUS NAME LABEL -->
+                    <!-- Start: CUS NAME LABEL --><span class="text-warning">Customer Name:</span><!-- End: CUS NAME LABEL -->
                 </div>
                 <div class="col d-flex align-items-center justify-content-center">
-                    <!-- Start: CUS NAME --><span class="text-start text-warning"><%= searchResult.cus_name %></span><!-- End: CUS NAME -->
+                    <!-- Start: CUS NAME --><span class="text-center text-light"><%= searchResult.cus_name.toUpperCase() %></span><!-- End: CUS NAME -->
                 </div>
             </div><!-- End: CUS NAME ROW -->
             <!-- Start: UNIT MODEL ROW -->
             <div class="row">
                 <div class="text-center">
-                    <!-- Start: UNIT MODEL LABEL --><span class="text-white">Unit Model:</span><!-- End: UNIT MODEL LABEL -->
+                    <!-- Start: UNIT MODEL LABEL --><span class="text-warning">Unit Model:</span><!-- End: UNIT MODEL LABEL -->
                 </div>
                 <div class="col d-flex align-items-center justify-content-center">
-                    <!-- Start: UNIT MODEL --><span class="text-start text-warning"><%= searchResult.unit_model %></span><!-- End: UNIT MODEL -->
+                    <!-- Start: UNIT MODEL --><span class="text-center text-light"><%= searchResult.unit_model.toUpperCase() %></span><!-- End: UNIT MODEL -->
                 </div>
             </div><!-- End: UNIT MODEL ROW -->
             <!-- Start: WORK PERF ROW -->
             <div class="row">
                 <div class="text-center">
-                    <!-- Start: WORK PERF LABEL --><span class="text-white">Work Performed:</span><!-- End: WORK PERF LABEL -->
+                    <!-- Start: WORK PERF LABEL --><span class="text-warning">Work Performed:</span><!-- End: WORK PERF LABEL -->
                 </div>
                 <div class="col d-flex align-items-center justify-content-center">
-                    <!-- Start: WORK PERF --><span class="text-start text-warning"><%= searchResult.work_perf %></span><!-- End: WORK PERF -->
+                    <!-- Start: WORK PERF --><span class="text-center text-light"><%= searchResult.work_perf.toUpperCase() %></span><!-- End: WORK PERF -->
                 </div>
             </div><!-- End: WORK PERF ROW -->
             <!-- Start: STATUS ROW -->
             <div class="row">
                 <div class=" d-flex justify-content-center align-items-center">
-                    <!-- Start: STATUS LABEL --><span class="text-white">Job Status:</span><!-- End: STATUS LABEL -->
+                    <!-- Start: STATUS LABEL --><span class="text-warning">Job Status:</span><!-- End: STATUS LABEL -->
                 </div>
                 <div class="col d-flex align-items-center justify-content-center">
-                    <!-- Start: STATUS --><span class="fs-4 text-start text-success"><%= searchResult.s_status %></span><!-- End: STATUS -->
+                    <!-- Start: STATUS --><span class="fs-4 text-center text-light"><%= searchResult.s_status.toUpperCase() %></span><!-- End: STATUS -->
                 </div>
             </div><!-- End: STATUS ROW -->
             <!-- Start: STATUS ROW -->
             <div class="row">
                 <div class=" d-flex justify-content-center align-items-center">
-                    <!-- Start: STATUS LABEL --><span class="text-white">Parts Order Status:</span><!-- End: STATUS LABEL -->
+                    <!-- Start: STATUS LABEL --><span class="text-warning text-center">Order Status (Parts/Accessories):</span><!-- End: STATUS LABEL -->
                 </div>
                 <div class="col d-flex align-items-center justify-content-center">
-                    <!-- Start: STATUS --><span class="text-start text-success d-flex"><%= searchResult.p_status %></span><!-- End: STATUS -->
+                    <!-- Start: STATUS --><span class="text-center text-light d-flex"><%= searchResult.p_status.toUpperCase() %></span><!-- End: STATUS -->
                 </div>
             </div><!-- End: STATUS ROW -->
         </div>
